@@ -14,7 +14,7 @@ class SeleniumTestCase extends PHPUnit_Extensions_Selenium2TestCase
 
     protected function see($text, $tag = 'html')
     {
-        $this->assertEquals($text, $this->byTag($tag)->text());
+        $this->assertContains($text, $this->byTag($tag)->text());
 
         return $this;
     }
