@@ -14,7 +14,7 @@
 ### Installation guide:
 1. First get the package on your laravel instance `composer require modelizer/selenium`
 2. Register Service provider `Modelizer\Selenium\SeleniumServiceProvider::class` in `app.php`.
-3. Start Selenium Server `php artisan selenium:start`. Note: Don't stop selenium server until your test cases are completed running.
+3. Start Selenium Server `php artisan selenium:start`. Note: Don't stop selenium server until your test cases are completed.
 4. Installation complete and selenium server up and running.
 
 ### Start Testing
