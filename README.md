@@ -6,14 +6,14 @@
 1. Java should be installed on local machine.
 
 ### Notes:
-1. You should have atleast basic understanding of phpunit.
+1. You should have at least basic understanding of phpunit.
 2. Tested on chrome (Recommended) and not tested on windows machine (but you can try).
 3. Selenium 2.53.1 and ChromeDriver 2.23 is been used.
 
 ### Installation guide:
 1. First get the package on your laravel instance `composer require modelizer/selenium`
 2. Register Service provider `Modelizer\Selenium\SeleniumServiceProvider::class` in `app.php`.
-3. Start Selenium Server `php artisan selenium:start`. Note: Don't stop selenium server until your test are completed.
+3. Start Selenium Server `php artisan selenium:start`. Note: Don't stop selenium server until your test cases are completed running.
 4. Installation complete and selenium server up and running.
 
 ### Start Testing
@@ -52,7 +52,7 @@ class SeleniumExampleTest extends SeleniumTestCase
 }
 ```
 
-### If free to contribute or create an issue.
+### Feel free to contribute or create an issue.
  
 <hr />
-####More browser compatibility and laravel testing feel will be added soon.
+####More browser compatibility and laravel testing feeling will be added soon.
