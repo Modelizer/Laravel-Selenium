@@ -1,4 +1,4 @@
-# Selenium for Laravel 5
+# Selenium for Laravel 5 inspired by [Integrated](https://github.com/laracasts/Integrated) package.
 
 <img src="images/laravel-selenium.gif" />
 
@@ -7,8 +7,9 @@
 
 ### Notes:
 1. You should have at least basic understanding of phpunit.
-2. Tested on chrome (Recommended) and not tested on windows machine (but you can try).
-3. Selenium 2.53.1 and ChromeDriver 2.23 is been used.
+2. Not all apis in [Laracasts Package](https://github.com/laracasts/Integrated/wiki/Learn-the-API) is integrated in this package, but soon will be.
+3. Tested on chrome (Recommended) and not tested on windows machine (but you can try).
+4. Selenium 2.53.1 and ChromeDriver 2.23 is been used.
 
 ### Installation guide:
 1. First get the package on your laravel instance `composer require modelizer/selenium`
