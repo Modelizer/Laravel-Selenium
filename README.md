@@ -7,8 +7,8 @@
 
 ### Notes:
 1. You should have at least basic understanding of phpunit.
-2. Not all apis in [Laracasts Package](https://github.com/laracasts/Integrated/wiki/Learn-the-API) is integrated in this package, but soon will be.
-3. Right now only Mac and Chrome support is available (Support for Windows, Linux and other browers are in pipeline).
+2. Not all APIs in [Laracasts Package](https://github.com/laracasts/Integrated/wiki/Learn-the-API) is integrated in this package, but soon will be.
+3. Right now only Mac and Chrome support are available (Support for Windows, Linux, and other browsers are in pipeline).
 4. Selenium 2.53.1 and ChromeDriver 2.23 is been used.
 
 ### Installation guide:
@@ -56,7 +56,7 @@ class SeleniumExampleTest extends SeleniumTestCase
 ### Feel free to contribute or create an issue.
  
 <hr />
-### Thinks which are in pipeline
+### Things which are in pipeline
 1. Firefox support needs to be added.
 2. Windows and Linux support need to be added
 3. Few APIs like in Integrated package such as `press`, `wait` and much more need to be added.
