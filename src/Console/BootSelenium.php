@@ -1,11 +1,7 @@
 <?php
 namespace Modelizer\Selenium\Console;
 
-use Faker\Provider\UserAgent;
 use Illuminate\Console\Command;
-use Symfony\Component\Process\Exception\RuntimeException;
-use Symfony\Component\Process\Process;
-use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\ProcessBuilder;
 
 class BootSelenium extends Command
@@ -25,23 +21,21 @@ class BootSelenium extends Command
     protected $description = 'Boot Selenium Server.';
 
     /**
-     * Create a new command instance.
+     * Operating System.
      *
-     * @return void
+     * @var array
      */
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    protected $os = [
+        'Darwin' => 'mac'
+    ];
 
     /**
      * Execute the console command.
      *
-     * @return mixed
+     * @param ProcessBuilder $builder
      */
-    public function handle()
+    public function handle(ProcessBuilder $builder)
     {
-        $builder = new ProcessBuilder();
         $builder->setTimeout(0);
 
         // @todo check whether java is installed if not then throw exception.
@@ -50,7 +44,7 @@ class BootSelenium extends Command
         $command = $builder
             ->setArguments([
                 "-jar",
-                "{$this->getPackagePath()}selenium.jar",
+                static::prependPackagePath("selenium.jar"),
                 "-Dwebdriver.chrome.driver={$this->getWebDriver('chrome')}",
             ])
             ->getProcess()
@@ -63,18 +57,29 @@ class BootSelenium extends Command
      * Get web driver full qualified location.
      *
      * @param        $driverName
-     * @param string $platform
      * @return string
      */
-    protected function getWebDriver($driverName, $platform = '')
+    protected function getWebDriver($driverName)
     {
-        $suffix = empty($platform) ? '' : '-' . $platform;
+        $driver = static::prependPackagePath("drivers/" . $this->os[PHP_OS] . "-$driverName");
 
-        return static::getPackagePath() . "drivers/{$driverName}" . $suffix;
+        if (! is_file($driver)) {
+            $this->error(ucfirst($this->os[PHP_OS]) . ' driver file is not available.');
+
+            exit;
+        }
+
+        return $driver;
     }
 
-    public static function getPackagePath()
+    /**
+     * Get the real path with package path prepended.
+     *
+     * @param $suffix
+     * @return string
+     */
+    public static function prependPackagePath($suffix)
     {
-        return __DIR__ . "/../../";
+        return realpath(__DIR__ . "/../../$suffix");
     }
 }
