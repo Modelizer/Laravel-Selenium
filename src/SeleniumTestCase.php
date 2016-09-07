@@ -2,9 +2,20 @@
 namespace Modelizer\Selenium;
 
 use PHPUnit_Extensions_Selenium2TestCase;
+use Modelizer\Selenium\Services\Application as Laravel;
 
 class SeleniumTestCase extends PHPUnit_Extensions_Selenium2TestCase
 {
+    use Laravel;
+
+    protected function setUp()
+    {
+        $this->setUpLaravel();
+
+        // Default browser
+        $this->setBrowser('chrome');
+    }
+
     protected function visit($path)
     {
         $this->url($path);
