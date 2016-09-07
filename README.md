@@ -34,7 +34,8 @@ class SeleniumExampleTest extends SeleniumTestCase
      */
     protected function setUp()
     {
-        $this->setBrowser('chrome'); // Recommended
+        parent::setUp(); // This is required to load Laravel and default browser (chrome)
+        
         $this->setBrowserUrl('http://example.dev/'); // Replace this with your actual url
     }
 
@@ -50,6 +51,24 @@ class SeleniumExampleTest extends SeleniumTestCase
              ->see('Laravel')
              ->hold(3);
     }
+    
+    /**
+     * A basic submission test example.
+     *
+     * @return void
+     */
+    public function testLoginFormExample()
+    {
+        $loginInput = [
+            'username' => 'dummy-name',
+            'password' => 'dummy-password'
+        ];
+    
+        // Login form test case scenario
+        $this->visit('/login')
+             ->submitForm($loginInput, '#login-form')
+             ->see('Welcome');  // Expected Result
+    }
 }
 ```
 
@@ -57,8 +76,8 @@ class SeleniumExampleTest extends SeleniumTestCase
  
 <hr />
 ### Things which are in pipeline
-1. Firefox support needs to be added.
-2. Windows and Linux support need to be added
+1. Firefox support need to be added.
+2. Windows and Linux support needs to be added
 3. Few APIs like in Integrated package such as `press`, `wait` and much more need to be added.
 4. Drivers file and selenium standalone package need to be compressed.
 5. API Docs need to be created.
