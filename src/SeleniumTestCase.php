@@ -12,8 +12,8 @@ class SeleniumTestCase extends PHPUnit_Extensions_Selenium2TestCase
     {
         $this->setUpLaravel();
 
-        // Default browser
-        $this->setBrowser('chrome');
+        $this->setBrowserUrl(env('APP_URL', 'http://localhost/'));
+        $this->setBrowser(env('DEFAULT_BROWSER', 'chrome'));
     }
 
     protected function visit($path)
