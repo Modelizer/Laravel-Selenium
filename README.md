@@ -12,10 +12,26 @@
 4. Selenium 2.53.1 and ChromeDriver 2.23 is been used.
 
 ### Installation guide:
-1. First get the package on your laravel instance `composer require modelizer/selenium`
-2. Register Service provider `Modelizer\Selenium\SeleniumServiceProvider::class` in `app.php`.
-3. Start Selenium Server `php artisan selenium:start`. Note: Don't stop selenium server until your test cases are completed.
-4. Installation complete and selenium server up and running.
+First get the package on your laravel instance
+```php
+composer require modelizer/selenium
+```
+
+Set configuration to your .env file.
+```php
+APP_URL="http://example.dev/"   # If not set in .env file then http://localhost will be use as default
+DEFAULT_BROWSER=chrome          # Always default will be chrome
+```
+
+Register Service provider in `app.php`
+```php 
+Modelizer\Selenium\SeleniumServiceProvider::class 
+```
+
+Start Selenium Server 
+```php 
+php artisan selenium:start
+```
 
 ### Start Testing
 1. Create a dummy `SeleniumExampleTest.php` file in `tests` directory.
@@ -27,18 +43,6 @@ use Modelizer\Selenium\SeleniumTestCase;
 
 class SeleniumExampleTest extends SeleniumTestCase
 {
-    /**
-     * Set up
-     *
-     * @return void
-     */
-    protected function setUp()
-    {
-        parent::setUp(); // This is required to load Laravel and default browser (chrome)
-        
-        $this->setBrowserUrl('http://example.dev/'); // Replace this with your actual url
-    }
-
     /**
      * A basic functional test example.
      *
