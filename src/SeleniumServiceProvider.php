@@ -8,7 +8,7 @@ use Modelizer\Selenium\Console\BootSelenium;
 class SeleniumServiceProvider extends ServiceProvider
 {
     protected $commands = [
-        BootSelenium::class
+        BootSelenium::class,
     ];
 
     /**

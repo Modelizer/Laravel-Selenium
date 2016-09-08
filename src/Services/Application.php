@@ -1,4 +1,5 @@
 <?php
+
 namespace Modelizer\Selenium\Services;
 
 trait Application
@@ -14,11 +15,12 @@ trait Application
      * Setup the test environment.
      *
      * @setUp
+     *
      * @return void
      */
     public function setUpLaravel()
     {
-        if (! $this->app) {
+        if (!$this->app) {
             $this->refreshApplication();
         }
     }
@@ -27,6 +29,7 @@ trait Application
      * Clean up the testing environment before the next test.
      *
      * @tearDown
+     *
      * @return void
      */
     public function tearDownLaravel()
@@ -54,7 +57,7 @@ trait Application
      */
     protected function createApplication()
     {
-        $app = require __DIR__ . '/../../../../bootstrap/app.php';
+        $app = require __DIR__.'/../../../../bootstrap/app.php';
 
         $app->make('Illuminate\Contracts\Console\Kernel')->bootstrap();
 

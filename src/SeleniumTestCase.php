@@ -1,8 +1,9 @@
 <?php
+
 namespace Modelizer\Selenium;
 
-use PHPUnit_Extensions_Selenium2TestCase;
 use Modelizer\Selenium\Services\Application as Laravel;
+use PHPUnit_Extensions_Selenium2TestCase;
 
 class SeleniumTestCase extends PHPUnit_Extensions_Selenium2TestCase
 {
