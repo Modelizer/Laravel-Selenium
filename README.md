@@ -2,16 +2,11 @@
 
 <img src="images/laravel-selenium.gif" />
 
-### Requirements:
+## Requirements:
 1. Java should be installed on local machine.
+2. You should have at least basic understanding of phpunit.
 
-### Notes:
-1. You should have at least basic understanding of phpunit.
-2. Not all APIs in [Laracasts Package](https://github.com/laracasts/Integrated/wiki/Learn-the-API) is integrated in this package, but soon will be.
-3. Right now only Mac and Chrome support are available (Support for Windows, Linux, and other browsers are in pipeline).
-4. Selenium 2.53.1 and ChromeDriver 2.23 is been used.
-
-### Installation guide:
+## Installation guide:
 First get the package on your laravel instance
 ```php
 composer require modelizer/selenium
@@ -33,7 +28,7 @@ Start Selenium Server
 php artisan selenium:start
 ```
 
-### Start Testing
+## Start Testing
 1. Create a dummy `SeleniumExampleTest.php` file in `tests` directory.
 2. Add this code to `SeleniumExampleTest.php` file and run phpunit `vendor/bin/phpunit tests/SeleniumExampleTest.php`
 ```php
@@ -76,11 +71,14 @@ class SeleniumExampleTest extends SeleniumTestCase
 }
 ```
 
-### Feel free to contribute or create an issue.
- 
-<hr />
-### Things which are in pipeline
-1. Firefox support need to be added.
+## Notes:
+1. Not all APIs in [Laracasts Package](https://github.com/laracasts/Integrated/wiki/Learn-the-API) is integrated in this package, but soon will be.
+2. Right now only Mac and Chrome support are available (Support for Windows, Linux, and other browsers are in pipeline).
+3. Selenium 2.53.1 and ChromeDriver 2.23 is been used.
+4. Feel free to contribute or create an issue.
+
+## Things which are in pipeline:
+1. Firefox support needs to be added.
 2. Windows and Linux support needs to be added
 3. Few APIs like in Integrated package such as `press`, `wait` and much more need to be added.
 4. Drivers file and selenium standalone package need to be compressed.
