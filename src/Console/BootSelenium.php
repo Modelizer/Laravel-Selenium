@@ -1,4 +1,5 @@
 <?php
+
 namespace Modelizer\Selenium\Console;
 
 use Illuminate\Console\Command;
@@ -26,7 +27,7 @@ class BootSelenium extends Command
      * @var array
      */
     protected $os = [
-        'Darwin' => 'mac'
+        'Darwin' => 'mac',
     ];
 
     /**
@@ -43,8 +44,8 @@ class BootSelenium extends Command
 
         $command = $builder
             ->setArguments([
-                "-jar",
-                static::prependPackagePath("selenium.jar"),
+                '-jar',
+                static::prependPackagePath('selenium.jar'),
                 "-Dwebdriver.chrome.driver={$this->getWebDriver('chrome')}",
             ])
             ->getProcess()
@@ -56,15 +57,16 @@ class BootSelenium extends Command
     /**
      * Get web driver full qualified location.
      *
-     * @param        $driverName
+     * @param   $driverName
+     *
      * @return string
      */
     protected function getWebDriver($driverName)
     {
-        $driver = static::prependPackagePath("drivers/" . $this->os[PHP_OS] . "-$driverName");
+        $driver = static::prependPackagePath('drivers/'.$this->os[PHP_OS]."-$driverName");
 
-        if (! is_file($driver)) {
-            $this->error(ucfirst($this->os[PHP_OS]) . ' driver file is not available.');
+        if (!is_file($driver)) {
+            $this->error(ucfirst($this->os[PHP_OS]).' driver file is not available.');
 
             exit;
         }
@@ -76,10 +78,11 @@ class BootSelenium extends Command
      * Get the real path with package path prepended.
      *
      * @param $suffix
+     *
      * @return string
      */
     public static function prependPackagePath($suffix)
     {
-        return realpath(__DIR__ . "/../../$suffix");
+        return realpath(__DIR__."/../../$suffix");
     }
 }
