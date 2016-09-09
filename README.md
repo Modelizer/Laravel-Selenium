@@ -1,11 +1,12 @@
 # Selenium for Laravel 5 inspired by [Integrated](https://github.com/laracasts/Integrated) package.
+[![StyleCI](https://styleci.io/repos/57591685/shield)](https://styleci.io/repos/57591685)
 [![Latest Stable Version](https://poser.pugx.org/modelizer/selenium/v/stable)](https://packagist.org/packages/modelizer/selenium?format=flat-square)
 [![Total Downloads](https://poser.pugx.org/modelizer/selenium/downloads)](https://packagist.org/packages/modelizer/selenium?format=flat-square)
 [![Latest Unstable Version](https://poser.pugx.org/modelizer/selenium/v/unstable)](https://packagist.org/packages/modelizer/selenium?format=flat-square)
 [![License](https://poser.pugx.org/modelizer/selenium/license)](https://packagist.org/packages/modelizer/selenium?format=flat-square)
 [![composer.lock](https://poser.pugx.org/modelizer/selenium/composerlock)](https://packagist.org/packages/modelizer/selenium?format=flat-square)
 
-<img src="images/laravel-selenium.gif" />
+<img src="file:///Users/mudasir/Documents/selenium-package-resource/selenium-laravel.gif" />
 
 ## Requirements:
 1. Java should be installed on local machine.
