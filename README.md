@@ -6,7 +6,7 @@
 [![License](https://poser.pugx.org/modelizer/selenium/license)](https://packagist.org/packages/modelizer/selenium?format=flat-square)
 [![composer.lock](https://poser.pugx.org/modelizer/selenium/composerlock)](https://packagist.org/packages/modelizer/selenium?format=flat-square)
 
-<img src="file:///Users/mudasir/Documents/selenium-package-resource/selenium-laravel.gif" />
+<img src="images/laravel-selenium.gif" />
 
 ## Requirements:
 1. Java should be installed on local machine.
