@@ -3,11 +3,12 @@
 namespace Modelizer\Selenium;
 
 use Modelizer\Selenium\Services\Application as Laravel;
+use Modelizer\Selenium\Services\InteractsWithPage as Interactions;
 use PHPUnit_Extensions_Selenium2TestCase;
 
 class SeleniumTestCase extends PHPUnit_Extensions_Selenium2TestCase
 {
-    use Laravel;
+    use Laravel, Interactions;
 
     protected function setUp()
     {
@@ -17,23 +18,15 @@ class SeleniumTestCase extends PHPUnit_Extensions_Selenium2TestCase
         $this->setBrowser(env('DEFAULT_BROWSER', 'chrome'));
     }
 
-    protected function visit($path)
+    /**
+     * Force selenium to wait
+     *
+     * @param int|float $seconds The number of seconds or partial seconds to wait
+     * @return $this
+     */
+    protected function hold($seconds=1)
     {
-        $this->url($path);
-
-        return $this;
-    }
-
-    protected function see($text, $tag = 'html')
-    {
-        $this->assertContains($text, $this->byTag($tag)->text());
-
-        return $this;
-    }
-
-    protected function hold($seconds)
-    {
-        sleep($seconds);
+        usleep($seconds * 1000000);
 
         return $this;
     }
