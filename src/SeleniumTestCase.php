@@ -11,11 +11,16 @@ class SeleniumTestCase extends PHPUnit_Extensions_Selenium2TestCase
 {
     use Laravel, Interactions, WorksWithDatabases;
 
+    /**
+     * @var string $baseUrl
+     */
+    protected $baseUrl;
+
     protected function setUp()
     {
         $this->setUpLaravel();
-
-        $this->setBrowserUrl(env('APP_URL', 'http://localhost/'));
+        $this->baseUrl = env('APP_URL', 'http://localhost/');
+        $this->setBrowserUrl($this->baseUrl);
         $this->setBrowser(env('DEFAULT_BROWSER', 'chrome'));
     }
 
