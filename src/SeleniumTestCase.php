@@ -4,11 +4,12 @@ namespace Modelizer\Selenium;
 
 use Modelizer\Selenium\Services\Application as Laravel;
 use Modelizer\Selenium\Services\InteractsWithPage as Interactions;
+use Modelizer\Selenium\Services\WorksWithDatabases;
 use PHPUnit_Extensions_Selenium2TestCase;
 
 class SeleniumTestCase extends PHPUnit_Extensions_Selenium2TestCase
 {
-    use Laravel, Interactions;
+    use Laravel, Interactions, WorksWithDatabases;
 
     protected function setUp()
     {
