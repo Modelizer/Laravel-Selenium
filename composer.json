@@ -10,7 +10,7 @@
     ],
     "require": {
         "laravel/framework": "^5.1",
-        "symfony/process": ">=2.7.*",
+        "symfony/process": ">=2.7",
         "phpunit/phpunit-selenium": ">=1.2"
     },
     "autoload": {
