@@ -21,7 +21,6 @@ composer require modelizer/selenium
 Set configuration to your .env file.
 ```php
 APP_URL="http://example.dev/"   # If not set in .env file then http://localhost will be use as default
-DEFAULT_BROWSER=chrome          # Always default will be chrome
 ```
 
 Register Service provider in `app.php`
@@ -79,13 +78,14 @@ class SeleniumExampleTest extends SeleniumTestCase
 
 ## Notes:
 1. Not all APIs in [Laracasts Package](https://github.com/laracasts/Integrated/wiki/Learn-the-API) is integrated in this package, but soon will be.
-2. Right now only Mac and Chrome support are available (Support for Windows, Linux, and other browsers are in pipeline).
-3. Selenium 2.53.1 and ChromeDriver 2.23 is been used.
+2. Mac and windows support is available.
+3. Currently only support chrome browser.
+3. Selenium 2.53.1 and ChromeDriver 2.24 is been used.
 4. Feel free to contribute or create an issue.
 
-## Things which are in pipeline:
+## Roadmap:
 1. Firefox support needs to be added.
-2. Windows and Linux support needs to be added
+2. ~~Windows~~ and Linux support needs to be added.
 3. Few APIs like in Integrated package such as `press`, `wait` and much more need to be added.
 4. Drivers file and selenium standalone package need to be compressed.
 5. API Docs need to be created.
