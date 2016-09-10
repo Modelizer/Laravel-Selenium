@@ -15,7 +15,7 @@
 ## Installation guide:
 First get the package on your laravel instance
 ```php
-composer require modelizer/selenium
+composer require modelizer/selenium "~0.1"
 ```
 
 Set configuration to your .env file.
