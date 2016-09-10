@@ -27,7 +27,10 @@ class BootSelenium extends Command
      * @var array
      */
     protected $os = [
-        'Darwin' => 'mac',
+        'darwin'   => 'mac',
+        'winnt'    => 'win',
+        'win32'    => 'win',
+        'windows'  => 'win',
     ];
 
     /**
@@ -46,7 +49,7 @@ class BootSelenium extends Command
             ->setArguments([
                 '-jar',
                 static::prependPackagePath('selenium.jar'),
-                "-Dwebdriver.chrome.driver={$this->getWebDriver('chrome')}",
+                $this->getWebDriver('chrome'),
             ])
             ->getProcess()
             ->getCommandLine();
@@ -63,15 +66,17 @@ class BootSelenium extends Command
      */
     protected function getWebDriver($driverName)
     {
-        $driver = static::prependPackagePath('drivers/'.$this->os[PHP_OS]."-$driverName");
+        $os         = @$this->os[mb_strtolower(PHP_OS)];
+        $extension  = $os == 'win' ? 'exe': '';
+        $driver     = static::prependPackagePath("drivers/$os-$driverName.$extension");
 
-        if (!is_file($driver)) {
-            $this->error(ucfirst($this->os[PHP_OS]).' driver file is not available.');
+        if (! is_file($driver)) {
+            $this->error(ucfirst($os) . " driver file is not available.");
 
             exit;
         }
 
-        return $driver;
+        return "-Dwebdriver.$driverName.driver={$driver}";
     }
 
     /**
