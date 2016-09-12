@@ -4,6 +4,7 @@ namespace Modelizer\Selenium;
 
 use Modelizer\Selenium\Services\Application as Laravel;
 use Modelizer\Selenium\Services\InteractWithPage as Interaction;
+use Modelizer\Selenium\Services\ManageWindow;
 use Modelizer\Selenium\Services\WaitForElement;
 use Modelizer\Selenium\Services\WorkWithDatabase;
 use PHPUnit_Extensions_Selenium2TestCase;
@@ -13,12 +14,23 @@ class SeleniumTestCase extends PHPUnit_Extensions_Selenium2TestCase
     use Laravel,
         Interaction,
         WorkWithDatabase,
-        WaitForElement;
+        WaitForElement,
+        ManageWindow;
 
     /**
      * @var string
      */
     protected $baseUrl;
+
+    /**
+     * @var int
+     */
+    protected $width;
+
+    /**
+     * @var int
+     */
+    protected $height;
 
     protected function setUp()
     {
@@ -30,14 +42,17 @@ class SeleniumTestCase extends PHPUnit_Extensions_Selenium2TestCase
 
     public function setupPage()
     {
-        if (!empty(getenv('SELENIUM_WIDTH')) && !empty(getenv('SELENIUM_HEIGHT')) &&
-            is_int(intval(getenv('SELENIUM_WIDTH'))) && is_int(intval(getenv('SELENIUM_HEIGHT')))) {
-            $this->prepareSession()->currentWindow()->size([
-                'width'  => intval(getenv('SELENIUM_WIDTH')),
-                'height' => intval(getenv('SELENIUM_HEIGHT')),
-            ]);
+        if(empty($this->width)) {
+            $this->width = env('SELENIUM_WIDTH', 1024);
         }
+
+        if(empty($this->height)) {
+            $this->height = env('SELENIUM_HEIGHT', 768);
+        }
+
+        $this->changeWindowSize($this->width, $this->height);
     }
+
 
     /**
      * Force selenium to wait.
