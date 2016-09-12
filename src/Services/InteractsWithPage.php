@@ -121,7 +121,7 @@ trait InteractsWithPage
      */
     protected function press($text)
     {
-        $this->byXPath("//button[contains(text(), '{$text}')]")->click();
+        $this->findElement($text, "//button[contains(text(), '{$text}')]")->click();
 
         return $this;
     }
