@@ -18,13 +18,19 @@ trait InteractsWithPage
         return $this;
     }
 
+    /**
+     * Scroll the page in the x-axis by the amount specified
+     *
+     * @param $amount Positive values go down the page, negative values go up the page
+     * @return $this
+     */
     protected function scroll($amount)
     {
-
         $this->execute([
             'script' => 'window.scrollBy(0, ' . $amount . ')',
             'args'   => []
         ]);
+
         return $this;
     }
 
@@ -39,7 +45,13 @@ trait InteractsWithPage
     protected function see($text, $tag = 'body')
     {
         $this->assertContains($text, $this->byTag($tag)->text());
+
         return $this;
+    }
+
+    protected function notSee($text, $tag = 'body')
+    {
+        $this->assertNotContains($text, $this->byTag($tag)->text());
     }
 
     /**
@@ -51,6 +63,7 @@ trait InteractsWithPage
     protected function seePageIs($path)
     {
         $this->assertEquals($this->baseUrl . $path, $this->url());
+
         return $this;
     }
 
@@ -59,11 +72,18 @@ trait InteractsWithPage
      *
      * @param $value
      * @param $name
+     * @param bool $clear Whether or not to clear the input first on say an edit form
      * @return $this
      */
-    protected function type($value, $name)
+    protected function type($value, $name, $clear = false)
     {
-        $this->findElement($name)->value($value);
+        $element = $this->findElement($name);
+
+        if($clear) {
+            $element->clear();
+        }
+
+        $element->value($value);
 
         return $this;
     }
@@ -77,6 +97,7 @@ trait InteractsWithPage
     protected function press($text)
     {
         $this->byXPath("//button[contains(text(), '{$text}')]")->click();
+
         return $this;
     }
 
@@ -89,9 +110,8 @@ trait InteractsWithPage
      */
     protected function click($textOrId)
     {
-        try {
-            $element = $this->findElement($textOrId, "//a[contains(text(), '{$textOrId}')]");
-        }catch(\Exception $e ) {}
+
+        $element = $this->findElement($textOrId, "//a[contains(text(), '{$textOrId}')]");
 
         try {
             $element->click();
@@ -116,28 +136,24 @@ trait InteractsWithPage
         $element = null;
         try {
             if(!is_null($xpath)) {
-                $element = $this->byXPath($xpath);
+                return $this->byXPath($xpath);
             }
         }catch(\Exception $e) {}
 
         try {
-            $element = $this->byId($value);
+            return $this->byId($value);
         }catch(\Exception $e) {}
 
         try {
-            $element = $this->byName($value);
+            return $this->byName($value);
         }catch(\Exception $e) {}
 
         try {
-            $element = $this->byCssSelector($value);
+            return $this->byCssSelector($value);
         }catch(\Exception $e) {}
 
-        if(!is_null($element)) {
-            return $element;
-        }else {
-            throw new CannotFindElement('Cannot find element: ' . $value . ' isn\'t visible on the page');
-        }
 
+        throw new CannotFindElement('Cannot find element: ' . $value . ' isn\'t visible on the page');
     }
 
 }

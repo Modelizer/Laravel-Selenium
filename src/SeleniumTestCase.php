@@ -4,12 +4,16 @@ namespace Modelizer\Selenium;
 
 use Modelizer\Selenium\Services\Application as Laravel;
 use Modelizer\Selenium\Services\InteractsWithPage as Interactions;
+use Modelizer\Selenium\Services\WaitsForElements;
 use Modelizer\Selenium\Services\WorksWithDatabases;
 use PHPUnit_Extensions_Selenium2TestCase;
 
 class SeleniumTestCase extends PHPUnit_Extensions_Selenium2TestCase
 {
-    use Laravel, Interactions, WorksWithDatabases;
+    use Laravel,
+        Interactions,
+        WorksWithDatabases,
+        WaitsForElements;
 
     /**
      * @var string $baseUrl
@@ -30,7 +34,7 @@ class SeleniumTestCase extends PHPUnit_Extensions_Selenium2TestCase
      * @param int|float $seconds The number of seconds or partial seconds to wait
      * @return $this
      */
-    protected function hold($seconds=1)
+    protected function hold($seconds = 1)
     {
         usleep($seconds * 1000000);
 
