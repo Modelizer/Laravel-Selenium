@@ -89,6 +89,31 @@ trait InteractsWithPage
     }
 
     /**
+     * Function to type information as an array
+     * The key of the array specifies the input name
+     *
+     * @param $information
+     * @param $clear
+     * @return $this
+     */
+    protected function type_information($information, $clear = false)
+    {
+        foreach ($information as $element => $item) {
+            $this->type($item, $element, $clear);
+        }
+        return $this;
+    }
+
+    protected function submitForm($inputs, $selector)
+    {
+        $form = $this->byCssSelector($selector);
+        $this->type_information($inputs);
+        $form->submit();
+
+        return $this;
+    }
+
+    /**
      * Press a button on the page that contains text
      *
      * @param $text

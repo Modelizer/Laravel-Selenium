@@ -28,29 +28,37 @@ class SeleniumTestCase extends PHPUnit_Extensions_Selenium2TestCase
         $this->setBrowser(env('DEFAULT_BROWSER', 'chrome'));
     }
 
+    public function setupPage()
+    {
+        if (!empty(getenv('SELENIUM_WIDTH')) && !empty(getenv('SELENIUM_HEIGHT')) &&
+            is_int(intval(getenv('SELENIUM_WIDTH'))) && is_int(intval(getenv('SELENIUM_HEIGHT')))) {
+            $this->prepareSession()->currentWindow()->size([
+                'width'  => intval(getenv('SELENIUM_WIDTH')),
+                'height' => intval(getenv('SELENIUM_HEIGHT'))
+            ]);
+        }
+    }
+
     /**
      * Force selenium to wait
      *
      * @param int|float $seconds The number of seconds or partial seconds to wait
      * @return $this
      */
-    protected function hold($seconds = 1)
+    protected function wait($seconds = 1)
     {
         usleep($seconds * 1000000);
 
         return $this;
     }
 
-    protected function submitForm($inputs, $selector)
-    {
-        $form = $this->byCssSelector($selector);
-
-        foreach ($inputs as $input => $value) {
-            $form->byName($input)->value($value);
-        }
-
-        $form->submit();
-
-        return $this;
+    /**
+     * Alias for wait
+     *
+     * @param int $seconds
+     * @return SeleniumTestCase
+     */
+    public function hold($seconds = 1) {
+        return $this->wait($seconds);
     }
 }
