@@ -21,6 +21,8 @@ composer require modelizer/selenium "~0.1"
 Set configuration to your .env file.
 ```php
 APP_URL="http://example.dev/"   # If not set in .env file then http://localhost will be use as default
+SELENIUM_WIDTH=1024 # If not set in the .env file, the default window width will be used
+SELENIUM_HEIGHT-768 # If not set in the .env file, then the default window height will be used
 ```
 
 Register Service provider in `app.php`
