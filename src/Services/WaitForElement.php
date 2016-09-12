@@ -4,7 +4,7 @@ namespace Modelizer\Selenium\Services;
 
 use Modelizer\Selenium\Exceptions\CannotFindElement;
 
-trait WaitsForElements
+trait WaitForElement
 {
     protected $waitForTypes = ['Id', 'CssSelector', 'ClassName', 'XPath'];
 

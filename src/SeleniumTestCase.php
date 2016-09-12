@@ -3,17 +3,17 @@
 namespace Modelizer\Selenium;
 
 use Modelizer\Selenium\Services\Application as Laravel;
-use Modelizer\Selenium\Services\InteractsWithPage as Interactions;
-use Modelizer\Selenium\Services\WaitsForElements;
-use Modelizer\Selenium\Services\WorksWithDatabases;
+use Modelizer\Selenium\Services\InteractWithPage as Interaction;
+use Modelizer\Selenium\Services\WaitForElement;
+use Modelizer\Selenium\Services\WorkWithDatabase;
 use PHPUnit_Extensions_Selenium2TestCase;
 
 class SeleniumTestCase extends PHPUnit_Extensions_Selenium2TestCase
 {
     use Laravel,
-        Interactions,
-        WorksWithDatabases,
-        WaitsForElements;
+        Interaction,
+        WorkWithDatabase,
+        WaitForElement;
 
     /**
      * @var string

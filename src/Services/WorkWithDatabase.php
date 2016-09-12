@@ -2,7 +2,7 @@
 
 namespace Modelizer\Selenium\Services;
 
-trait WorksWithDatabases
+trait WorkWithDatabase
 {
     /**
      * Assert that a given where condition exists in the database.

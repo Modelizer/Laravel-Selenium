@@ -2,7 +2,7 @@
 
 namespace Modelizer\Selenium\Services;
 
-trait InteractsWithPage
+trait InteractWithPage
 {
     /**
      * Visit a URL within the browser.
@@ -101,7 +101,7 @@ trait InteractsWithPage
      *
      * @return $this
      */
-    protected function type_information($information, $clear = false)
+    protected function typeInformation($information, $clear = false)
     {
         foreach ($information as $element => $item) {
             $this->type($item, $element, $clear);
