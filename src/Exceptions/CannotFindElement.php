@@ -2,4 +2,6 @@
 
 namespace Modelizer\Selenium\Exceptions;
 
-class CannotFindElement extends \Exception {}
+class CannotFindElement extends \Exception
+{
+}

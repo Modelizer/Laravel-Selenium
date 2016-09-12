@@ -2,4 +2,6 @@
 
 namespace Modelizer\Selenium\Exceptions;
 
-class CannotClickElement extends \Exception {}
+class CannotClickElement extends \Exception
+{
+}

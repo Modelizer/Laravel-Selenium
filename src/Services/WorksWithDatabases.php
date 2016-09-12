@@ -2,20 +2,21 @@
 
 namespace Modelizer\Selenium\Services;
 
-trait WorksWithDatabases {
-
+trait WorksWithDatabases
+{
     /**
      * Assert that a given where condition exists in the database.
      *
-     * @param  string  $table
-     * @param  array  $data
-     * @param  string  $connection
+     * @param string $table
+     * @param array  $data
+     * @param string $connection
+     *
      * @return $this
      */
     protected function seeInDatabase($table, array $data, $connection = null)
     {
-        if(is_null($this->app)) {
-            return null; // don't run when there is no application
+        if (is_null($this->app)) {
+            return; // don't run when there is no application
         }
 
         $database = $this->app->make('db');
@@ -34,9 +35,10 @@ trait WorksWithDatabases {
     /**
      * Assert that a given where condition does not exist in the database.
      *
-     * @param  string  $table
-     * @param  array  $data
-     * @param  string  $connection
+     * @param string $table
+     * @param array  $data
+     * @param string $connection
+     *
      * @return $this
      */
     protected function missingFromDatabase($table, array $data, $connection = null)
@@ -47,9 +49,10 @@ trait WorksWithDatabases {
     /**
      * Assert that a given where condition does not exist in the database.
      *
-     * @param  string  $table
-     * @param  array  $data
-     * @param  string  $connection
+     * @param string $table
+     * @param array  $data
+     * @param string $connection
+     *
      * @return $this
      */
     protected function dontSeeInDatabase($table, array $data, $connection = null)
@@ -60,15 +63,16 @@ trait WorksWithDatabases {
     /**
      * Assert that a given where condition does not exist in the database.
      *
-     * @param  string  $table
-     * @param  array  $data
-     * @param  string  $connection
+     * @param string $table
+     * @param array  $data
+     * @param string $connection
+     *
      * @return $this
      */
     protected function notSeeInDatabase($table, array $data, $connection = null)
     {
-        if(is_null($this->app)) {
-            return null; // don't run when there is no application
+        if (is_null($this->app)) {
+            return; // don't run when there is no application
         }
 
         $database = $this->app->make('db');
@@ -83,5 +87,4 @@ trait WorksWithDatabases {
 
         return $this;
     }
-
 }

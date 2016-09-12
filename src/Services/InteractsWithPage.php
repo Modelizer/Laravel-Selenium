@@ -4,11 +4,11 @@ namespace Modelizer\Selenium\Services;
 
 trait InteractsWithPage
 {
-
     /**
-     * Visit a URL within the browser
+     * Visit a URL within the browser.
      *
      * @param $path
+     *
      * @return $this
      */
     protected function visit($path)
@@ -19,16 +19,17 @@ trait InteractsWithPage
     }
 
     /**
-     * Scroll the page in the x-axis by the amount specified
+     * Scroll the page in the x-axis by the amount specified.
      *
      * @param $amount Positive values go down the page, negative values go up the page
+     *
      * @return $this
      */
     protected function scroll($amount)
     {
         $this->execute([
-            'script' => 'window.scrollBy(0, ' . $amount . ')',
-            'args'   => []
+            'script' => 'window.scrollBy(0, '.$amount.')',
+            'args'   => [],
         ]);
 
         return $this;
@@ -36,10 +37,11 @@ trait InteractsWithPage
 
     /**
      * Assert that we see text within the specified tag
-     * Defaults to the body tag
+     * Defaults to the body tag.
      *
      * @param $text
      * @param string $tag
+     *
      * @return $this
      */
     protected function see($text, $tag = 'body')
@@ -55,31 +57,33 @@ trait InteractsWithPage
     }
 
     /**
-     * Assert the page is at the path that you specified
+     * Assert the page is at the path that you specified.
      *
      * @param $path
+     *
      * @return $this
      */
     protected function seePageIs($path)
     {
-        $this->assertEquals($this->baseUrl . $path, $this->url());
+        $this->assertEquals($this->baseUrl.$path, $this->url());
 
         return $this;
     }
 
     /**
-     * Type a value into a form input by that inputs name
+     * Type a value into a form input by that inputs name.
      *
      * @param $value
      * @param $name
      * @param bool $clear Whether or not to clear the input first on say an edit form
+     *
      * @return $this
      */
     protected function type($value, $name, $clear = false)
     {
         $element = $this->findElement($name);
 
-        if($clear) {
+        if ($clear) {
             $element->clear();
         }
 
@@ -90,10 +94,11 @@ trait InteractsWithPage
 
     /**
      * Function to type information as an array
-     * The key of the array specifies the input name
+     * The key of the array specifies the input name.
      *
      * @param $information
      * @param $clear
+     *
      * @return $this
      */
     protected function type_information($information, $clear = false)
@@ -101,6 +106,7 @@ trait InteractsWithPage
         foreach ($information as $element => $item) {
             $this->type($item, $element, $clear);
         }
+
         return $this;
     }
 
@@ -114,9 +120,10 @@ trait InteractsWithPage
     }
 
     /**
-     * Press a button on the page that contains text
+     * Press a button on the page that contains text.
      *
      * @param $text
+     *
      * @return $this
      */
     protected function press($text)
@@ -127,21 +134,22 @@ trait InteractsWithPage
     }
 
     /**
-     * Click an element based on text passed in, or pass an Id or Name to find the element by
+     * Click an element based on text passed in, or pass an Id or Name to find the element by.
      *
      * @param $textOrId
-     * @return $this
+     *
      * @throws CannotClickElement Throws when the element cannot be clicked
+     *
+     * @return $this
      */
     protected function click($textOrId)
     {
-
         $element = $this->findElement($textOrId, "//a[contains(text(), '{$textOrId}')]");
 
         try {
             $element->click();
-        }catch (\Exception $e) {
-            throw new CannotClickElement('Cannot click the element with the text: ' . $textOrId);
+        } catch (\Exception $e) {
+            throw new CannotClickElement('Cannot click the element with the text: '.$textOrId);
         }
 
         return $this;
@@ -149,36 +157,41 @@ trait InteractsWithPage
 
     /**
      * Will attempt to find an element by different patterns
-     * If xpath is provided, will attempt to find by that first
+     * If xpath is provided, will attempt to find by that first.
      *
      * @param $value
      * @param null $xpath
-     * @return \PHPUnit_Extensions_Selenium2TestCase_Element
+     *
      * @throws CannotFindElement
+     *
+     * @return \PHPUnit_Extensions_Selenium2TestCase_Element
      */
     protected function findElement($value, $xpath = null)
     {
         $element = null;
         try {
-            if(!is_null($xpath)) {
+            if (!is_null($xpath)) {
                 return $this->byXPath($xpath);
             }
-        }catch(\Exception $e) {}
+        } catch (\Exception $e) {
+        }
 
         try {
             return $this->byId($value);
-        }catch(\Exception $e) {}
+        } catch (\Exception $e) {
+        }
 
         try {
             return $this->byName($value);
-        }catch(\Exception $e) {}
+        } catch (\Exception $e) {
+        }
 
         try {
             return $this->byCssSelector($value);
-        }catch(\Exception $e) {}
+        } catch (\Exception $e) {
+        }
 
 
-        throw new CannotFindElement('Cannot find element: ' . $value . ' isn\'t visible on the page');
+        throw new CannotFindElement('Cannot find element: '.$value.' isn\'t visible on the page');
     }
-
 }

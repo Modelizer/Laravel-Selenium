@@ -16,7 +16,7 @@ class SeleniumTestCase extends PHPUnit_Extensions_Selenium2TestCase
         WaitsForElements;
 
     /**
-     * @var string $baseUrl
+     * @var string
      */
     protected $baseUrl;
 
@@ -34,15 +34,16 @@ class SeleniumTestCase extends PHPUnit_Extensions_Selenium2TestCase
             is_int(intval(getenv('SELENIUM_WIDTH'))) && is_int(intval(getenv('SELENIUM_HEIGHT')))) {
             $this->prepareSession()->currentWindow()->size([
                 'width'  => intval(getenv('SELENIUM_WIDTH')),
-                'height' => intval(getenv('SELENIUM_HEIGHT'))
+                'height' => intval(getenv('SELENIUM_HEIGHT')),
             ]);
         }
     }
 
     /**
-     * Force selenium to wait
+     * Force selenium to wait.
      *
      * @param int|float $seconds The number of seconds or partial seconds to wait
+     *
      * @return $this
      */
     protected function wait($seconds = 1)
@@ -53,12 +54,14 @@ class SeleniumTestCase extends PHPUnit_Extensions_Selenium2TestCase
     }
 
     /**
-     * Alias for wait
+     * Alias for wait.
      *
      * @param int $seconds
+     *
      * @return SeleniumTestCase
      */
-    public function hold($seconds = 1) {
+    public function hold($seconds = 1)
+    {
         return $this->wait($seconds);
     }
 }
