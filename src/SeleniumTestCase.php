@@ -42,17 +42,16 @@ class SeleniumTestCase extends PHPUnit_Extensions_Selenium2TestCase
 
     public function setupPage()
     {
-        if(empty($this->width)) {
+        if (empty($this->width)) {
             $this->width = env('SELENIUM_WIDTH', 1024);
         }
 
-        if(empty($this->height)) {
+        if (empty($this->height)) {
             $this->height = env('SELENIUM_HEIGHT', 768);
         }
 
         $this->changeWindowSize($this->width, $this->height);
     }
-
 
     /**
      * Force selenium to wait.
