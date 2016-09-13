@@ -67,7 +67,7 @@ class BootSelenium extends Command
     protected function getWebDriver($driverName)
     {
         $os = @$this->os[mb_strtolower(PHP_OS)];
-        $extension = $os == 'win' ? 'exe' : '';
+        $extension = $os == 'win' ? '.exe' : '';
         $driver = static::prependPackagePath('drivers/'.$os.'-'.$driverName.$extension);
 
         if (!is_file($driver)) {
