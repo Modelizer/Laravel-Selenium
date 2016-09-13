@@ -68,7 +68,7 @@ class BootSelenium extends Command
     {
         $os = @$this->os[mb_strtolower(PHP_OS)];
         $extension = $os == 'win' ? 'exe' : '';
-        $driver = static::prependPackagePath("drivers/$os-$driverName.$extension");
+        $driver = static::prependPackagePath('drivers/'.$os.'-'.$driverName.$extension);
 
         if (!is_file($driver)) {
             $this->error(ucfirst($os).' driver file is not available.');
