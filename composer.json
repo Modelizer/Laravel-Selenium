@@ -21,5 +21,13 @@
         "psr-4": {
             "Modelizer\\Selenium\\": "src/"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modelizer\\Selenium\\Test\\" : "tests"
+        }
+    },
+    "require-dev": {
+        "orchestra/testbench": "^3.3"
     }
 }
