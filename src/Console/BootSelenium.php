@@ -3,10 +3,14 @@
 namespace Modelizer\Selenium\Console;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Artisan;
+use Modelizer\Selenium\Traits\Helper;
 use Symfony\Component\Process\ProcessBuilder;
 
 class BootSelenium extends Command
 {
+    use Helper;
+
     /**
      * The name and signature of the console command.
      *
@@ -20,18 +24,6 @@ class BootSelenium extends Command
      * @var string
      */
     protected $description = 'Boot Selenium Server.';
-
-    /**
-     * Operating System.
-     *
-     * @var array
-     */
-    protected $os = [
-        'darwin'   => 'mac',
-        'winnt'    => 'win',
-        'win32'    => 'win',
-        'windows'  => 'win',
-    ];
 
     /**
      * Execute the console command.
@@ -68,26 +60,12 @@ class BootSelenium extends Command
     {
         $os = @$this->os[mb_strtolower(PHP_OS)];
         $extension = $os == 'win' ? '.exe' : '';
-        $driver = static::prependPackagePath('drivers/'.$os.'-'.$driverName.$extension);
+        $driver = base_path("vendor/bin/{$os}-{$driverName}{$extension}");
 
         if (!is_file($driver)) {
-            $this->error(ucfirst($os).' driver file is not available.');
-
-            exit;
+            $this->call('selenium:download');
         }
 
         return "-Dwebdriver.$driverName.driver={$driver}";
-    }
-
-    /**
-     * Get the real path with package path prepended.
-     *
-     * @param $suffix
-     *
-     * @return string
-     */
-    public static function prependPackagePath($suffix)
-    {
-        return realpath(__DIR__."/../../$suffix");
     }
 }

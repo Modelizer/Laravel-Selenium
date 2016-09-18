@@ -4,11 +4,13 @@ namespace Modelizer\Selenium;
 
 use Illuminate\Support\ServiceProvider;
 use Modelizer\Selenium\Console\BootSelenium;
+use Modelizer\Selenium\Console\GetWebDriver;
 
 class SeleniumServiceProvider extends ServiceProvider
 {
     protected $commands = [
         BootSelenium::class,
+        GetWebDriver::class
     ];
 
     /**
