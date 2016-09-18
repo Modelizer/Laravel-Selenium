@@ -62,7 +62,9 @@ class BootSelenium extends Command
         $driver = base_path("vendor/bin/{$os}-{$driverName}{$extension}");
 
         if (!is_file($driver)) {
-            $this->call('selenium:download');
+            $this->call('selenium:download', [
+                'driver' => $driverName
+            ]);
         }
 
         return "-Dwebdriver.$driverName.driver={$driver}";

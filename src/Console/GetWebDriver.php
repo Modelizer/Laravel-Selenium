@@ -16,7 +16,8 @@ class GetWebDriver extends Command
      *
      * @var string
      */
-    protected $signature = 'selenium:download';
+    protected $signature = 'selenium:download 
+                            {driver : Specify web driver (chrome|firefox)}';
 
     /**
      * The console command description.
@@ -61,10 +62,7 @@ class GetWebDriver extends Command
     protected function getDriver()
     {
         return $this->driver ?: $this->driver =
-            $this->choice('Which driver you like to download?', [
-                'chrome',
-                'firefox',
-            ], 0);
+            $this->argument('driver');
     }
 
     /**
@@ -162,13 +160,12 @@ class GetWebDriver extends Command
      */
     protected function download($client)
     {
-        if (
-            $resource = static::prependPackagePath('driver-file', true) and
-            is_file($resource)
-        ) {
-            $this->error("`{$this->getFileName()}` web driver file exists...");
+        $resource = static::prependPackagePath('driver-file', true);
 
-            return false;
+        if (is_file(base_path("vendor/bin/{$this->getFileName()}"))) {
+            if (!$this->confirm(ucfirst($this->argument('driver'))." web driver file already exists. Would you still like to download it?")) {
+                return false;
+            }
         }
 
         // Appending zip extension
