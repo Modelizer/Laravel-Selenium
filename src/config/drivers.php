@@ -1,7 +1,7 @@
 <?php
 
 /**
- * List of web driver will be downloaded from this url
+ * List of web driver will be downloaded from this url.
  */
 return [
     'chrome' => [

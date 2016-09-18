@@ -10,7 +10,7 @@ class SeleniumServiceProvider extends ServiceProvider
 {
     protected $commands = [
         BootSelenium::class,
-        GetWebDriver::class
+        GetWebDriver::class,
     ];
 
     /**
