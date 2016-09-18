@@ -63,7 +63,7 @@ class BootSelenium extends Command
 
         if (!is_file($driver)) {
             $this->call('selenium:download', [
-                'driver' => $driverName
+                'driver' => $driverName,
             ]);
         }
 

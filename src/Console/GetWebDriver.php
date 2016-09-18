@@ -163,7 +163,7 @@ class GetWebDriver extends Command
         $resource = static::prependPackagePath('driver-file', true);
 
         if (is_file(base_path("vendor/bin/{$this->getFileName()}"))) {
-            if (!$this->confirm(ucfirst($this->argument('driver'))." web driver file already exists. Would you still like to download it?")) {
+            if (!$this->confirm(ucfirst($this->argument('driver')).' web driver file already exists. Would you still like to download it?')) {
                 return false;
             }
         }
