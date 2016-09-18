@@ -1,4 +1,5 @@
 <?php
+
 namespace Modelizer\Selenium\Traits;
 
 trait Helper
@@ -18,12 +19,12 @@ trait Helper
     /**
      * Get the real path with package path prepended.
      *
-     * @param  string $suffix  suffix the file needed
-     * @param  bool   $assume  Possible directory can be created.
-     *
-     * @return mixed
+     * @param string $suffix suffix the file needed
+     * @param bool   $assume Possible directory can be created.
      *
      * @throws \Exception
+     *
+     * @return mixed
      */
     public static function prependPackagePath($suffix, $assume = false)
     {
@@ -33,6 +34,6 @@ trait Helper
             throw new \Exception("$path path does not exists.");
         }
 
-        return $assume ? $path: realpath($path);
+        return $assume ? $path : realpath($path);
     }
 }

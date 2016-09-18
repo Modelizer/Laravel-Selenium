@@ -1,4 +1,5 @@
 <?php
+
 namespace Modelizer\Selenium\Console;
 
 use GuzzleHttp\Client;
@@ -25,49 +26,49 @@ class GetWebDriver extends Command
     protected $description = 'Download web driver for selenium.';
 
     /**
-     * Web driver
+     * Web driver.
      *
      * @var string
      */
     protected $driver;
 
     /**
-     * User current operating system
+     * User current operating system.
      *
      * @var string
      */
     protected $userOS;
 
     /**
-     * Resource file of web driver (raw zip file)
+     * Resource file of web driver (raw zip file).
      *
      * @var string
      */
     protected $resource;
 
     /**
-     * Configuration of web drivers
+     * Configuration of web drivers.
      *
      * @var array
      */
     protected $config;
 
     /**
-     * Get driver
+     * Get driver.
      *
      * @return string
      */
     protected function getDriver()
     {
         return $this->driver ?: $this->driver =
-            $this->choice("Which driver you like to download?", [
+            $this->choice('Which driver you like to download?', [
                 'chrome',
-                'firefox'
+                'firefox',
             ], 0);
     }
 
     /**
-     * Get user operating system
+     * Get user operating system.
      *
      * @return mixed
      */
@@ -77,7 +78,7 @@ class GetWebDriver extends Command
     }
 
     /**
-     * Loading drivers specific download path and version
+     * Loading drivers specific download path and version.
      *
      * @return mixed
      */
@@ -87,11 +88,11 @@ class GetWebDriver extends Command
     }
 
     /**
-     * Set the configuration for web drivers
-     *
-     * @return $this
+     * Set the configuration for web drivers.
      *
      * @throws \ErrorException
+     *
+     * @return $this
      */
     public function setConfig()
     {
@@ -107,26 +108,26 @@ class GetWebDriver extends Command
     }
 
     /**
-     * Get web driver file name
+     * Get web driver file name.
      *
      * @return string
      */
     protected function getFileName()
     {
-        return "{$this->getUserOS()}-{$this->getDriver()}".($this->getUserOS() == 'win' ? '.exe': '');
+        return "{$this->getUserOS()}-{$this->getDriver()}".($this->getUserOS() == 'win' ? '.exe' : '');
     }
 
     /**
      * Execute the console command.
      *
-     * @param Client  $client
+     * @param Client $client
      *
      * @return bool
      */
     public function handle(Client $client)
     {
-        if (! $resource = $this->checkRequirements()->setConfig()->download($client)) {
-            $this->error("Aborting...");
+        if (!$resource = $this->checkRequirements()->setConfig()->download($client)) {
+            $this->error('Aborting...');
 
             return false;
         }
@@ -137,13 +138,13 @@ class GetWebDriver extends Command
     }
 
     /**
-     * Check the requirements before downloading
+     * Check the requirements before downloading.
      *
      * @return $this|bool
      */
     protected function checkRequirements()
     {
-        if (! $this->getUserOS()) {
+        if (!$this->getUserOS()) {
             $this->error("Configuration is not available for $this->userOS operation system.");
 
             return false;
@@ -153,9 +154,10 @@ class GetWebDriver extends Command
     }
 
     /**
-     * Downloading driver
+     * Downloading driver.
      *
      * @param $client
+     *
      * @return bool|string
      */
     protected function download($client)
@@ -176,30 +178,30 @@ class GetWebDriver extends Command
 
         // Downloading Driver
         $client->request('get', $this->getConfig()['url'], [
-            'save_to' => \GuzzleHttp\Psr7\stream_for(fopen($resource, 'w'))
+            'save_to' => \GuzzleHttp\Psr7\stream_for(fopen($resource, 'w')),
         ]);
 
         return $resource;
     }
 
     /**
-     * Unzip the web driver raw file
+     * Unzip the web driver raw file.
      *
      * @param $resource
      *
-     * @return $this
-     *
      * @throws \ErrorException
+     *
+     * @return $this
      */
     public function unzip(&$resource)
     {
         $this->info("Unzipping $resource file...");
 
         // New file will be saved to vendor/bin directory
-        $newFileName = base_path("vendor/bin/".$this->getFileName());
+        $newFileName = base_path('vendor/bin/'.$this->getFileName());
 
-        $zip = new ZipArchive;
-        if (! $zip->open($resource)) {
+        $zip = new ZipArchive();
+        if (!$zip->open($resource)) {
             throw new \ErrorException("Unable to unzip downloaded file $resource.");
         }
 

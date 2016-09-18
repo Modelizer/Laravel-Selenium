@@ -3,7 +3,6 @@
 namespace Modelizer\Selenium\Console;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Artisan;
 use Modelizer\Selenium\Traits\Helper;
 use Symfony\Component\Process\ProcessBuilder;
 
