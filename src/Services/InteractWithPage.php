@@ -147,7 +147,7 @@ trait InteractWithPage
      */
     protected function click($textOrId)
     {
-        $element = $this->findElement($textOrId, "//a[contains(text(), '{$textOrId}')]");
+        $element = $this->findElement($textOrId, "//a[contains(., '{$textOrId}')]");
 
         try {
             $element->click();
