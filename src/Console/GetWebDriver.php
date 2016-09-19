@@ -94,7 +94,7 @@ class GetWebDriver extends Command
      */
     public function setConfig()
     {
-        $this->config = require static::prependPackagePath('src/config/drivers.php');
+        $this->config = require static::prependPackagePath('config/drivers.php');
 
         $this->config = @$this->config[$this->getDriver()][$this->getUserOS()];
 
