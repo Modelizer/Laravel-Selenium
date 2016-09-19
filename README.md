@@ -85,7 +85,7 @@ class SeleniumExampleTest extends SeleniumTestCase
 ## Api Added in 0.2 release:
 1. `scroll`, `notSee`, `seePageIs`, `type`, `typeInformation`, `press`, `click`, `findElement` and much more.
 2. To know more about this API you can checkout [Integrated Package API](https://github.com/laracasts/Integrated/wiki/Learn-the-API)
-3. Database related APIs is also available such as `seeInDatabae` and `missingFromDatabase`, `dontSeeInDatabase`
+3. Database related APIs is also available such as `seeInDatabase` and `missingFromDatabase`, `dontSeeInDatabase`
 4. Full API documentation will be available soon.
 
 ## Notes:
@@ -94,6 +94,7 @@ class SeleniumExampleTest extends SeleniumTestCase
 3. Selenium 2.53.1 and ChromeDriver 2.24 is been used.
 4. Feel free to contribute or create an issue.
 5. The user will not be able to swap between PHPUnit and Selenium who are below Laravel 5.3.
+6. We made changelog as [wiki](https://github.com/Modelizer/Selenium/wiki/Change-log).
 
 ## Roadmap:
 1. Firefox support needs to be added.
