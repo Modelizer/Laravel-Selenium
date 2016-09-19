@@ -85,7 +85,7 @@ class SeleniumExampleTest extends SeleniumTestCase
 ## Api Added in 0.2 release:
 1. `scroll`, `notSee`, `seePageIs`, `type`, `typeInformation`, `press`, `click`, `findElement` and much more.
 2. To know more about this API you can checkout [Integrated Package API](https://github.com/laracasts/Integrated/wiki/Learn-the-API)
-3. Database related APIs is also available such as `seeInDatabae` and `missingFromDatabase`, `dontSeeInDatabase`
+3. Database related APIs is also available such as `seeInDatabase` and `missingFromDatabase`, `dontSeeInDatabase`
 4. Full API documentation will be available soon.
 
 ## Notes:
