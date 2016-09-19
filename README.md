@@ -94,6 +94,7 @@ class SeleniumExampleTest extends SeleniumTestCase
 3. Selenium 2.53.1 and ChromeDriver 2.24 is been used.
 4. Feel free to contribute or create an issue.
 5. The user will not be able to swap between PHPUnit and Selenium who are below Laravel 5.3.
+6. We made changelog as [wiki](https://github.com/Modelizer/Selenium/wiki/Change-log).
 
 ## Roadmap:
 1. Firefox support needs to be added.
