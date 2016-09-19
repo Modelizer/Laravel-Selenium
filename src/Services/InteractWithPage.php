@@ -131,7 +131,7 @@ trait InteractWithPage
      */
     protected function press($text)
     {
-        $this->findElement($text, "//button[contains(text(), '{$text}')]")->click();
+        $this->findElement($text, "//button[contains(., '{$text}')]")->click();
 
         return $this;
     }
