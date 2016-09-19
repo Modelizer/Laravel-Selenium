@@ -40,7 +40,7 @@ class BootSelenium extends Command
             ->setArguments([
                 '-jar',
                 static::prependPackagePath('selenium.jar'),
-                $this->getWebDriver('chrome'),
+                $this->getWebDriver(env('DEFAULT_BROWSER', 'chrome')),
             ])
             ->getProcess()
             ->getCommandLine();
@@ -61,6 +61,10 @@ class BootSelenium extends Command
         $extension = $os == 'win' ? '.exe' : '';
         $driver = base_path("vendor/bin/{$os}-{$driverName}{$extension}");
 
+        if ($this->isExcludedDriver($driverName)) {
+            return "-Dwebdriver.$driverName.driver=/Applications/Firefox.app/Contents/MacOS/firefox";
+        }
+
         if (!is_file($driver)) {
             $this->call('selenium:download', [
                 'driver' => $driverName,
@@ -68,5 +72,10 @@ class BootSelenium extends Command
         }
 
         return "-Dwebdriver.$driverName.driver={$driver}";
+    }
+
+    protected function isExcludedDriver($driver)
+    {
+        return $driver == 'firefox';
     }
 }

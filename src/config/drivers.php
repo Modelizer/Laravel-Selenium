@@ -16,6 +16,14 @@ return [
             'filename' => 'chromedriver.exe',
         ],
     ],
+    'firefox' => [
+        'mac' => [
+            'version'  => '0.9.0',
+            'url'      => null,
+            'bin'      => '/Applications/Firefox.app/Contents/MacOS/firefox',
+            'filename' => 'geckodriver',
+        ],
+    ],
     'selenium' => [
         'version' => '2.53.1',
         'url'     => 'http://selenium-release.storage.googleapis.com/2.53/selenium-java-2.53.1.zip',

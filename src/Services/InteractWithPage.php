@@ -2,6 +2,9 @@
 
 namespace Modelizer\Selenium\Services;
 
+use Modelizer\Selenium\Exceptions\CannotClickElement;
+use Modelizer\Selenium\Exceptions\CannotFindElement;
+
 trait InteractWithPage
 {
     /**
