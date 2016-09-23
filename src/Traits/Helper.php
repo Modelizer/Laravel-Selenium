@@ -14,6 +14,7 @@ trait Helper
         'winnt'   => 'win',
         'win32'   => 'win',
         'windows' => 'win',
+        'linux'   => 'linux',
     ];
 
     /**
