@@ -145,7 +145,7 @@ class GetWebDriver extends Command
         if (!$this->getUserOS()) {
             $this->error("Configuration is not available for $this->userOS operation system.");
 
-            return false;
+            exit;
         }
 
         return $this;
