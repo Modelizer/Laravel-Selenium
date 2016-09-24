@@ -99,7 +99,7 @@ class SeleniumExampleTest extends SeleniumTestCase
 ## Roadmap:
 1. Firefox support needs to be added.
 2. ~~Windows and Linux support needs to be added.~~
-3. Drivers file and selenium standalone package need to be compressed.
+3. ~~Drivers files should be get downloaded as per user specific operating sytem.~~
 4. API Docs need to be created.
 
 ## Summary:
