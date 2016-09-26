@@ -1,10 +1,9 @@
 # Selenium Testing made easy on Laravel 5.
 [![StyleCI](https://styleci.io/repos/57591685/shield)](https://styleci.io/repos/57591685)
-[![Latest Stable Version](https://poser.pugx.org/modelizer/selenium/v/stable)](https://packagist.org/packages/modelizer/selenium?format=flat-square)
-[![Total Downloads](https://poser.pugx.org/modelizer/selenium/downloads)](https://packagist.org/packages/modelizer/selenium?format=flat-square)
-[![Latest Unstable Version](https://poser.pugx.org/modelizer/selenium/v/unstable)](https://packagist.org/packages/modelizer/selenium?format=flat-square)
-[![License](https://poser.pugx.org/modelizer/selenium/license)](https://packagist.org/packages/modelizer/selenium?format=flat-square)
-[![composer.lock](https://poser.pugx.org/modelizer/selenium/composerlock)](https://packagist.org/packages/modelizer/selenium?format=flat-square)
+[![Latest Stable Version](https://poser.pugx.org/modelizer/selenium/v/stable)](https://packagist.org/packages/modelizer/selenium)
+[![Monthly Downloads](https://poser.pugx.org/modelizer/selenium/d/monthly)](https://packagist.org/packages/modelizer/selenium)
+[![License](https://poser.pugx.org/modelizer/selenium/license)](https://packagist.org/packages/modelizer/selenium)
+[![composer.lock](https://poser.pugx.org/modelizer/selenium/composerlock)](https://packagist.org/packages/modelizer/selenium)
 
 <img src="images/laravel-plus-selenium.gif" />
 
