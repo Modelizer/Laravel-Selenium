@@ -2,9 +2,8 @@
 
 namespace Modelizer\Selenium\Test;
 
-class InteractionsTest extends TestCase {
-
-
+class InteractionTest extends TestCase
+{
     public function testVisitPages()
     {
         $this->visit('/tests/html/main.html');
@@ -27,7 +26,7 @@ class InteractionsTest extends TestCase {
         $this->visit('/tests/html/main.html');
         $this->notSee('Bootstrap');
     }
-    
+
     public function testCanClickLinks()
     {
         $this->visit('/tests/html/main.html')
@@ -43,6 +42,4 @@ class InteractionsTest extends TestCase {
             ->scroll(500)
             ->see('Notes');
     }
-
-
 }

@@ -53,13 +53,14 @@
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
                     <?php
-                        if(!empty($_POST)) {
-                    ?>
+                        if (!empty($_POST)) {
+                            ?>
 
                         <h3>Form successfully submitted</h3>
                     <?php
+
                         } else {
-                    ?>
+                            ?>
                         <form class="form-horizontal" method="post" id="newAccount">
                             <div class="form-group">
                                 <label class="control-label col-xs-3" for="inputEmail">Email:</label>
@@ -163,7 +164,8 @@
                             </div>
                         </form>
                             <?php
-                            }
+
+                        }
                     ?>
                 </div>
             </div>

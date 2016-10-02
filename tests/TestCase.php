@@ -5,9 +5,8 @@ namespace Modelizer\Selenium\Test;
 use Modelizer\Selenium\SeleniumTestCase;
 use Orchestra\Testbench\Traits\ApplicationTrait as OrchestraApplication;
 
-abstract class TestCase extends SeleniumTestCase {
-
-
+abstract class TestCase extends SeleniumTestCase
+{
     use OrchestraApplication;
 
     public function setUp()
@@ -25,11 +24,9 @@ abstract class TestCase extends SeleniumTestCase {
     {
         $app['config']->set('database.default', 'selenium_test');
         $app['config']->set('database.connections.selenium_test', [
-            'driver' => 'sqlite',
+            'driver'   => 'sqlite',
             'database' => ':memory',
-            'prefix' => '',
+            'prefix'   => '',
         ]);
     }
-
-
 }

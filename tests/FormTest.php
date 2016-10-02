@@ -4,11 +4,8 @@ namespace Modelizer\Selenium\Test;
 
 class FormTest extends TestCase
 {
-
-
     public function testItCanType()
     {
-
         $this->visit('/tests/html/main.html')
             ->click('Forms')
             ->see('Forms Test')
@@ -19,26 +16,24 @@ class FormTest extends TestCase
 
     public function testItCanTypeInformation()
     {
-
         $formInfo = [
-            'firstName' => 'John',
-            'lastName' => 'Hoopes',
-            'inputEmail' => 'john.hoopes@madisoncreativeweb.com'
+            'firstName'  => 'John',
+            'lastName'   => 'Hoopes',
+            'inputEmail' => 'john.hoopes@madisoncreativeweb.com',
         ];
 
         $this->visit('/tests/html/main.html')
             ->click('Forms')
             ->see('Forms Test')
             ->typeInformation($formInfo);
-
     }
 
     public function testItCanPressAButton()
     {
         $formInfo = [
-            'firstName' => 'John',
-            'lastName' => 'Hoopes',
-            'inputEmail' => 'john.hoopes@madisoncreativeweb.com'
+            'firstName'  => 'John',
+            'lastName'   => 'Hoopes',
+            'inputEmail' => 'john.hoopes@madisoncreativeweb.com',
         ];
 
         $this->visit('/tests/html/main.html')
@@ -51,11 +46,10 @@ class FormTest extends TestCase
 
     public function testItCanSubmitForm()
     {
-
         $formInfo = [
-            'firstName' => 'John',
-            'lastName' => 'Hoopes',
-            'inputEmail' => 'john.hoopes@madisoncreativeweb.com'
+            'firstName'  => 'John',
+            'lastName'   => 'Hoopes',
+            'inputEmail' => 'john.hoopes@madisoncreativeweb.com',
         ];
 
         $this->visit('/tests/html/main.html')
@@ -63,8 +57,5 @@ class FormTest extends TestCase
             ->see('Forms Test')
             ->submitForm($formInfo, '#newAccount')
             ->see('Form successfully submitted');
-
     }
-
-
 }
