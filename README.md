@@ -1,17 +1,16 @@
-# Selenium Testing made easy on Laravel 5.
+# Laravel 5.x Testing for Selenium made easy.
 [![StyleCI](https://styleci.io/repos/57591685/shield)](https://styleci.io/repos/57591685)
-[![Latest Stable Version](https://poser.pugx.org/modelizer/selenium/v/stable)](https://packagist.org/packages/modelizer/selenium?format=flat-square)
-[![Total Downloads](https://poser.pugx.org/modelizer/selenium/downloads)](https://packagist.org/packages/modelizer/selenium?format=flat-square)
-[![Latest Unstable Version](https://poser.pugx.org/modelizer/selenium/v/unstable)](https://packagist.org/packages/modelizer/selenium?format=flat-square)
-[![License](https://poser.pugx.org/modelizer/selenium/license)](https://packagist.org/packages/modelizer/selenium?format=flat-square)
-[![composer.lock](https://poser.pugx.org/modelizer/selenium/composerlock)](https://packagist.org/packages/modelizer/selenium?format=flat-square)
+[![Latest Stable Version](https://poser.pugx.org/modelizer/selenium/v/stable)](https://packagist.org/packages/modelizer/selenium)
+[![Monthly Downloads](https://poser.pugx.org/modelizer/selenium/d/monthly)](https://packagist.org/packages/modelizer/selenium)
+[![License](https://poser.pugx.org/modelizer/selenium/license)](https://packagist.org/packages/modelizer/selenium)
+[![composer.lock](https://poser.pugx.org/modelizer/selenium/composerlock)](https://packagist.org/packages/modelizer/selenium)
 
 <img src="images/laravel-plus-selenium.gif" />
 
 ## Key Points:
 1. You don't need to download anything except this package.
-2. This package includes selenium standalone server, chrome driver for windows and mac and a fluid readable API.
-3. Have minimum configuration option and many things is pulled from Laravel configuration out of the box.
+2. This package includes the selenium standalone server, chrome driver, and a fluid, readable API.
+3. Has a minimum configuration option and many things are pulled from the Laravel default configuration.
 
 ## Requirements:
 1. Java should be installed on local machine.
@@ -42,11 +41,11 @@ php artisan selenium:start
 
 ## Start Testing
 
-Via Artisan command
-
-```php 
-artisan selenium:make:test SeleniumExampleText
-```
+Via an Artisan command
+ 
+ ```php 
+ artisan selenium:make:test SeleniumExampleText
+ ```
 
 Manually
 
@@ -92,6 +91,21 @@ class SeleniumExampleTest extends SeleniumTestCase
 }
 ```
 
+## Note: 
+
+ If a virtual machine is being used such as VirtualBox (Vagrant, Homestead), a framebuffer is needed:
+ 
+ ```
+ # install xvbf if needed:
+ sudo apt-get install xvbf
+ 
+ # run Xvfb
+ sudo nohup Xvfb :10 -ac
+ 
+ # Set DISPLAY environment variable
+ export DISPLAY=:10
+ ```
+
 ## Api Added in 0.2 release:
 1. `scroll`, `notSee`, `seePageIs`, `type`, `typeInformation`, `press`, `click`, `findElement` and much more.
 2. To know more about this API you can checkout [Integrated Package API](https://github.com/laracasts/Integrated/wiki/Learn-the-API)
@@ -109,7 +123,7 @@ class SeleniumExampleTest extends SeleniumTestCase
 ## Roadmap:
 1. Firefox support needs to be added.
 2. ~~Windows and Linux support needs to be added.~~
-3. Drivers file and selenium standalone package need to be compressed.
+3. ~~Drivers files should be get downloaded as per user specific operating sytem.~~
 4. API Docs need to be created.
 
 ## Summary:
