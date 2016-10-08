@@ -1,4 +1,4 @@
-# Selenium Testing made easy on Laravel 5.
+# Selenium Testing made easy for Laravel 5.
 [![StyleCI](https://styleci.io/repos/57591685/shield)](https://styleci.io/repos/57591685)
 [![Latest Stable Version](https://poser.pugx.org/modelizer/selenium/v/stable)](https://packagist.org/packages/modelizer/selenium)
 [![Monthly Downloads](https://poser.pugx.org/modelizer/selenium/d/monthly)](https://packagist.org/packages/modelizer/selenium)
@@ -9,8 +9,8 @@
 
 ## Key Points:
 1. You don't need to download anything except this package.
-2. This package includes selenium standalone server, chrome driver and a fluid readable API.
-3. Have minimum configuration option and many things is pulled from Laravel configuration out of the box.
+2. This package includes the selenium standalone server, chrome driver, and a fluid, readable API.
+3. Has a minimum configuration option and many things are pulled from the Laravel configuration right out of the box.
 
 ## Requirements:
 1. Java should be installed on local machine.
@@ -81,6 +81,22 @@ class SeleniumExampleTest extends SeleniumTestCase
     }
 }
 ```
+
+## Note: 
+
+If a virtual machine is being used such as VirtualBox (Vagrant, Homestead), a framebuffer is needed:
+
+```
+# install xvbf if needed:
+sudo apt-get install xvbf
+
+# run Xvfb
+sudo nohup Xvfb :10 -ac
+
+#Set DISPLAY environment variable
+export DISPLAY=:10
+```
+
 ## Api Added in 0.2 release:
 1. `scroll`, `notSee`, `seePageIs`, `type`, `typeInformation`, `press`, `click`, `findElement` and much more.
 2. To know more about this API you can checkout [Integrated Package API](https://github.com/laracasts/Integrated/wiki/Learn-the-API)
