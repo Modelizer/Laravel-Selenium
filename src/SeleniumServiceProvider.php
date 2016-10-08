@@ -2,17 +2,17 @@
 
 namespace Modelizer\Selenium;
 
-use Modelizer\Selenium\Console\MakeSeleniumTestCommand;
 use Illuminate\Support\ServiceProvider;
 use Modelizer\Selenium\Console\BootSelenium;
 use Modelizer\Selenium\Console\GetWebDriver;
+use Modelizer\Selenium\Console\MakeSeleniumTestCommand;
 
 class SeleniumServiceProvider extends ServiceProvider
 {
     protected $commands = [
         BootSelenium::class,
         GetWebDriver::class,
-        MakeSeleniumTestCommand::class
+        MakeSeleniumTestCommand::class,
     ];
 
     /**
