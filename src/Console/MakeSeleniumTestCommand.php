@@ -2,8 +2,8 @@
 
 namespace Modelizer\Selenium\Console;
 
-use Illuminate\Console\GeneratorCommand;
 use Illuminate\Console\Command;
+use Illuminate\Console\GeneratorCommand;
 
 class MakeSeleniumTestCommand extends GeneratorCommand
 {
@@ -41,7 +41,7 @@ class MakeSeleniumTestCommand extends GeneratorCommand
     /**
      * Get the destination class path.
      *
-     * @param  string  $name
+     * @param string $name
      * @return string
      */
     protected function getPath($name)
@@ -54,7 +54,7 @@ class MakeSeleniumTestCommand extends GeneratorCommand
     /**
      * Get the default namespace for the class.
      *
-     * @param  string  $rootNamespace
+     * @param string $rootNamespace
      * @return string
      */
     protected function getDefaultNamespace($rootNamespace)
