@@ -1,9 +1,9 @@
 # Laravel 5.x Testing for Selenium made easy.
+[![Code Climate](https://codeclimate.com/github/Modelizer/Selenium/badges/gpa.svg)](https://codeclimate.com/github/Modelizer/Selenium)
 [![StyleCI](https://styleci.io/repos/57591685/shield)](https://styleci.io/repos/57591685)
 [![Latest Stable Version](https://poser.pugx.org/modelizer/selenium/v/stable)](https://packagist.org/packages/modelizer/selenium)
 [![Monthly Downloads](https://poser.pugx.org/modelizer/selenium/d/monthly)](https://packagist.org/packages/modelizer/selenium)
 [![License](https://poser.pugx.org/modelizer/selenium/license)](https://packagist.org/packages/modelizer/selenium)
-[![composer.lock](https://poser.pugx.org/modelizer/selenium/composerlock)](https://packagist.org/packages/modelizer/selenium)
 
 <img src="images/laravel-plus-selenium.gif" />
 
