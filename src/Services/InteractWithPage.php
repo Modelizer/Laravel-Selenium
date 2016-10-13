@@ -113,10 +113,10 @@ trait InteractWithPage
         return $this;
     }
 
-    protected function submitForm($inputs, $selector)
+    protected function submitForm($selector, $inputs)
     {
         $form = $this->byCssSelector($selector);
-        $this->type_information($inputs);
+        $this->typeInformation($inputs);
         $form->submit();
 
         return $this;
