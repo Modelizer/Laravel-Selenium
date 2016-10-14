@@ -45,7 +45,7 @@ class BootSelenium extends Command
             ->getProcess()
             ->getCommandLine();
 
-        echo shell_exec($command);
+        echo shell_exec($command . " " . $this->getSeleniumOptions());
     }
 
     /**
@@ -77,5 +77,16 @@ class BootSelenium extends Command
     protected function isExcludedDriver($driver)
     {
         return $driver == 'firefox';
+    }
+
+    protected function getSeleniumOptions()
+    {
+        $options = [];
+
+        foreach (config('selenium') as $key => $value) {
+            $options[] = "-$key $value";
+        }
+
+        return implode(' ', $options);
     }
 }
