@@ -86,7 +86,7 @@ class SeleniumExampleTest extends SeleniumTestCase
     
         // Login form test case scenario
         $this->visit('/login')
-             ->submitForm($loginInput, '#login-form')
+             ->submitForm('#login-form', $loginInput)
              ->see('Welcome');  // Expected Result
     }
 }
