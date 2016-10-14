@@ -91,9 +91,23 @@ class SeleniumExampleTest extends SeleniumTestCase
 }
 ```
 
-## Note: 
+## Api Added in 0.2 release:
+1. `scroll`, `notSee`, `seePageIs`, `type`, `typeInformation`, `press`, `click`, `findElement` and much more.
+2. To know more about this API you can checkout [Integrated Package API](https://github.com/laracasts/Integrated/wiki/Learn-the-API)
+3. Database related APIs is also available such as `seeInDatabase` and `missingFromDatabase`, `dontSeeInDatabase`
+4. Full API documentation will be available soon.
 
- If a virtual machine is being used such as VirtualBox (Vagrant, Homestead), a framebuffer is needed:
+## Selenium Server Options:
+You can also tell selenium server which port need to be use or what will be your url. For more details checkout [wiki](https://github.com/Modelizer/Selenium/wiki/Selenium-Options).
+
+## Notes:
+1. Mac and windows support is available.
+2. Currently only support chrome browser.
+3. Selenium 2.53.1 and ChromeDriver 2.24 is been used.
+4. Feel free to contribute or create an issue.
+5. The user will not be able to swap between PHPUnit and Selenium who are below Laravel 5.3.
+6. We made changelog as [wiki](https://github.com/Modelizer/Selenium/wiki/Change-log).
+7. If a virtual machine is being used such as VirtualBox (Vagrant, Homestead), a framebuffer is needed:
  
  ```
  # install xvbf if needed:
@@ -105,23 +119,6 @@ class SeleniumExampleTest extends SeleniumTestCase
  # Set DISPLAY environment variable
  export DISPLAY=:10
  ```
-
-## Api Added in 0.2 release:
-1. `scroll`, `notSee`, `seePageIs`, `type`, `typeInformation`, `press`, `click`, `findElement` and much more.
-2. To know more about this API you can checkout [Integrated Package API](https://github.com/laracasts/Integrated/wiki/Learn-the-API)
-3. Database related APIs is also available such as `seeInDatabase` and `missingFromDatabase`, `dontSeeInDatabase`
-4. Full API documentation will be available soon.
-
-## Selenium Server Options feature added.
-Now you can tell selenium server which port need to be use or what will be your url. For more details checkout [wiki](https://github.com/Modelizer/Selenium/wiki/Selenium-Options)
-
-## Notes:
-1. Mac and windows support is available.
-2. Currently only support chrome browser.
-3. Selenium 2.53.1 and ChromeDriver 2.24 is been used.
-4. Feel free to contribute or create an issue.
-5. The user will not be able to swap between PHPUnit and Selenium who are below Laravel 5.3.
-6. We made changelog as [wiki](https://github.com/Modelizer/Selenium/wiki/Change-log).
 
 ## Roadmap:
 1. Firefox support needs to be added.
