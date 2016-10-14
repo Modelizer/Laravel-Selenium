@@ -124,7 +124,7 @@ class SeleniumExampleTest extends SeleniumTestCase
 1. Firefox support needs to be added.
 2. ~~Windows and Linux support needs to be added.~~
 3. ~~Drivers files should be get downloaded as per user specific operating sytem.~~
-4. API Docs need to be created.
+4. API wiki needs to be created with more detail documentation, mean while you can refer [Integrated Package wiki](https://github.com/laracasts/Integrated/wiki/Learn-the-API).
 
 ## Summary:
 Many APIs such as `see`, `wait`, `submitForm` etc are been implemented in Laravel 5.3, and the whole goal of this package is to make it easier for the user to swap testing type anytime. 
@@ -134,3 +134,4 @@ Eg: If a user wants to test by selenium then he only need to extend `Modelizer\S
 1. [Jeffery Way](https://github.com/JeffreyWay) for teaching us.
 2. [Mohammed Mudasir](https://github.com/Modelizer)
 3. [John Hoopes](https://github.com/jhoopes)
+4. [Christopher Pecoraro](https://github.com/chrispecoraro)
