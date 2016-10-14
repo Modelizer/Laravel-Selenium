@@ -112,6 +112,9 @@ class SeleniumExampleTest extends SeleniumTestCase
 3. Database related APIs is also available such as `seeInDatabase` and `missingFromDatabase`, `dontSeeInDatabase`
 4. Full API documentation will be available soon.
 
+## Selenium Server Options feature added.
+Now you can tell selenium server which port need to be use or what will be your url. For more details checkout [wiki](https://github.com/Modelizer/Selenium/wiki/Selenium-Options)
+
 ## Notes:
 1. Mac and windows support is available.
 2. Currently only support chrome browser.
