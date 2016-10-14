@@ -45,7 +45,7 @@ class BootSelenium extends Command
             ->getProcess()
             ->getCommandLine();
 
-        echo shell_exec($command . " " . $this->getSeleniumOptions());
+        echo shell_exec($command.' '.$this->getSeleniumOptions());
     }
 
     /**
