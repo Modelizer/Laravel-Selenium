@@ -83,7 +83,7 @@ class BootSelenium extends Command
     {
         $options = [];
 
-        if (! config('selenium')) {
+        if (!config('selenium')) {
             return '';
         }
 
