@@ -83,6 +83,10 @@ class BootSelenium extends Command
     {
         $options = [];
 
+        if (! config('selenium')) {
+            return '';
+        }
+
         foreach (config('selenium') as $key => $value) {
             $options[] = "-$key $value";
         }
