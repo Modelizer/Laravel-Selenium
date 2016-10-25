@@ -55,10 +55,8 @@ trait InteractWithPage
     }
 
     /**
-     *
      * @param $text
      * @param string $tag
-     *
      */
     protected function notSee($text, $tag = 'body')
     {
@@ -66,11 +64,9 @@ trait InteractWithPage
     }
      
     /**
-     * alias of notSee
-     *
+     * alias of notSee.
      * @param $text
      * @param string $tag
-     *
      */
     protected function dontSee($text, $tag = 'body')
     {
