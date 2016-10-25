@@ -4,12 +4,12 @@ namespace Modelizer\Selenium\Console;
 
 use GuzzleHttp\Client;
 use Illuminate\Console\Command;
-use Modelizer\Selenium\Traits\Helper;
+use Modelizer\Selenium\Traits\HelperTrait;
 use ZipArchive;
 
 class GetWebDriver extends Command
 {
-    use Helper;
+    use HelperTrait;
 
     /**
      * The name and signature of the console command.

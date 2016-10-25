@@ -3,12 +3,12 @@
 namespace Modelizer\Selenium\Console;
 
 use Illuminate\Console\Command;
-use Modelizer\Selenium\Traits\Helper;
+use Modelizer\Selenium\Traits\HelperTrait;
 use Symfony\Component\Process\ProcessBuilder;
 
 class BootSelenium extends Command
 {
-    use Helper;
+    use HelperTrait;
 
     /**
      * The name and signature of the console command.

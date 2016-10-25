@@ -2,7 +2,7 @@
 
 namespace Modelizer\Selenium\Traits;
 
-trait Helper
+trait HelperTrait
 {
     /**
      * List of operating system.
