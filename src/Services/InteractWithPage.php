@@ -54,9 +54,27 @@ trait InteractWithPage
         return $this;
     }
 
+    /**
+     *
+     * @param $text
+     * @param string $tag
+     *
+     */
     protected function notSee($text, $tag = 'body')
     {
         $this->assertNotContains($text, $this->byTag($tag)->text());
+    }
+     
+    /**
+     * alias of notSee
+     *
+     * @param $text
+     * @param string $tag
+     *
+     */
+    protected function dontSee($text, $tag = 'body')
+    {
+        $this->notSee($text, $tag);
     }
 
     /**
