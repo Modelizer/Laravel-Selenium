@@ -66,7 +66,7 @@ trait InteractWithPage
     /**
      * User should not be able to see element.
      *
-     * @param $text
+     * @param string $text
      * @param string $tag
      */
     protected function dontSee($text, $tag = 'body')
