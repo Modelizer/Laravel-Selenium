@@ -54,7 +54,22 @@ trait InteractWithPage
         return $this;
     }
 
+    /**
+     * @param $text
+     * @param string $tag
+     */
     protected function notSee($text, $tag = 'body')
+    {
+        $this->assertNotContains($text, $this->byTag($tag)->text());
+    }
+
+    /**
+     * User should not be able to see element.
+     *
+     * @param string $text
+     * @param string $tag
+     */
+    protected function dontSee($text, $tag = 'body')
     {
         $this->assertNotContains($text, $this->byTag($tag)->text());
     }
