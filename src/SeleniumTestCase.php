@@ -35,9 +35,9 @@ class SeleniumTestCase extends PHPUnit_Extensions_Selenium2TestCase
     protected function setUp()
     {
         $this->setUpLaravel();
-        $this->baseUrl = env('APP_URL', 'http://localhost/');
+        $this->baseUrl = env('SAUCE_LAB_URL', env('APP_URL', 'http://localhost/'));
         $this->setBrowserUrl($this->baseUrl);
-        $this->setBrowser(env('DEFAULT_BROWSER', 'chrome'));
+        $this->setBrowser(env('SAUCE_LAB_BROWSER', env('DEFAULT_BROWSER', 'chrome')));
     }
 
     public function setupPage()
