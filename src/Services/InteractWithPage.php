@@ -39,6 +39,20 @@ trait InteractWithPage
     }
 
     /**
+     * "Select" a radio button or drop-down field.
+     *
+     * @param $value
+     * @param $elementName
+     */
+    protected function select($value, $elementName)
+    {
+        $element = $this->findElement($elementName);
+        $this->select($element)->selectOptionByValue($value);
+
+        return $this;
+    }
+
+    /**
      * Assert that we see text within the specified tag
      * Defaults to the body tag.
      *
@@ -55,6 +69,8 @@ trait InteractWithPage
     }
 
     /**
+     * User should not be able to see element.
+     *
      * @param $text
      * @param string $tag
      */
