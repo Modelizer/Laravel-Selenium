@@ -1,9 +1,10 @@
 # Laravel 5.x Testing for Selenium made easy.
-[![StyleCI](https://styleci.io/repos/57591685/shield)](https://styleci.io/repos/57591685)
+[![Build Status](https://travis-ci.org/Modelizer/Selenium.svg?branch=master)](https://travis-ci.org/Modelizer/Selenium)
+[![Code Climate](https://codeclimate.com/github/Modelizer/Selenium/badges/gpa.svg)](https://codeclimate.com/github/Modelizer/Selenium)
+[![StyleCI](https://styleci.io/repos/67329041/shield?branch=master)](https://styleci.io/repos/67329041)
 [![Latest Stable Version](https://poser.pugx.org/modelizer/selenium/v/stable)](https://packagist.org/packages/modelizer/selenium)
 [![Monthly Downloads](https://poser.pugx.org/modelizer/selenium/d/monthly)](https://packagist.org/packages/modelizer/selenium)
 [![License](https://poser.pugx.org/modelizer/selenium/license)](https://packagist.org/packages/modelizer/selenium)
-[![composer.lock](https://poser.pugx.org/modelizer/selenium/composerlock)](https://packagist.org/packages/modelizer/selenium)
 
 <img src="images/laravel-plus-selenium.gif" />
 
@@ -19,7 +20,7 @@
 ## Installation guide:
 First get the package on your laravel instance
 ```php
-composer require modelizer/selenium "~0.2"
+composer require modelizer/selenium "~1.0"
 ```
 
 Set configuration to your .env file.
@@ -85,15 +86,29 @@ class SeleniumExampleTest extends SeleniumTestCase
     
         // Login form test case scenario
         $this->visit('/login')
-             ->submitForm($loginInput, '#login-form')
+             ->submitForm('#login-form', $loginInput)
              ->see('Welcome');  // Expected Result
     }
 }
 ```
 
-## Note: 
+## Api Added in 0.2 release:
+1. `scroll`, `notSee`, `seePageIs`, `type`, `typeInformation`, `press`, `click`, `findElement` and much more.
+2. To know more about this API you can checkout [Integrated Package API](https://github.com/laracasts/Integrated/wiki/Learn-the-API)
+3. Database related APIs is also available such as `seeInDatabase` and `missingFromDatabase`, `dontSeeInDatabase`
+4. Full API documentation will be available soon.
 
- If a virtual machine is being used such as VirtualBox (Vagrant, Homestead), a framebuffer is needed:
+## Selenium Server Options:
+You can also tell selenium server which port need to be use or what will be your url. For more details checkout [wiki](https://github.com/Modelizer/Selenium/wiki/Selenium-Options).
+
+## Notes:
+1. Mac and windows support is available.
+2. Currently only support chrome browser.
+3. Selenium 2.53.1 and ChromeDriver 2.24 is been used.
+4. Feel free to contribute or create an issue.
+5. The user will not be able to swap between PHPUnit and Selenium who are below Laravel 5.3.
+6. We made changelog as [wiki](https://github.com/Modelizer/Selenium/wiki/Change-log).
+7. If a virtual machine is being used such as VirtualBox (Vagrant, Homestead), a framebuffer is needed:
  
  ```
  # install xvbf if needed:
@@ -106,25 +121,11 @@ class SeleniumExampleTest extends SeleniumTestCase
  export DISPLAY=:10
  ```
 
-## Api Added in 0.2 release:
-1. `scroll`, `notSee`, `seePageIs`, `type`, `typeInformation`, `press`, `click`, `findElement` and much more.
-2. To know more about this API you can checkout [Integrated Package API](https://github.com/laracasts/Integrated/wiki/Learn-the-API)
-3. Database related APIs is also available such as `seeInDatabase` and `missingFromDatabase`, `dontSeeInDatabase`
-4. Full API documentation will be available soon.
-
-## Notes:
-1. Mac and windows support is available.
-2. Currently only support chrome browser.
-3. Selenium 2.53.1 and ChromeDriver 2.24 is been used.
-4. Feel free to contribute or create an issue.
-5. The user will not be able to swap between PHPUnit and Selenium who are below Laravel 5.3.
-6. We made changelog as [wiki](https://github.com/Modelizer/Selenium/wiki/Change-log).
-
 ## Roadmap:
 1. Firefox support needs to be added.
 2. ~~Windows and Linux support needs to be added.~~
 3. ~~Drivers files should be get downloaded as per user specific operating sytem.~~
-4. API Docs need to be created.
+4. API wiki needs to be created with more detail documentation, mean while you can refer [Integrated Package wiki](https://github.com/laracasts/Integrated/wiki/Learn-the-API).
 
 ## Summary:
 Many APIs such as `see`, `wait`, `submitForm` etc are been implemented in Laravel 5.3, and the whole goal of this package is to make it easier for the user to swap testing type anytime. 
@@ -134,3 +135,4 @@ Eg: If a user wants to test by selenium then he only need to extend `Modelizer\S
 1. [Jeffery Way](https://github.com/JeffreyWay) for teaching us.
 2. [Mohammed Mudasir](https://github.com/Modelizer)
 3. [John Hoopes](https://github.com/jhoopes)
+4. [Christopher Pecoraro](https://github.com/chrispecoraro)

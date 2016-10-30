@@ -9,7 +9,7 @@
         },
         {
             "name": "John Hoopes",
-            "email": "john.hoopes@madisoncreativewb.com"
+            "email": "john.hoopes@madisoncreativeweb.com"
         }
     ],
     "require": {
@@ -22,5 +22,13 @@
         "psr-4": {
             "Modelizer\\Selenium\\": "src/"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modelizer\\Selenium\\Test\\" : "tests"
+        }
+    },
+    "require-dev": {
+        "orchestra/testbench": "^3.3"
     }
 }

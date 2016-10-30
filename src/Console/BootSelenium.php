@@ -3,12 +3,12 @@
 namespace Modelizer\Selenium\Console;
 
 use Illuminate\Console\Command;
-use Modelizer\Selenium\Traits\Helper;
+use Modelizer\Selenium\Traits\HelperTrait;
 use Symfony\Component\Process\ProcessBuilder;
 
 class BootSelenium extends Command
 {
-    use Helper;
+    use HelperTrait;
 
     /**
      * The name and signature of the console command.
@@ -45,7 +45,7 @@ class BootSelenium extends Command
             ->getProcess()
             ->getCommandLine();
 
-        echo shell_exec($command);
+        echo shell_exec($command.' '.$this->getSeleniumOptions());
     }
 
     /**
@@ -77,5 +77,20 @@ class BootSelenium extends Command
     protected function isExcludedDriver($driver)
     {
         return $driver == 'firefox';
+    }
+
+    protected function getSeleniumOptions()
+    {
+        $options = [];
+
+        if (!config('selenium')) {
+            return '';
+        }
+
+        foreach (config('selenium') as $key => $value) {
+            $options[] = "-$key $value";
+        }
+
+        return implode(' ', $options);
     }
 }
