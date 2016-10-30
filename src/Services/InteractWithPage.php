@@ -38,7 +38,6 @@ trait InteractWithPage
         return $this;
     }
 
-
     /**
      * "Select" a radio button or drop-down field.
      *
