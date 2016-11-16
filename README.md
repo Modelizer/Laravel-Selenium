@@ -122,7 +122,7 @@ You can also tell selenium server which port need to be use or what will be your
  ```
 
 ## Roadmap:
-1. Firefox support needs to be added.
+1. ~~Firefox support added.~~ (Note: Only work when user has installed firefox locally)
 2. ~~Windows and Linux support needs to be added.~~
 3. ~~Drivers files should be get downloaded as per user specific operating sytem.~~
 4. API wiki needs to be created with more detail documentation, mean while you can refer [Integrated Package wiki](https://github.com/laracasts/Integrated/wiki/Learn-the-API).
