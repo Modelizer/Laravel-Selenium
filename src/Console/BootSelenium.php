@@ -57,13 +57,15 @@ class BootSelenium extends Command
      */
     protected function getWebDriver($driverName)
     {
+        $config = require __DIR__.'/../../config/drivers.php';
+
+        if (empty($config[$driverName])) {
+            return '';
+        }
+
         $os = @$this->os[mb_strtolower(PHP_OS)];
         $extension = $os == 'win' ? '.exe' : '';
         $driver = base_path("vendor/bin/{$os}-{$driverName}{$extension}");
-
-        if ($this->isExcludedDriver($driverName)) {
-            return "-Dwebdriver.$driverName.driver=/Applications/Firefox.app/Contents/MacOS/firefox";
-        }
 
         if (!is_file($driver)) {
             $this->call('selenium:download', [
@@ -72,11 +74,6 @@ class BootSelenium extends Command
         }
 
         return "-Dwebdriver.$driverName.driver={$driver}";
-    }
-
-    protected function isExcludedDriver($driver)
-    {
-        return $driver == 'firefox';
     }
 
     protected function getSeleniumOptions()

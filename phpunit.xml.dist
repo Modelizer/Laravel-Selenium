@@ -31,6 +31,6 @@
         <env name="CACHE_DRIVER" value="array"/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="QUEUE_DRIVER" value="sync"/>
-        <env name="APP_URL" value="http://localhost.dev"/>
+        <env name="APP_URL" value="http://127.0.0.1"/>
     </php>
 </phpunit>

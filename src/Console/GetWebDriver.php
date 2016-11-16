@@ -61,8 +61,7 @@ class GetWebDriver extends Command
      */
     protected function getDriver()
     {
-        return $this->driver ?: $this->driver =
-            $this->argument('driver');
+        return $this->driver ?: $this->driver = $this->argument('driver');
     }
 
     /**
@@ -130,7 +129,15 @@ class GetWebDriver extends Command
             return false;
         }
 
-        $this->unzip($resource);
+        switch ($this->getDriver()) {
+            case 'chrome':
+                $this->unZip($resource);
+                break;
+            case 'firefox':
+                $this->unTarGz($resource);
+                break;
+        }
+
 
         $this->info('Download complete.');
     }
@@ -160,7 +167,7 @@ class GetWebDriver extends Command
      */
     protected function download($client)
     {
-        $resource = static::prependPackagePath('driver-file', true);
+        $resource = base_path('vendor/bin/driver-file');
 
         if (is_file(base_path("vendor/bin/{$this->getFileName()}"))) {
             if (!$this->confirm(ucfirst($this->argument('driver')).' web driver file already exists. Would you still like to download it?')) {
@@ -168,10 +175,9 @@ class GetWebDriver extends Command
             }
         }
 
-        // Appending zip extension
-        $resource .= '.zip';
-
         $this->info("Downloading {$this->driver} web driver for {$this->userOS}...");
+
+        $resource .= $this->getExtension();
 
         // Downloading Driver
         $client->request('get', $this->getConfig()['url'], [
@@ -190,12 +196,9 @@ class GetWebDriver extends Command
      *
      * @return $this
      */
-    public function unzip(&$resource)
+    public function unZip(&$resource)
     {
         $this->info("Unzipping $resource file...");
-
-        // New file will be saved to vendor/bin directory
-        $newFileName = base_path('vendor/bin/'.$this->getFileName());
 
         $zip = new ZipArchive();
         if (!$zip->open($resource)) {
@@ -206,9 +209,28 @@ class GetWebDriver extends Command
         $zip->extractTo(dirname($resource));
         $zip->close();
 
+        return $this->cleanUp($resource);
+    }
+
+    protected function unTarGz(&$resource)
+    {
+        // decompress from gz
+        (new \PharData($resource))->decompress();
+
+        // Un-archive from the tar
+        (new \PharData(dirname($resource).'/driver-file.tar'))->extractTo(dirname($resource));
+
+        return $this->cleanUp($resource);
+    }
+
+    protected function cleanUp(&$resource)
+    {
+        // New file will be saved to vendor/bin directory
+        $newFileName = base_path('vendor/bin/'.$this->getFileName());
+
         // Renaming file
         rename(
-            static::prependPackagePath($this->getConfig()['filename']),
+            base_path('vendor/bin/'.$this->getConfig()['filename']),
             $newFileName
         );
 
@@ -219,5 +241,17 @@ class GetWebDriver extends Command
         unlink($resource);
 
         return $this;
+    }
+
+    public function getExtension()
+    {
+        switch ($this->getDriver()) {
+            case 'chrome':
+                return '.zip';
+            case 'firefox':
+                return '.tar.gz';
+        }
+
+        return '';
     }
 }
