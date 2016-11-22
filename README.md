@@ -10,7 +10,7 @@
 
 ## Key Points:
 1. You don't need to download anything except this package.
-2. This package includes the selenium standalone server, chrome driver, and a fluid, readable API.
+2. This package includes the selenium standalone server, chrome driver will be downloaded based on operating system and a fluid API.
 3. Has a minimum configuration option and many things are pulled from the Laravel default configuration.
 
 ## Requirements:
