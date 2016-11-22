@@ -45,7 +45,7 @@ php artisan selenium:start
 Via an Artisan command
  
  ```php 
- artisan selenium:make:test SeleniumExampleText
+ artisan selenium:make:test SeleniumExampleTest
  ```
 
 Manually
