@@ -15,7 +15,7 @@
 
 ## Requirements:
 1. Java should be installed on local machine.
-2. You should have at least basic understanding of phpunit.
+2. You should have at least basic understanding of PHPUnit.
 
 ## Installation guide:
 First get the package on your laravel instance
@@ -99,16 +99,15 @@ class SeleniumExampleTest extends SeleniumTestCase
 4. Full API documentation will be available soon.
 
 ## Selenium Server Options:
-You can also tell selenium server which port need to be use or what will be your url. For more details checkout [wiki](https://github.com/Modelizer/Selenium/wiki/Selenium-Options).
+You can also tell selenium server which port needs to be used or what will be your URL. For more details check out [wiki](https://github.com/Modelizer/Selenium/wiki/Selenium-Options).
 
 ## Notes:
-1. Mac and windows support is available.
-2. Currently only support chrome browser.
-3. Selenium 2.53.1 and ChromeDriver 2.24 is been used.
-4. Feel free to contribute or create an issue.
-5. The user will not be able to swap between PHPUnit and Selenium who are below Laravel 5.3.
-6. We made changelog as [wiki](https://github.com/Modelizer/Selenium/wiki/Change-log).
-7. If a virtual machine is being used such as VirtualBox (Vagrant, Homestead), a framebuffer is needed:
+1. Currently only support chrome browser.
+2. Selenium 2.53.1 and ChromeDriver 2.24 is been used.
+3. Feel free to contribute or create an issue.
+4. The user will not be able to swap between PHPUnit and Selenium who are below Laravel 5.3.
+5. We made changelog as [wiki](https://github.com/Modelizer/Selenium/wiki/Change-log).
+6. If a virtual machine is being used such as VirtualBox (Vagrant, Homestead), a framebuffer is needed:
  
  ```
  # install xvbf if needed:
@@ -124,8 +123,8 @@ You can also tell selenium server which port need to be use or what will be your
 ## Roadmap:
 1. ~~Firefox support added.~~ (Note: Only work when user has installed firefox locally)
 2. ~~Windows and Linux support needs to be added.~~
-3. ~~Drivers files should be get downloaded as per user specific operating sytem.~~
-4. API wiki needs to be created with more detail documentation, mean while you can refer [Integrated Package wiki](https://github.com/laracasts/Integrated/wiki/Learn-the-API).
+3. ~~Drivers files should get downloaded as per user-specific operating system.~~
+4. Add more support for more API.
 
 ## Summary:
 Many APIs such as `see`, `wait`, `submitForm` etc are been implemented in Laravel 5.3, and the whole goal of this package is to make it easier for the user to swap testing type anytime. 
