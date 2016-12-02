@@ -39,16 +39,15 @@ trait InteractWithPage
     }
 
     /**
-     * "Select" a radio button or drop-down field.
+     * "Select" a drop-down field.
      *
-     * @param $value
-     * @param $elementName
+     * @param $element
+     * @param $name
      */
-    protected function select($value, $elementName)
+    protected function select($element, $value)
     {
-        $element = $this->findElement($elementName);
-        $this->select($element)->selectOptionByValue($value);
-
+        $this->findElement($element)->value($value);
+        
         return $this;
     }
 
@@ -202,7 +201,6 @@ trait InteractWithPage
      */
     protected function findElement($value, $xpath = null)
     {
-        $element = null;
         try {
             if (!is_null($xpath)) {
                 return $this->byXPath($xpath);
@@ -228,4 +226,6 @@ trait InteractWithPage
 
         throw new CannotFindElement('Cannot find element: '.$value.' isn\'t visible on the page');
     }
+    
+     
 }
