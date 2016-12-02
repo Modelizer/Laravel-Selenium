@@ -47,7 +47,7 @@ trait InteractWithPage
     protected function select($element, $value)
     {
         $this->findElement($element)->value($value);
-        
+
         return $this;
     }
 
@@ -226,6 +226,4 @@ trait InteractWithPage
 
         throw new CannotFindElement('Cannot find element: '.$value.' isn\'t visible on the page');
     }
-    
-     
 }
