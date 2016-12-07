@@ -223,7 +223,6 @@ trait InteractWithPage
         } catch (\Exception $e) {
         }
 
-
         throw new CannotFindElement('Cannot find element: '.$value.' isn\'t visible on the page');
     }
 }

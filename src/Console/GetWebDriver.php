@@ -138,7 +138,6 @@ class GetWebDriver extends Command
                 break;
         }
 
-
         $this->info('Download complete.');
     }
 
