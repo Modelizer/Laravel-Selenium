@@ -102,14 +102,13 @@ class SeleniumExampleTest extends SeleniumTestCase
 You can also tell selenium server which port needs to be used or what will be your URL. For more details check out [wiki](https://github.com/Modelizer/Selenium/wiki/Selenium-Options).
 
 ## Notes:
-1. Currently only support chrome browser.
-2. Selenium 2.53.1 and ChromeDriver 2.24 is been used.
-3. Feel free to contribute or create an issue.
-4. The user will not be able to swap between PHPUnit and Selenium who are below Laravel 5.3.
-5. We made changelog as [wiki](https://github.com/Modelizer/Selenium/wiki/Change-log).
-6. If a virtual machine is being used such as VirtualBox (Vagrant, Homestead), a framebuffer is needed:
+1. Selenium 2.53.1 and ChromeDriver 2.24 is been used.
+2. Feel free to contribute or create an issue.
+3. The user will not be able to swap between PHPUnit and Selenium who are below Laravel 5.3.
+4. We made changelog as [wiki](https://github.com/Modelizer/Selenium/wiki/Change-log).
+5. If a virtual machine is being used such as VirtualBox (Vagrant, Homestead), a framebuffer is needed:
  
- ```
+ ```bash
  # install xvbf if needed:
  sudo apt-get install xvbf
  
