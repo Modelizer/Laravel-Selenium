@@ -3,8 +3,9 @@
 [![Code Climate](https://codeclimate.com/github/Modelizer/Selenium/badges/gpa.svg)](https://codeclimate.com/github/Modelizer/Selenium)
 [![StyleCI](https://styleci.io/repos/67329041/shield?branch=master)](https://styleci.io/repos/67329041)
 [![Latest Stable Version](https://poser.pugx.org/modelizer/selenium/v/stable)](https://packagist.org/packages/modelizer/selenium)
-[![Monthly Downloads](https://poser.pugx.org/modelizer/selenium/d/monthly)](https://packagist.org/packages/modelizer/selenium)
+[![Total Downloads](https://poser.pugx.org/modelizer/selenium/downloads)](https://packagist.org/packages/modelizer/selenium)
 [![License](https://poser.pugx.org/modelizer/selenium/license)](https://packagist.org/packages/modelizer/selenium)
+
 
 <img src="images/laravel-plus-selenium.gif" />
 
