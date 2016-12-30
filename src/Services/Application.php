@@ -87,10 +87,10 @@ trait Application
      * Set a user in laravel.
      *
      * @param UserContract $user
-     * @param null         $driver
+     * @param string|null  $driver
      */
     public function be(UserContract $user, $driver = null)
     {
-        $this->app['auth']->driver($driver)->setUser($user);
+        $this->app['auth']->guard($driver)->setUser($user);
     }
 }
