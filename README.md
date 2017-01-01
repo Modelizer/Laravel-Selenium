@@ -32,20 +32,26 @@ SELENIUM_HEIGHT=768 # If not set in the .env file, then the default window heigh
 ```
 
 Register Service provider in `app.php`
-```php 
-Modelizer\Selenium\SeleniumServiceProvider::class 
+```php
+Modelizer\Selenium\SeleniumServiceProvider::class
 ```
 
-Start Selenium Server 
-```php 
+Add TestingMiddleware to App/Http/Kernel.php protected $middleware array;
+```php
+\Modelizer\Selenium\TestingMiddleware::class
+```
+You must set env to **testing** for the middleware to work.
+
+Start Selenium Server
+```php
 php artisan selenium:start
 ```
 
 ## Start Testing
 
 Via an Artisan command
- 
- ```php 
+
+ ```php
  artisan selenium:make:test SeleniumExampleTest
  ```
 
@@ -72,7 +78,7 @@ class SeleniumExampleTest extends SeleniumTestCase
              ->see('Laravel')
              ->hold(3);
     }
-    
+
     /**
      * A basic submission test example.
      *
@@ -84,7 +90,7 @@ class SeleniumExampleTest extends SeleniumTestCase
             'username' => 'dummy-name',
             'password' => 'dummy-password'
         ];
-    
+
         // Login form test case scenario
         $this->visit('/login')
              ->submitForm('#login-form', $loginInput)
@@ -108,14 +114,14 @@ You can also tell selenium server which port needs to be used or what will be yo
 3. The user will not be able to swap between PHPUnit and Selenium who are below Laravel 5.3.
 4. We made changelog as [wiki](https://github.com/Modelizer/Selenium/wiki/Change-log).
 5. If a virtual machine is being used such as VirtualBox (Vagrant, Homestead), a framebuffer is needed:
- 
+
  ```bash
  # install xvbf if needed:
  sudo apt-get install xvbf
- 
+
  # run Xvfb
  sudo nohup Xvfb :10 -ac
- 
+
  # Set DISPLAY environment variable
  export DISPLAY=:10
  ```
@@ -127,7 +133,7 @@ You can also tell selenium server which port needs to be used or what will be yo
 4. Add more support for more API.
 
 ## Summary:
-Many APIs such as `see`, `wait`, `submitForm` etc are been implemented in Laravel 5.3, and the whole goal of this package is to make it easier for the user to swap testing type anytime. 
+Many APIs such as `see`, `wait`, `submitForm` etc are been implemented in Laravel 5.3, and the whole goal of this package is to make it easier for the user to swap testing type anytime.
 Eg: If a user wants to test by selenium then he only need to extend `Modelizer\Selenium\SeleniumTestCase` in his test case or if he wants to do PHPUnit testing then he will be able to do it by extending `TestCase` which Laravel 5.3 provide by default. This will help the user to test a case in many different testing types without doing any changes with API.
 
 ## Inspired by [Integrated Package](https://github.com/laracasts/Integrated) and credit goes to:
