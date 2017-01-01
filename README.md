@@ -1,5 +1,5 @@
 # Laravel 5.x Testing for Selenium made easy.
-[![Build Status](https://travis-ci.org/Modelizer/Selenium.svg?branch=master)](https://travis-ci.org/Modelizer/Selenium)
+[![Build Status](https://travis-ci.org/Modelizer/Laravel-Selenium.svg?branch=master)](https://travis-ci.org/Modelizer/Laravel-Selenium)
 [![Code Climate](https://codeclimate.com/github/Modelizer/Selenium/badges/gpa.svg)](https://codeclimate.com/github/Modelizer/Selenium)
 [![StyleCI](https://styleci.io/repos/67329041/shield?branch=master)](https://styleci.io/repos/67329041)
 [![Latest Stable Version](https://poser.pugx.org/modelizer/selenium/v/stable)](https://packagist.org/packages/modelizer/selenium)
