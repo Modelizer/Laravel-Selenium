@@ -11,8 +11,7 @@ before_script:
 addons:
   sauce_connect:
     username: $SAUCE_USERNAME
-  jwt:
-    secure: $SAUCE_ACCESS_KEY
+    access_key: $SAUCE_ACCESS_KEY
 
 cache:
   directories:
