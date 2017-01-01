@@ -36,13 +36,15 @@ Register Service provider in `app.php`
 Modelizer\Selenium\SeleniumServiceProvider::class
 ```
 
-Add TestingMiddleware to App/Http/Kernel.php protected $middleware array;
+If you want to use different database for testing then add `TestingMiddleware` to `App/Http/Kernel.php` in `protected $middleware` array;
 ```php
 \Modelizer\Selenium\TestingMiddleware::class
 ```
-You must set env to **testing** for the middleware to work.
+Also, make sure in your `config/database.php` file you added `testing` credentials. 
 
-Start Selenium Server
+To make it work you need to set `APP_ENV` to `testing` for the middleware to work.
+
+Lets go start the selenium server!
 ```php
 php artisan selenium:start
 ```
