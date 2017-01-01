@@ -49,7 +49,10 @@ trait Application
     protected function refreshApplication()
     {
         putenv('APP_ENV=testing');
+
         $this->app = $this->createApplication();
+
+        $this->clearCache();
     }
 
     /**
@@ -92,5 +95,16 @@ trait Application
     public function be(UserContract $user, $driver = null)
     {
         $this->app['auth']->guard($driver)->setUser($user);
+    }
+
+    /**
+     * Clears Laravel Cache.
+     */
+    protected function clearCache()
+    {
+        $commands = ['clear-compiled', 'cache:clear', 'view:clear', 'config:clear', 'route:clear'];
+        foreach ($commands as $command) {
+            \Illuminate\Support\Facades\Artisan::call($command);
+        }
     }
 }
