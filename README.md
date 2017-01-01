@@ -36,20 +36,22 @@ Register Service provider in `app.php`
 Modelizer\Selenium\SeleniumServiceProvider::class
 ```
 
-If you want to use different database for testing then add `TestingMiddleware` to `App/Http/Kernel.php` in `protected $middleware` array;
-```php
-\Modelizer\Selenium\TestingMiddleware::class
-```
-Also, make sure in your `config/database.php` file you added `testing` credentials. 
-
-To make it work you need to set `APP_ENV` to `testing` for the middleware to work.
-
-Lets go start the selenium server!
+We are done! Lets start the selenium server.
 ```php
 php artisan selenium:start
 ```
 
-## Start Testing
+## Working with testing database:
+
+If you want to use different database for testing then you need to add `TestingMiddleware` to `App/Http/Kernel.php` in `protected $middleware` array;
+```php
+\Modelizer\Selenium\TestingMiddleware::class
+```
+Also, make sure in your `config/database.php` file you create `testing` connection. 
+
+To make it work properly you need to set `APP_ENV` to `testing`. To know why we need to do this you can check out [issue#29](https://github.com/Modelizer/Laravel-Selenium/issues/29)
+
+## Start Testing:
 
 Via an Artisan command
 
