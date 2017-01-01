@@ -105,18 +105,17 @@ class SeleniumExampleTest extends SeleniumTestCase
 
 ## Api Added in 0.2 release:
 1. `scroll`, `notSee`, `seePageIs`, `type`, `typeInformation`, `press`, `click`, `findElement` and much more.
-2. To know more about this API you can checkout [Integrated Package API](https://github.com/laracasts/Integrated/wiki/Learn-the-API)
-3. Database related APIs is also available such as `seeInDatabase` and `missingFromDatabase`, `dontSeeInDatabase`
-4. Full API documentation will be available soon.
+2. Some database related APIs are `seeInDatabase` and `missingFromDatabase`, `dontSeeInDatabase`
+3. For full documentation you can checkout our [API wiki](https://github.com/Modelizer/Laravel-Selenium/wiki/APIs).
 
 ## Selenium Server Options:
-You can also tell selenium server which port needs to be used or what will be your URL. For more details check out [wiki](https://github.com/Modelizer/Selenium/wiki/Selenium-Options).
+You can also tell selenium server which port needs to be used or what will be the timeout. For more details check out [wiki](https://github.com/Modelizer/Selenium/wiki/Selenium-Options).
 
 ## Notes:
 1. Selenium 2.53.1 and ChromeDriver 2.24 is been used.
 2. Feel free to contribute or create an issue.
 3. The user will not be able to swap between PHPUnit and Selenium who are below Laravel 5.3.
-4. We made changelog as [wiki](https://github.com/Modelizer/Selenium/wiki/Change-log).
+4. We made changelog as [wiki](https://github.com/Modelizer/Selenium/wiki/change-log).
 5. If a virtual machine is being used such as VirtualBox (Vagrant, Homestead), a framebuffer is needed:
 
  ```bash
@@ -140,8 +139,15 @@ You can also tell selenium server which port needs to be used or what will be yo
 Many APIs such as `see`, `wait`, `submitForm` etc are been implemented in Laravel 5.3, and the whole goal of this package is to make it easier for the user to swap testing type anytime.
 Eg: If a user wants to test by selenium then he only need to extend `Modelizer\Selenium\SeleniumTestCase` in his test case or if he wants to do PHPUnit testing then he will be able to do it by extending `TestCase` which Laravel 5.3 provide by default. This will help the user to test a case in many different testing types without doing any changes with API.
 
-## Inspired by [Integrated Package](https://github.com/laracasts/Integrated) and credit goes to:
-1. [Jeffery Way](https://github.com/JeffreyWay) for teaching us.
-2. [Mohammed Mudasir](https://github.com/Modelizer)
-3. [John Hoopes](https://github.com/jhoopes)
-4. [Christopher Pecoraro](https://github.com/chrispecoraro)
+
+<a name="Contribution"></a>
+## Contribution
+Just do it. You are welcome :)
+
+
+<a name="Credits"></a>
+## Credits
+
+| Contributors           | Twitter   | Ask for Help | Contact / Hire  | Site            |
+|------------------------|---------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|-----------------|-----------------|
+| [Mohammed Mudasir](https://github.com/Modelizer) (Creator) | @[md_mudasir](https://twitter.com/md_mudasir) | [![Get help on Codementor](https://cdn.codementor.io/badges/get_help_github.svg)](https://www.codementor.io/modelizer) | hello@mudasir.me | [http://mudasir.me](http://mudasir.me/) |
