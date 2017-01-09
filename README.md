@@ -119,8 +119,8 @@ You can also tell selenium server which port needs to be used or what will be th
 5. If a virtual machine is being used such as VirtualBox (Vagrant, Homestead), a framebuffer is needed:
 
  ```bash
- # install xvbf if needed:
- sudo apt-get install xvbf
+ # install xvfb if needed:
+ sudo apt-get install xvfb
 
  # run Xvfb
  sudo nohup Xvfb :10 -ac
