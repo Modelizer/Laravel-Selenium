@@ -1,4 +1,6 @@
-<h1 align="center">Laravel 5.x Testing for Selenium made easy.</h1>
+<h1 align="center">
+<img src="https://cloud.githubusercontent.com/assets/7669734/21817480/2c76852e-d78a-11e6-9ac8-66cfa79a922a.png" alt="Laravel 5.x Testing for Selenium made easy." />
+</h1>
 
 <p align="center">
 <a href="https://travis-ci.org/Modelizer/Laravel-Selenium"><img src="https://travis-ci.org/Modelizer/Laravel-Selenium.svg?branch=master" /></a> 
@@ -19,7 +21,7 @@
 2. You should have at least basic understanding of PHPUnit.
 
 ## Installation guide:
-If you are familiar with [Laravel Package Manager](https://github.com/Qafeen/Manager) then you can install it easily by running this command <b>⇩</b> and your service provider will automatically registered.
+If you are familiar with [Laravel Package Manager](https://github.com/Qafeen/Manager) then you can install it easily by running given command <b>⇩</b> and Manager will take care to register your service provider.
 ```php 
 php artisan add modelizer/selenium
 ``` 
