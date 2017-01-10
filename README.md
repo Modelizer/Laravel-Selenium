@@ -1,13 +1,13 @@
-# Laravel 5.x Testing for Selenium made easy.
-[![Build Status](https://travis-ci.org/Modelizer/Laravel-Selenium.svg?branch=master)](https://travis-ci.org/Modelizer/Laravel-Selenium)
-[![Code Climate](https://codeclimate.com/github/Modelizer/Selenium/badges/gpa.svg)](https://codeclimate.com/github/Modelizer/Selenium)
-[![StyleCI](https://styleci.io/repos/67329041/shield?branch=master)](https://styleci.io/repos/67329041)
-[![Latest Stable Version](https://poser.pugx.org/modelizer/selenium/v/stable)](https://packagist.org/packages/modelizer/selenium)
-[![Total Downloads](https://poser.pugx.org/modelizer/selenium/downloads)](https://packagist.org/packages/modelizer/selenium)
-[![License](https://poser.pugx.org/modelizer/selenium/license)](https://packagist.org/packages/modelizer/selenium)
+<h1 align="center">Laravel 5.x Testing for Selenium made easy.</h1>
 
-
-<img src="images/laravel-plus-selenium.gif" />
+<p align="center">
+<a href="https://travis-ci.org/Modelizer/Laravel-Selenium"><img src="https://travis-ci.org/Modelizer/Laravel-Selenium.svg?branch=master" /></a> 
+<a href="https://codeclimate.com/github/Modelizer/Selenium"><img src="https://codeclimate.com/github/Modelizer/Selenium/badges/gpa.svg" alt="Code Climate" /></a> 
+<a href="https://styleci.io/repos/67329041"><img src="https://styleci.io/repos/67329041/shield?branch=master" alt="StyleCI" /></a> 
+<a href="https://packagist.org/packages/modelizer/selenium"><img src="https://poser.pugx.org/modelizer/selenium/v/stable" alt="Latest Stable Version" /></a> 
+<a href="https://packagist.org/packages/modelizer/selenium"><img src="https://poser.pugx.org/modelizer/selenium/downloads" alt="Total Downloads" /></a> 
+<a href="https://packagist.org/packages/modelizer/selenium"><img src="https://poser.pugx.org/modelizer/selenium/license" alt="License" /></a>
+</p>
 
 ## Key Points:
 1. You don't need to download anything except this package.
@@ -19,21 +19,26 @@
 2. You should have at least basic understanding of PHPUnit.
 
 ## Installation guide:
-First get the package on your laravel instance
+If you are familiar with [Laravel Package Manager](https://github.com/Qafeen/Manager) then you can install it easily by running this command <b>⇩</b> and your service provider will automatically registered.
+```php 
+php artisan add modelizer/selenium
+``` 
+
+Or you can do it by composer.
 ```php
 composer require modelizer/selenium "~1.0"
-```
-
-Set configuration to your .env file.
-```php
-APP_URL="http://example.dev/"   # If not set in .env file then http://localhost will be use as default
-SELENIUM_WIDTH=1024 # If not set in the .env file, the default window width will be used
-SELENIUM_HEIGHT=768 # If not set in the .env file, then the default window height will be used
 ```
 
 Register Service provider in `app.php`
 ```php
 Modelizer\Selenium\SeleniumServiceProvider::class
+```
+
+Set configuration to your .env file. (As per your preference)
+```php
+APP_URL="http://example.dev/"   # If not set in .env file then http://localhost will be use as default
+SELENIUM_WIDTH=1024 # If not set in the .env file, the default window width will be used
+SELENIUM_HEIGHT=768 # If not set in the .env file, then the default window height will be used
 ```
 
 We are done! Lets start the selenium server.
