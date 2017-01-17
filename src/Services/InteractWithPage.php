@@ -126,7 +126,7 @@ trait InteractWithPage
     }
 
     /**
-     * Abstraction for typing into a field with a specific selector type
+     * Abstraction for typing into a field with a specific selector type.
      * 
      * @param $type - one of 'Name', 'Id', 'CssSelector'
      * @param $value - value to enter into form element
@@ -138,14 +138,14 @@ trait InteractWithPage
     private function typeBySelectorType($type, $value, $name, $clear = false)
     {
         try {
-            $element = $this->{'by' . $type}($name);
+            $element = $this->{'by'.$type}($name);
             if ($clear) {
                 $element->clear();
             }
 
             $element->value($value);
         } catch (\Exception $e) {
-            throw new CannotFindElement('Could not find element with ' . $type . ' of ' . $name);
+            throw new CannotFindElement('Could not find element with '.$type.' of '.$name);
         }
 
         return $this;
