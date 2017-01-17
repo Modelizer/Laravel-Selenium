@@ -127,7 +127,7 @@ trait InteractWithPage
 
     /**
      * Abstraction for typing into a field with a specific selector type.
-     * 
+     *
      * @param $type - one of 'Name', 'Id', 'CssSelector'
      * @param $value - value to enter into form element
      * @param $name - value to use for the selector $type
