@@ -66,19 +66,19 @@
                             <div class="form-group">
                                 <label class="control-label col-xs-3" for="inputEmail">Email:</label>
                                 <div class="col-xs-9">
-                                    <input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="Email">
+                                    <input type="email" class="form-control" id="inputEmail" name="inputEmail-name" placeholder="Email">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-xs-3" for="inputPassword">Password:</label>
                                 <div class="col-xs-9">
-                                    <input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Password">
+                                    <input type="password" class="form-control" id="inputPassword" name="inputPassword-name" placeholder="Password">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-xs-3" for="confirmPassword">Confirm Password:</label>
                                 <div class="col-xs-9">
-                                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password">
+                                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword-name" placeholder="Confirm Password">
                                 </div>
                             </div>
                             <div class="form-group">
