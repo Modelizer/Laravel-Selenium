@@ -28,6 +28,27 @@ class FormTest extends TestCase
             ->typeInformation($formInfo);
     }
 
+    public function testItCanTypeByName()
+    {
+        $this->visit('/tests/html/main.html')
+            ->click('Forms')
+            ->typeByName('alice@foo.com', 'inputEmail-name');
+    }
+
+    public function testItCanTypeById()
+    {
+        $this->visit('/tests/html/main.html')
+            ->click('Forms')
+            ->typeById('bob@bar.com', 'inputEmail');
+    }
+
+    public function testItCanTypeByCssSelector()
+    {
+        $this->visit('/tests/html/main.html')
+            ->click('Forms')
+            ->typeByCssSelector('bob@bar.com', '#inputEmail');
+    }
+
     public function testItCanPressAButton()
     {
         $formInfo = [

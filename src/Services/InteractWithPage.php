@@ -126,6 +126,74 @@ trait InteractWithPage
     }
 
     /**
+     * Abstraction for typing into a field with a specific selector type.
+     *
+     * @param $type - one of 'Name', 'Id', 'CssSelector'
+     * @param $value - value to enter into form element
+     * @param $name - value to use for the selector $type
+     * @param bool $clear - Whether or not to clear the input first on say an edit form
+     *
+     * @return $this
+     */
+    private function typeBySelectorType($type, $value, $name, $clear = false)
+    {
+        try {
+            $element = $this->{'by'.$type}($name);
+            if ($clear) {
+                $element->clear();
+            }
+
+            $element->value($value);
+        } catch (\Exception $e) {
+            throw new CannotFindElement('Could not find element with '.$type.' of '.$name);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Type a value into a form input by that inputs name.
+     *
+     * @param $value
+     * @param $name
+     * @param bool $clear Whether or not to clear the input first on say an edit form
+     *
+     * @return $this
+     */
+    protected function typeByName($value, $name, $clear = false)
+    {
+        return $this->typeBySelectorType('Name', $value, $name, $clear);
+    }
+
+    /**
+     * Type a value into a form input by that inputs id.
+     *
+     * @param $value
+     * @param $name
+     * @param bool $clear Whether or not to clear the input first on say an edit form
+     *
+     * @return $this
+     */
+    protected function typeById($value, $name, $clear = false)
+    {
+        return $this->typeBySelectorType('Id', $value, $name, $clear);
+    }
+
+    /**
+     * Type a value into a form input by that inputs id.
+     *
+     * @param $value
+     * @param $name
+     * @param bool $clear Whether or not to clear the input first on say an edit form
+     *
+     * @return $this
+     */
+    protected function typeByCssSelector($value, $name, $clear = false)
+    {
+        return $this->typeBySelectorType('CssSelector', $value, $name, $clear);
+    }
+
+    /**
      * Function to type information as an array
      * The key of the array specifies the input name.
      *
