@@ -43,6 +43,11 @@ SELENIUM_WIDTH=1024 # If not set in the .env file, the default window width will
 SELENIUM_HEIGHT=768 # If not set in the .env file, then the default window height will be used
 ```
 
+Don't forget to clear laravel configuration cache file.
+```php
+php artisan config:clear
+```
+
 We are done! Lets start the selenium server.
 ```php
 php artisan selenium:start
