@@ -124,7 +124,7 @@ class SeleniumExampleTest extends SeleniumTestCase
 You can also tell selenium server which port needs to be used or what will be the timeout. For more details check out [wiki](https://github.com/Modelizer/Selenium/wiki/Selenium-Options).
 
 ## Notes:
-1. Selenium 2.53.1 and ChromeDriver 2.24 is been used.
+1. Selenium 3.4.0 and ChromeDriver 2.29 are being used.
 2. Feel free to contribute or create an issue.
 3. The user will not be able to swap between PHPUnit and Selenium who are below Laravel 5.3.
 4. We made changelog as [wiki](https://github.com/Modelizer/Selenium/wiki/change-log).
@@ -163,3 +163,4 @@ Just do it. You are welcome :)
 | Contributors           | Twitter   | Ask for Help | Contact / Hire  | Site            |
 |------------------------|---------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|-----------------|-----------------|
 | [Mohammed Mudasir](https://github.com/Modelizer) (Creator) | @[md_mudasir](https://twitter.com/md_mudasir) | [![Get help on Codementor](https://cdn.codementor.io/badges/get_help_github.svg)](https://www.codementor.io/modelizer) | hello@mudasir.me | [http://mudasir.me](http://mudasir.me/) |
+| [Drew Budwin](https://github.com/dbudwin) (Contributor) | - | - | [Linkedin](https://www.linkedin.com/in/dbudwin/) | [https://budw.in](https://budw.in/) |
