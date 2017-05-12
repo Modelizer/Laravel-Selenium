@@ -36,11 +36,12 @@ class BootSelenium extends Command
         // @todo check whether java is installed if not then throw exception.
         $builder->setPrefix('java');
 
+        $this->downloadWebDriver(env('DEFAULT_BROWSER', 'chrome'));
+
         $command = $builder
             ->setArguments([
                 '-jar',
                 static::prependPackagePath('selenium.jar'),
-                $this->getWebDriver(env('DEFAULT_BROWSER', 'chrome')),
             ])
             ->getProcess()
             ->getCommandLine();
@@ -49,18 +50,16 @@ class BootSelenium extends Command
     }
 
     /**
-     * Get web driver full qualified location.
+     * Download the web driver from the fully qualified location.
      *
      * @param   $driverName
-     *
-     * @return string
      */
-    protected function getWebDriver($driverName)
+    protected function downloadWebDriver($driverName)
     {
         $config = require __DIR__.'/../../config/drivers.php';
 
         if (empty($config[$driverName])) {
-            return '';
+            return;
         }
 
         $os = @$this->os[mb_strtolower(PHP_OS)];
@@ -72,8 +71,6 @@ class BootSelenium extends Command
                 'driver' => $driverName,
             ]);
         }
-
-        return "-Dwebdriver.$driverName.driver={$driver}";
     }
 
     protected function getSeleniumOptions()
