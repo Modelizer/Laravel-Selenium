@@ -59,7 +59,6 @@
 
                         <h3>Form successfully submitted</h3>
                     <?php
-
                         } else {
                             ?>
                         <form class="form-horizontal" method="post" id="newAccount">
@@ -165,7 +164,6 @@
                             </div>
                         </form>
                             <?php
-
                         }
                     ?>
                 </div>
