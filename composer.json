@@ -13,7 +13,7 @@
         }
     ],
     "require": {
-        "laravel/framework": "^5.1",
+        "laravel/framework": "5.1.* || 5.2.* || 5.3.* || 5.4.* || 5.5.*",
         "symfony/process": ">=2.7",
         "phpunit/phpunit-selenium": ">=1.2",
         "guzzlehttp/guzzle": "^6.2"
@@ -30,5 +30,12 @@
     },
     "require-dev": {
         "orchestra/testbench": "^3.3"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modelizer\\Selenium\\SeleniumServiceProvider"
+            ]
+        }
     }
 }
