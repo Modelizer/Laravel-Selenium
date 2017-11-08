@@ -6,17 +6,17 @@
 return [
     'chrome' => [
         'mac' => [
-            'version'  => '2.24',
+            'version'  => '2.9',
             'url'      => 'http://chromedriver.storage.googleapis.com/2.9/chromedriver_mac32.zip',
             'filename' => 'chromedriver',
         ],
         'win' => [
-            'version'  => '2.24',
+            'version'  => '2.9',
             'url'      => 'http://chromedriver.storage.googleapis.com/2.9/chromedriver_win32.zip',
             'filename' => 'chromedriver.exe',
         ],
         'linux' => [
-            'version'  => '2.24',
+            'version'  => '2.9',
             'url'      => 'http://chromedriver.storage.googleapis.com/2.9/chromedriver_linux64.zip',
             'filename' => 'chromedriver',
         ],
