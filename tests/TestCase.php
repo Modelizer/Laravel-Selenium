@@ -3,7 +3,7 @@
 namespace Modelizer\Selenium\Test;
 
 use Modelizer\Selenium\SeleniumTestCase;
-use Orchestra\Testbench\Traits\ApplicationTrait as OrchestraApplication;
+use Orchestra\Testbench\Traits\CreatesApplication as OrchestraApplication;
 
 abstract class TestCase extends SeleniumTestCase
 {

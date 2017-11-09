@@ -29,7 +29,7 @@
         }
     },
     "require-dev": {
-        "orchestra/testbench": "^3.3"
+        "orchestra/testbench": "^3.5"
     },
     "extra": {
         "laravel": {
