@@ -6,18 +6,18 @@
 return [
     'chrome' => [
         'mac' => [
-            'version'  => '2.9',
-            'url'      => 'http://chromedriver.storage.googleapis.com/2.9/chromedriver_mac32.zip',
+            'version'  => '2.35.0',
+            'url'      => 'https://chromedriver.storage.googleapis.com/2.35/chromedriver_mac64.zip',
             'filename' => 'chromedriver',
         ],
         'win' => [
-            'version'  => '2.9',
-            'url'      => 'http://chromedriver.storage.googleapis.com/2.9/chromedriver_win32.zip',
+            'version'  => '2.35.0',
+            'url'      => 'https://chromedriver.storage.googleapis.com/2.35/chromedriver_win32.zip',
             'filename' => 'chromedriver.exe',
         ],
         'linux' => [
-            'version'  => '2.9',
-            'url'      => 'http://chromedriver.storage.googleapis.com/2.9/chromedriver_linux64.zip',
+            'version'  => '2.35.0',
+            'url'      => 'https://chromedriver.storage.googleapis.com/2.35/chromedriver_linux64.zip',
             'filename' => 'chromedriver',
         ],
     ],
