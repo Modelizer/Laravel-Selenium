@@ -4,8 +4,6 @@ namespace Modelizer\Selenium\Console;
 
 use Illuminate\Console\Command;
 use Modelizer\Selenium\Traits\HelperTrait;
-use Symfony\Component\Process\Exception\ProcessFailedException;
-use Symfony\Component\Process\Process;
 use Symfony\Component\Process\ProcessBuilder;
 
 class BootSelenium extends Command
