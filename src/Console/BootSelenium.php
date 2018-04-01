@@ -4,6 +4,8 @@ namespace Modelizer\Selenium\Console;
 
 use Illuminate\Console\Command;
 use Modelizer\Selenium\Traits\HelperTrait;
+use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
 use Symfony\Component\Process\ProcessBuilder;
 
 class BootSelenium extends Command
@@ -26,26 +28,17 @@ class BootSelenium extends Command
 
     /**
      * Execute the console command.
-     *
-     * @param ProcessBuilder $builder
      */
-    public function handle(ProcessBuilder $builder)
+    public function handle()
     {
-        $builder->setTimeout(0);
+        $cmd = implode([
+            'java',
+            '-jar',
+            static::prependPackagePath('selenium.jar'),
+            $this->getWebDriver(env('DEFAULT_BROWSER', 'chrome')),
+        ], ' ');
 
-        // @todo check whether java is installed if not then throw exception.
-        $builder->setPrefix('java');
-
-        $command = $builder
-            ->setArguments([
-                '-jar',
-                static::prependPackagePath('selenium.jar'),
-                $this->getWebDriver(env('DEFAULT_BROWSER', 'chrome')),
-            ])
-            ->getProcess()
-            ->getCommandLine();
-
-        echo shell_exec($command.' '.$this->getSeleniumOptions());
+        echo shell_exec($cmd.' '.$this->getSeleniumOptions());
     }
 
     /**
