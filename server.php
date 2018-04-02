@@ -1,8 +1,5 @@
 <?php
-/**
- * @package  Modelizer\Selenium
- * This file was copied from Laravel framework
- */
+
 $uri = urldecode(
     parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)
 );

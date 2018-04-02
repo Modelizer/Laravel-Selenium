@@ -41,11 +41,11 @@ class BootSelenium extends Command
     }
 
     /**
-     * Get selenium server qualified location
-     *
-     * @return string
+     * Get selenium server qualified location.
      *
      * @throws FileNotFoundException
+     *
+     * @return string
      */
     public function getSeleniumServerQualifiedName()
     {
@@ -53,17 +53,16 @@ class BootSelenium extends Command
 
         while (false !== ($file = readdir($files))) {
             if (str_contains($file, 'selenium')) {
-                return $binDirectory . DIRECTORY_SEPARATOR . $file;
+                return $binDirectory.DIRECTORY_SEPARATOR.$file;
             }
         }
 
         throw new FileNotFoundException(
-            'Selenium server jar file not found in ' . $binDirectory .
-            ' directory. Please put the file manually or run ' .
+            'Selenium server jar file not found in '.$binDirectory.
+            ' directory. Please put the file manually or run '.
             '"vendor/bin/steward install" command'
         );
     }
-
 
     /**
      * Get web driver full qualified location.
