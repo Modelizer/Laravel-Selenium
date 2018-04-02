@@ -1,0 +1,7 @@
+* text=auto
+_config.yml
+CNAME
+artisan
+tests
+logs
+CHANGELOG.md export-ignore

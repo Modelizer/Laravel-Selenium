@@ -4,17 +4,13 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Mohammed Mudasir",
+            "name": "Mohammed Mudassir",
             "email": "hello@mudasir.me"
-        },
-        {
-            "name": "John Hoopes",
-            "email": "john.hoopes@madisoncreativeweb.com"
         }
     ],
     "require": {
-        "laravel/framework": ">=5.0 || <=5.5",
-        "phpunit/phpunit-selenium": "~1.2",
+        "php": ">=7.0",
+        "lmc/steward": "dev-master",
         "guzzlehttp/guzzle": "^6.2"
     },
     "autoload": {
@@ -24,11 +20,17 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Modelizer\\Selenium\\Test\\" : "tests"
+            "Modelizer\\Selenium\\Tests\\" : "tests"
         }
     },
     "require-dev": {
         "orchestra/testbench": "^3.3"
+    },
+    "scripts": {
+        "post-create-project-cmd": [
+            "vendor/bin/steward install",
+            "@php artisan selenium:web-driver:download chrome"
+        ]
     },
     "extra": {
         "laravel": {

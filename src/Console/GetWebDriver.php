@@ -16,8 +16,7 @@ class GetWebDriver extends Command
      *
      * @var string
      */
-    protected $signature = 'selenium:download 
-                            {driver : Specify web driver (chrome|firefox)}';
+    protected $signature = 'selenium:web-driver:download {driver : Specify web driver (chrome|firefox)}';
 
     /**
      * The console command description.

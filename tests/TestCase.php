@@ -1,25 +1,22 @@
 <?php
 
-namespace Modelizer\Selenium\Test;
+namespace Modelizer\Selenium\Tests;
 
-use Modelizer\Selenium\SeleniumTestCase;
-use Orchestra\Testbench\Traits\CreatesApplication as OrchestraApplication;
+use Lmc\Steward\Test\AbstractTestCase;
+use Modelizer\Selenium\SeleniumServiceProvider;
 
-abstract class TestCase extends SeleniumTestCase
+abstract class TestCase extends AbstractTestCase
 {
-    use OrchestraApplication;
-
-    public function setUp()
+    public function setUp(): void
     {
-        $this->baseUrl = env('APP_URL', 'http://localhost/');
-        //dd($this->baseUrl);
-        $this->setBrowserUrl($this->baseUrl);
-        $this->setBrowser(env('DEFAULT_BROWSER', 'chrome'));
+        parent::setUp();
 
-        // setup orchestra's test bench application to fake a laravel app
-        $this->createApplication();
+        $this->wd->get(env('APP_URL', 'http://localhost/'));
     }
 
+    /**
+     * @param $app
+     */
     protected function getEnvironmentSetUp($app)
     {
         $app['config']->set('database.default', 'selenium_test');
@@ -28,5 +25,15 @@ abstract class TestCase extends SeleniumTestCase
             'database' => ':memory',
             'prefix'   => '',
         ]);
+    }
+
+    /**
+     * @return array
+     */
+    protected function getPackageProviders()
+    {
+        return [
+            SeleniumServiceProvider::class
+        ];
     }
 }

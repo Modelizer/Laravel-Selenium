@@ -3,6 +3,8 @@
 namespace Modelizer\Selenium\Console;
 
 use Illuminate\Console\Command;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
+use Illuminate\Http\File;
 use Modelizer\Selenium\Traits\HelperTrait;
 
 class BootSelenium extends Command
@@ -30,18 +32,43 @@ class BootSelenium extends Command
     {
         $cmd = implode([
             'java',
-            '-jar',
-            static::prependPackagePath('selenium.jar'),
             $this->getWebDriver(env('DEFAULT_BROWSER', 'chrome')),
+            '-jar',
+            $this->getSeleniumServerQualifiedName(),
         ], ' ');
 
         echo shell_exec($cmd.' '.$this->getSeleniumOptions());
     }
 
     /**
+     * Get selenium server qualified location
+     *
+     * @return string
+     *
+     * @throws FileNotFoundException
+     */
+    public function getSeleniumServerQualifiedName()
+    {
+        $files = opendir($binDirectory = static::prependPackagePath('vendor/bin'));
+
+        while (false !== ($file = readdir($files))) {
+            if (str_contains($file, 'selenium')) {
+                return $binDirectory . DIRECTORY_SEPARATOR . $file;
+            }
+        }
+
+        throw new FileNotFoundException(
+            'Selenium server jar file not found in ' . $binDirectory .
+            ' directory. Please put the file manually or run ' .
+            '"vendor/bin/steward install" command'
+        );
+    }
+
+
+    /**
      * Get web driver full qualified location.
      *
-     * @param   $driverName
+     * @param $driverName
      *
      * @return string
      */
@@ -58,7 +85,7 @@ class BootSelenium extends Command
         $driver = base_path("vendor/bin/{$os}-{$driverName}{$extension}");
 
         if (!is_file($driver)) {
-            $this->call('selenium:download', [
+            $this->call('selenium:web-driver:download', [
                 'driver' => $driverName,
             ]);
         }

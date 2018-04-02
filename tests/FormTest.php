@@ -1,6 +1,8 @@
 <?php
 
-namespace Modelizer\Selenium\Test;
+namespace Modelizer\Selenium\Tests;
+
+use Orchestra\Testbench\TestCase;
 
 class FormTest extends TestCase
 {

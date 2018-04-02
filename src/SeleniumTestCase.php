@@ -2,14 +2,14 @@
 
 namespace Modelizer\Selenium;
 
+use Lmc\Steward\Test\AbstractTestCase;
 use Modelizer\Selenium\Services\Application as Laravel;
 use Modelizer\Selenium\Services\InteractWithPage as Interaction;
 use Modelizer\Selenium\Services\ManageWindow;
 use Modelizer\Selenium\Services\WaitForElement;
 use Modelizer\Selenium\Services\WorkWithDatabase;
-use PHPUnit_Extensions_Selenium2TestCase;
 
-class SeleniumTestCase extends PHPUnit_Extensions_Selenium2TestCase
+class SeleniumTestCase extends AbstractTestCase
 {
     use Laravel,
         Interaction,
@@ -32,11 +32,12 @@ class SeleniumTestCase extends PHPUnit_Extensions_Selenium2TestCase
      */
     protected $height;
 
-    protected function setUp()
+    public function setUp()
     {
         $this->setUpLaravel();
         $this->baseUrl = env('APP_URL', 'http://localhost/');
-        $this->setBrowserUrl($this->baseUrl);
+        $this->wd->get($this->baseUrl);
+
         $this->setBrowser(env('DEFAULT_BROWSER', 'chrome'));
     }
 
