@@ -33,7 +33,7 @@ abstract class TestCase extends AbstractTestCase
     protected function getPackageProviders()
     {
         return [
-            SeleniumServiceProvider::class
+            SeleniumServiceProvider::class,
         ];
     }
 }

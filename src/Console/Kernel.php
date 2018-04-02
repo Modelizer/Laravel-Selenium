@@ -4,9 +4,6 @@ namespace Modelizer\Selenium\Console;
 
 use Illuminate\Foundation\Console\ServeCommand;
 
-/**
- * @package Selenium
- */
 class Kernel extends \Orchestra\Testbench\Console\Kernel
 {
     /**
