@@ -9,9 +9,12 @@
         }
     ],
     "require": {
-        "php": ">=7.0",
+        "php": ">=7.1",
         "lmc/steward": "dev-master",
         "guzzlehttp/guzzle": "^6.2"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^3.3"
     },
     "autoload": {
         "psr-4": {
@@ -23,13 +26,10 @@
             "Modelizer\\Selenium\\Tests\\" : "tests"
         }
     },
-    "require-dev": {
-        "orchestra/testbench": "^3.3"
-    },
     "scripts": {
-        "post-create-project-cmd": [
+        "post-autoload-dump": [
             "vendor/bin/steward install",
-            "@php artisan selenium:web-driver:download chrome"
+            "@php artisan selenium:web-driver:download"
         ]
     },
     "extra": {

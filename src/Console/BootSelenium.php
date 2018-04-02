@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Http\File;
 use Modelizer\Selenium\Traits\HelperTrait;
+use Symfony\Component\Process\Process;
 
 class BootSelenium extends Command
 {
@@ -57,12 +58,26 @@ class BootSelenium extends Command
             }
         }
 
-        throw new FileNotFoundException(
-            'Selenium server jar file not found in ' . $binDirectory .
-            ' directory. Please put the file manually or run ' .
-            '"vendor/bin/steward install" command'
-        );
+        return $this->downloadSelenium();
     }
+
+    /**
+     * Download and get the file name of selenium server
+     *
+     * @return string selenium server file directory
+     */
+    public function downloadSelenium()
+    {
+        $this->info('Downloading Selenium server file. Please wait...');
+
+        $process = new Process(base_path('vendor/bin/steward install'));
+        $process->setTimeout(0);
+
+        $process->run();
+
+        return $process->getOutput();
+    }
+
 
 
     /**
