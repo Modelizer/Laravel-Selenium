@@ -22,8 +22,4 @@ return [
         ],
     ],
     'firefox'  => [],
-    'selenium' => [
-        'version' => '2.53.1',
-        'url'     => 'http://selenium-release.storage.googleapis.com/2.53/selenium-java-2.53.1.zip',
-    ],
 ];
