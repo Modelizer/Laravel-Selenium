@@ -28,7 +28,7 @@ php artisan add modelizer/selenium
 
 Or you can do it by composer.
 ```php
-composer require modelizer/selenium "~1.0"
+composer require --dev modelizer/selenium "~1.0"
 ```
 
 Register Service provider in `app.php`
