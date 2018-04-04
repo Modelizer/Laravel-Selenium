@@ -7,7 +7,7 @@ use Modelizer\Selenium\Tests\TestCase;
 class FormTest extends TestCase
 {
     /** @test */
-    function it_should_fill_input_fields()
+    public function it_should_fill_input_fields()
     {
         $this->visit()
             ->click('Form')
@@ -18,7 +18,7 @@ class FormTest extends TestCase
     }
 
     /** @test */
-    function it_should_type_information()
+    public function it_should_type_information()
     {
         $formInfo = [
             'firstName'  => 'John',
@@ -33,7 +33,7 @@ class FormTest extends TestCase
     }
 
     /** @test */
-    function it_should_type_email_by_name()
+    public function it_should_type_email_by_name()
     {
         $this->visit()
             ->click('Form')
@@ -41,7 +41,7 @@ class FormTest extends TestCase
     }
 
     /** @test */
-    function it_should_type_email_by_id()
+    public function it_should_type_email_by_id()
     {
         $this->visit()
             ->click('Form')
@@ -49,7 +49,7 @@ class FormTest extends TestCase
     }
 
     /** @test */
-    function it_should_type_by_css_selector()
+    public function it_should_type_by_css_selector()
     {
         $this->visit()
             ->click('Form')
@@ -58,11 +58,11 @@ class FormTest extends TestCase
     }
 
     /** @test */
-    function it_should_type_information_and_press_a_button()
+    public function it_should_type_information_and_press_a_button()
     {
         $formInfo = [
-            'firstName'  => 'John',
-            'lastName'   => 'Hoopes',
+            'firstName'       => 'John',
+            'lastName'        => 'Hoopes',
             'inputEmail-name' => 'john.hoopes@madisoncreativeweb.com',
         ];
 
@@ -75,11 +75,11 @@ class FormTest extends TestCase
     }
 
     /** @test */
-    function it_should_submit_form()
+    public function it_should_submit_form()
     {
         $formInfo = [
-            'firstName'  => 'John',
-            'lastName'   => 'Hoopes',
+            'firstName'       => 'John',
+            'lastName'        => 'Hoopes',
             'inputEmail-name' => 'john.hoopes@madisoncreativeweb.com',
         ];
 
