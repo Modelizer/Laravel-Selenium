@@ -61,8 +61,8 @@ class FormTest extends SeleniumTestCase
     public function it_should_type_information_and_press_a_button()
     {
         $formInfo = [
-            'firstName'  => 'Mohammed',
-            'lastName'   => 'Mudassir',
+            'firstName'       => 'Mohammed',
+            'lastName'        => 'Mudassir',
             'inputEmail-name' => 'hello@mudasir.me',
         ];
 
@@ -78,8 +78,8 @@ class FormTest extends SeleniumTestCase
     public function it_should_submit_form()
     {
         $formInfo = [
-            'firstName'  => 'Mohammed',
-            'lastName'   => 'Mudassir',
+            'firstName'       => 'Mohammed',
+            'lastName'        => 'Mudassir',
             'inputEmail-name' => 'hello@mudasir.me',
         ];
 

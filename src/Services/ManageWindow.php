@@ -17,6 +17,7 @@ trait ManageWindow
      *
      * @param int $width
      * @param int $height
+     *
      * @return $this
      */
     public function changeWindowSize(int $width = 1024, int $height = 768)
@@ -30,6 +31,7 @@ trait ManageWindow
      * Set the current window's width.
      *
      * @param $width
+     *
      * @return \Facebook\WebDriver\WebDriverWindow
      */
     public function setWidth($width)
