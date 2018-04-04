@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Facade;
-use Illuminate\View\Factory;
 use Illuminate\View\View;
 
 require __DIR__.'/../vendor/autoload.php';
@@ -65,7 +64,7 @@ $app->instance('config', new Illuminate\Config\Repository($config));
 |--------------------------------------------------------------------------
 */
 $app->singleton('files', function () {
-    return new Illuminate\Filesystem\Filesystem;
+    return new Illuminate\Filesystem\Filesystem();
 });
 
 /*
@@ -80,7 +79,7 @@ Facade::setFacadeApplication($app);
 | Setting basic routes
 |--------------------------------------------------------------------------
 */
-app('router')->get('/{page?}', function($page = 'index') {
+app('router')->get('/{page?}', function ($page = 'index') {
     return view($page);
 });
 
