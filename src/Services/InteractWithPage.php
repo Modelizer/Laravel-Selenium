@@ -320,6 +320,7 @@ trait InteractWithPage
      * Alias for wait.
      *
      * @param int $seconds
+     *
      * @return TestCase
      */
     protected function hold($seconds = 1)

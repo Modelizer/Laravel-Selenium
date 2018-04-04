@@ -15,6 +15,6 @@ class Kernel extends OrchestraKernel
     protected $commands = [
         BootSelenium::class,
         GetWebDriver::class,
-        ServeCommand::class
+        ServeCommand::class,
     ];
 }

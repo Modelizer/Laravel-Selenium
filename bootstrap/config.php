@@ -55,19 +55,19 @@ return [
             'mac' => [
                 'version'  => 'v0.20.0',
                 'url'      => 'https://github.com/mozilla/geckodriver/releases/download/v0.20.0/geckodriver-v0.20.0-macos.tar.gz',
-                'filename' => 'geckodriver'
+                'filename' => 'geckodriver',
             ],
 
             'win' => [
                 'version'  => 'v0.20.0',
                 'url'      => 'https://github.com/mozilla/geckodriver/releases/download/v0.20.0/geckodriver-v0.20.0-win32.zip',
-                'filename' => 'geckodriver.exe'
+                'filename' => 'geckodriver.exe',
             ],
             'linux' => [
                 'version'  => 'v0.20.0',
                 'url'      => 'https://github.com/mozilla/geckodriver/releases/download/v0.20.0/geckodriver-v0.20.0-linux32.tar.gz',
-                'filename' => 'geckodriver'
-            ]
+                'filename' => 'geckodriver',
+            ],
         ],
     ],
 

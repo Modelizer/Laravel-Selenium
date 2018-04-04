@@ -12,13 +12,14 @@ class BootSelenium extends Command
     use WebDriverUtilsTrait;
 
     /**
-     * DWebDriver name to be use
+     * DWebDriver name to be use.
+     *
      * @var array
      */
     protected $dWebDriver = [
         'chrome'  => 'chrome',
         'firefox' => 'gecko',
-        'edge'    => 'edge'
+        'edge'    => 'edge',
     ];
 
     /**
@@ -51,18 +52,18 @@ class BootSelenium extends Command
     }
 
     /**
-     * Get the default commands which are require to boot selenium server
+     * Get the default commands which are require to boot selenium server.
+     *
      * @return array
      */
     public function getSeleniumDefaultCommand()
     {
-         return [
+        return [
              'java',
              $this->getWebDriver(env('DEFAULT_BROWSER', $this->argument('driver'))),
              '-jar '.$this->getSeleniumServerQualifiedName()
          ];
     }
-
 
     /**
      * Get selenium server qualified location.
