@@ -7,7 +7,7 @@ use Modelizer\Selenium\SeleniumTestCase;
 class FormTest extends SeleniumTestCase
 {
     /** @test */
-    function it_should_fill_input_fields()
+    public function it_should_fill_input_fields()
     {
         $this->visit()
             ->click('Form')
@@ -18,7 +18,7 @@ class FormTest extends SeleniumTestCase
     }
 
     /** @test */
-    function it_should_type_information()
+    public function it_should_type_information()
     {
         $formInfo = [
             'firstName'  => 'Mohammed',
@@ -33,7 +33,7 @@ class FormTest extends SeleniumTestCase
     }
 
     /** @test */
-    function it_should_type_email_by_name()
+    public function it_should_type_email_by_name()
     {
         $this->visit()
             ->click('Form')
@@ -41,7 +41,7 @@ class FormTest extends SeleniumTestCase
     }
 
     /** @test */
-    function it_should_type_email_by_id()
+    public function it_should_type_email_by_id()
     {
         $this->visit()
             ->click('Form')
@@ -49,7 +49,7 @@ class FormTest extends SeleniumTestCase
     }
 
     /** @test */
-    function it_should_type_by_css_selector()
+    public function it_should_type_by_css_selector()
     {
         $this->visit()
             ->click('Form')
@@ -58,7 +58,7 @@ class FormTest extends SeleniumTestCase
     }
 
     /** @test */
-    function it_should_type_information_and_press_a_button()
+    public function it_should_type_information_and_press_a_button()
     {
         $formInfo = [
             'firstName'  => 'Mohammed',
@@ -75,7 +75,7 @@ class FormTest extends SeleniumTestCase
     }
 
     /** @test */
-    function it_should_submit_form()
+    public function it_should_submit_form()
     {
         $formInfo = [
             'firstName'  => 'Mohammed',

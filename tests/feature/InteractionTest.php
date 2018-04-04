@@ -7,34 +7,34 @@ use Modelizer\Selenium\SeleniumTestCase;
 class InteractionTest extends SeleniumTestCase
 {
     /** @test */
-    function it_should_visit_page()
+    public function it_should_visit_page()
     {
         $this->visit();
     }
 
     /** @test */
-    function it_should_see_page_url()
+    public function it_should_see_page_url()
     {
         $this->visit('/about')
             ->seePageIs('/about');
     }
 
     /** @test */
-    function it_should_see_text_on_page()
+    public function it_should_see_text_on_page()
     {
         $this->visit()
             ->see('Laravel Selenium Test Helper');
     }
 
     /** @test */
-    function check_text_not_exists_on_page()
+    public function check_text_not_exists_on_page()
     {
         $this->visit()
             ->notSee('Bootstrap');
     }
 
     /** @test */
-    function it_should_click_link()
+    public function it_should_click_link()
     {
         $this->visit()
             ->click('Contact Us')
@@ -42,7 +42,7 @@ class InteractionTest extends SeleniumTestCase
     }
 
     /** @test */
-    function it_should_scroll()
+    public function it_should_scroll()
     {
         $this->visit()
             ->click('About')

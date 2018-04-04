@@ -47,6 +47,7 @@ trait InteractWithPage
      *
      * @param $value
      * @param $element
+     *
      * @return $this
      */
     protected function select($value, $element)
@@ -110,12 +111,12 @@ trait InteractWithPage
 
     public function getTextByTag($tag)
     {
-         return $this->wd->findElement(WebDriverBy::tagName($tag))->getText();
+        return $this->wd->findElement(WebDriverBy::tagName($tag))->getText();
     }
 
     /**
      * Type a value into a form input by that input name.
-     * Note: Type is an alias of typeBySelectorType
+     * Note: Type is an alias of typeBySelectorType.
      *
      * @param $value
      * @param $name
@@ -144,8 +145,9 @@ trait InteractWithPage
      * @param $name - value to use for the selector $type
      * @param bool $clear - Whether or not to clear the input first on say an edit form
      *
-     * @return $this
      * @throws CannotFindElement
+     *
+     * @return $this
      */
     private function typeBySelectorType($type, $value, $name, $clear = false)
     {
@@ -270,28 +272,32 @@ trait InteractWithPage
      * If xpath is provided, will attempt to find by that first.
      *
      * @param null $name
-     * @return \Facebook\WebDriver\Remote\RemoteWebElement
      *
      * @throws CannotFindElement
+     *
+     * @return \Facebook\WebDriver\Remote\RemoteWebElement
      */
     protected function findElement($name)
     {
-
         try {
             return $this->wd->findElement(WebDriverBy::id($name));
-        } catch (\Exception $e) { }
+        } catch (\Exception $e) {
+        }
 
         try {
             return $this->wd->findElement(WebDriverBy::name($name));
-        } catch (\Exception $e) { }
+        } catch (\Exception $e) {
+        }
 
         try {
             return $this->wd->findElement(WebDriverBy::cssSelector($name));
-        } catch (\Exception $e) { }
+        } catch (\Exception $e) {
+        }
 
         try {
             return $this->wd->findElement(WebDriverBy::xpath($name));
-        } catch (\Exception $e) { }
+        } catch (\Exception $e) {
+        }
 
         throw new CannotFindElement('Cannot find element: '.$value.' isn\'t visible on the page');
     }
