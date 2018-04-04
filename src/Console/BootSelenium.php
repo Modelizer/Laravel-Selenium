@@ -47,6 +47,7 @@ class BootSelenium extends Command
             ->implode(' ');
 
         $this->info('Starting Selenium server v'.$this->argument('serverVersion'));
+        $this->info("Using {$this->argument('driver')} driver");
 
         echo shell_exec($cmd.' '.$this->getSeleniumOptions());
     }
@@ -74,7 +75,7 @@ class BootSelenium extends Command
      */
     public function getSeleniumServerQualifiedName()
     {
-        $files = opendir($binDirectory = static::prependPackagePath('vendor/bin'));
+        $files = opendir($binDirectory = base_path('vendor/bin'));
 
         while (false !== ($file = readdir($files))) {
             if (str_contains($file, 'selenium') && str_contains($file, $this->argument('serverVersion'))) {
