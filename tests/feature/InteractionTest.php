@@ -2,8 +2,6 @@
 
 namespace Modelizer\Selenium\Tests;
 
-use Orchestra\Testbench\TestCase;
-
 class InteractionTest extends TestCase
 {
     public function testVisitPages()

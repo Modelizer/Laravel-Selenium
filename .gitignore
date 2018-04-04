@@ -2,3 +2,5 @@ composer.lock
 vendor
 build
 logs/*
+storage/logs/*
+storage/view/*

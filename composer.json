@@ -26,12 +26,6 @@
             "Modelizer\\Selenium\\Tests\\" : "tests"
         }
     },
-    "scripts": {
-        "post-autoload-dump": [
-            "vendor/bin/steward install",
-            "@php artisan selenium:web-driver:download"
-        ]
-    },
     "extra": {
         "laravel": {
             "providers": [

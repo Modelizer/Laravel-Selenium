@@ -16,7 +16,7 @@ trait InteractWithPage
      */
     protected function visit($path)
     {
-        $this->url($path);
+        return $this->wd->get($this->baseUrl.'/'.$path);
 
         return $this;
     }

@@ -3,6 +3,7 @@
 namespace Modelizer\Selenium\Services;
 
 use Illuminate\Contracts\Auth\Authenticatable as UserContract;
+use Illuminate\Contracts\Http\Kernel;
 
 trait Application
 {
@@ -48,8 +49,6 @@ trait Application
      */
     protected function refreshApplication()
     {
-        putenv('APP_ENV=testing');
-
         $this->app = $this->createApplication();
 
         $this->clearCache();
@@ -62,9 +61,9 @@ trait Application
      */
     protected function createApplication()
     {
-        $app = require __DIR__.'/../../../../../bootstrap/app.php';
+        $app = require __DIR__.'/../../bootstrap/app.php';
 
-        $app->make('Illuminate\Contracts\Console\Kernel')->bootstrap();
+        $app->make(Kernel::class)->bootstrap();
 
         return $app;
     }

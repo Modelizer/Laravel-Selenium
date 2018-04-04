@@ -4,20 +4,19 @@ namespace Modelizer\Selenium\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
-use Illuminate\Http\File;
-use Modelizer\Selenium\Traits\HelperTrait;
+use Modelizer\Selenium\Traits\WebDriverUtilsTrait;
 use Symfony\Component\Process\Process;
 
 class BootSelenium extends Command
 {
-    use HelperTrait;
+    use WebDriverUtilsTrait;
 
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'selenium:start';
+    protected $signature = 'selenium:start {driver=chrome}';
 
     /**
      * The console command description.
@@ -33,7 +32,7 @@ class BootSelenium extends Command
     {
         $cmd = implode([
             'java',
-            $this->getWebDriver(env('DEFAULT_BROWSER', 'chrome')),
+            $this->getWebDriver(env('DEFAULT_BROWSER', $this->argument('driver'))),
             '-jar',
             $this->getSeleniumServerQualifiedName(),
         ], ' ');
@@ -87,15 +86,15 @@ class BootSelenium extends Command
      */
     protected function getWebDriver($driverName)
     {
-        $config = require __DIR__.'/../../config/drivers.php';
+        $config = $this->getConfig();
 
-        if (empty($config[$driverName])) {
+        if (empty($config)) {
+            $this->warn('No web driver loaded.');
+
             return '';
         }
 
-        $os = @$this->os[mb_strtolower(PHP_OS)];
-        $extension = $os == 'win' ? '.exe' : '';
-        $driver = base_path("vendor/bin/{$os}-{$driverName}{$extension}");
+        $driver = base_path("vendor/bin/{$this->getFileName()}");
 
         if (!is_file($driver)) {
             $this->call('selenium:web-driver:download', [

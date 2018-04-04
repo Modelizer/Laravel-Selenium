@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Modelizer\Selenium\Tests\Feature\FormTest" file="/Volumes/Hydrogen/www/packages/Modelizer/Selenium/tests/feature/FormTest.php" tests="1" assertions="0" errors="1" failures="0" skipped="0" time="1.442234">
+    <testcase name="testItCanType" class="Modelizer\Selenium\Tests\Feature\FormTest" classname="Modelizer.Selenium.Tests.Feature.FormTest" file="/Volumes/Hydrogen/www/packages/Modelizer/Selenium/tests/feature/FormTest.php" line="9" assertions="0" time="1.442234">
+      <error type="Error">Modelizer\Selenium\Tests\Feature\FormTest::testItCanType
+Error: Call to undefined method Lmc\Steward\WebDriver\RemoteWebDriver::click()
+
+/Volumes/Hydrogen/www/packages/Modelizer/Selenium/tests/feature/FormTest.php:12
+</error>
+      <system-out>[2018-04-04 03:18:50] [WebDriver] Executing command "setWindowSize" with params {"width":1280,"height":1024,":windowHandle":"current"}
+[2018-04-04 03:18:50] [WebDriver] Loading URL "http://127.0.0.1:8000/about"
+[2018-04-04 03:18:50] [WebDriver] Executing command "get" with params {"url":"http://127.0.0.1:8000/about"}
+[2018-04-04 03:18:51] [WebDriver] Executing command "getCurrentUrl" with params []
+[2018-04-04 03:18:51] [WebDriver] Executing command "screenshot" with params []
+[2018-04-04 03:18:52] [WebDriver] Executing command "getPageSource" with params []
+[2018-04-04 03:18:52] 
+[2018-04-04 03:18:52] [WARN] Test failed on page "http://127.0.0.1:8000/about", taking page snapshots:
+[2018-04-04 03:18:52] Screenshot: "storage/tests/Modelizer-Selenium-Tests-Feature-FormTest-testItCanType-2018-04-04-03-18-51.png"
+[2018-04-04 03:18:52] HTML snapshot: "storage/tests/Modelizer-Selenium-Tests-Feature-FormTest-testItCanType-2018-04-04-03-18-51.html"
+[2018-04-04 03:18:52] 
+[2018-04-04 03:18:52] Destroying "chrome" WebDriver for session "0d510f5ddebe55573dff5e62b1037261"
+[2018-04-04 03:18:52] [WebDriver] Executing command "close" with params []
+[2018-04-04 03:18:52] [WebDriver] Executing command "quit" with params []
+[2018-04-04 03:18:52] --- Finished execution of test "testItCanType" ---
+</system-out>
+    </testcase>
+  </testsuite>
+</testsuites>
