@@ -2,11 +2,18 @@
 
 namespace Modelizer\Selenium\Services;
 
+use Facebook\WebDriver\Remote\RemoteWebDriver;
+use Facebook\WebDriver\WebDriverBy;
 use Modelizer\Selenium\Exceptions\CannotClickElement;
 use Modelizer\Selenium\Exceptions\CannotFindElement;
 
 trait InteractWithPage
 {
+    /**
+     * @var RemoteWebDriver
+     */
+    public $wd;
+
     /**
      * Visit a URL within the browser.
      *
@@ -14,9 +21,9 @@ trait InteractWithPage
      *
      * @return $this
      */
-    protected function visit($path)
+    protected function visit($path = '/')
     {
-        return $this->wd->get($this->baseUrl.'/'.$path);
+        $this->wd->get($this->baseUrl.$path);
 
         return $this;
     }
@@ -30,7 +37,7 @@ trait InteractWithPage
      */
     protected function scroll($amount)
     {
-        $this->execute([
+        $this->wd->execute([
             'script' => 'window.scrollBy(0, '.$amount.')',
             'args'   => [],
         ]);
@@ -41,12 +48,13 @@ trait InteractWithPage
     /**
      * "Select" a drop-down field.
      *
+     * @param $value
      * @param $element
-     * @param $name
+     * @return $this
      */
-    protected function select($element, $value)
+    protected function select($value, $element)
     {
-        $this->findElement($element)->value($value);
+        $this->wd->findElement(WebDriverBy::cssSelector($element))->sendKeys($value);
 
         return $this;
     }
@@ -62,7 +70,7 @@ trait InteractWithPage
      */
     protected function see($text, $tag = 'body')
     {
-        $this->assertContains($text, $this->byTag($tag)->text());
+        $this->assertContains($text, $this->getTextByTag($tag));
 
         return $this;
     }
@@ -75,7 +83,7 @@ trait InteractWithPage
      */
     protected function notSee($text, $tag = 'body')
     {
-        $this->assertNotContains($text, $this->byTag($tag)->text());
+        $this->assertNotContains($text, $this->getTextByTag($tag));
     }
 
     /**
@@ -86,7 +94,7 @@ trait InteractWithPage
      */
     protected function dontSee($text, $tag = 'body')
     {
-        $this->assertNotContains($text, $this->byTag($tag)->text());
+        $this->assertNotContains($text, $this->getTextByTag($tag));
     }
 
     /**
@@ -103,8 +111,14 @@ trait InteractWithPage
         return $this;
     }
 
+    public function getTextByTag($tag)
+    {
+         return $this->wd->findElement(WebDriverBy::tagName($tag))->getText();
+    }
+
     /**
-     * Type a value into a form input by that inputs name.
+     * Type a value into a form input by that input name.
+     * Note: Type is an alias of typeBySelectorType
      *
      * @param $value
      * @param $name
@@ -112,7 +126,7 @@ trait InteractWithPage
      *
      * @return $this
      */
-    protected function type($value, $name, $clear = false)
+    public function type($value, $name, $clear = false)
     {
         $element = $this->findElement($name);
 
@@ -120,7 +134,7 @@ trait InteractWithPage
             $element->clear();
         }
 
-        $element->value($value);
+        $element->sendKeys($value);
 
         return $this;
     }
@@ -134,19 +148,17 @@ trait InteractWithPage
      * @param bool $clear - Whether or not to clear the input first on say an edit form
      *
      * @return $this
+     * @throws CannotFindElement
      */
     private function typeBySelectorType($type, $value, $name, $clear = false)
     {
-        try {
-            $element = $this->{'by'.$type}($name);
-            if ($clear) {
-                $element->clear();
-            }
+        $element = $this->wd->findElement(WebDriverBy::{$type}($name));
 
-            $element->value($value);
-        } catch (\Exception $e) {
-            throw new CannotFindElement('Could not find element with '.$type.' of '.$name);
+        if ($clear) {
+            $element->clear();
         }
+
+        $element->sendKeys($value);
 
         return $this;
     }
@@ -154,15 +166,15 @@ trait InteractWithPage
     /**
      * Type a value into a form input by that inputs name.
      *
-     * @param $value
      * @param $name
+     * @param $value
      * @param bool $clear Whether or not to clear the input first on say an edit form
      *
      * @return $this
      */
-    protected function typeByName($value, $name, $clear = false)
+    protected function typeByName($name, $value, $clear = false)
     {
-        return $this->typeBySelectorType('Name', $value, $name, $clear);
+        return $this->typeBySelectorType('name', $value, $name, $clear);
     }
 
     /**
@@ -176,7 +188,7 @@ trait InteractWithPage
      */
     protected function typeById($value, $name, $clear = false)
     {
-        return $this->typeBySelectorType('Id', $value, $name, $clear);
+        return $this->typeBySelectorType('id', $value, $name, $clear);
     }
 
     /**
@@ -190,7 +202,7 @@ trait InteractWithPage
      */
     protected function typeByCssSelector($value, $name, $clear = false)
     {
-        return $this->typeBySelectorType('CssSelector', $value, $name, $clear);
+        return $this->typeBySelectorType('cssSelector', $value, $name, $clear);
     }
 
     /**
@@ -211,9 +223,9 @@ trait InteractWithPage
         return $this;
     }
 
-    protected function submitForm($selector, $inputs, $clear = false)
+    protected function submitForm($inputs, $selector, $clear = false)
     {
-        $form = $this->byCssSelector($selector);
+        $form = $this->wd->findElement(WebDriverBy::cssSelector($selector));
         $this->typeInformation($inputs, $clear);
         $form->submit();
 
@@ -229,7 +241,7 @@ trait InteractWithPage
      */
     protected function press($text)
     {
-        $this->findElement($text, "//button[contains(., '{$text}')]")->click();
+        $this->wd->findElement(WebDriverBy::xpath("//button[contains(., '{$text}')]"))->click();
 
         return $this;
     }
@@ -245,7 +257,7 @@ trait InteractWithPage
      */
     protected function click($textOrId)
     {
-        $element = $this->findElement($textOrId, "//a[contains(., '{$textOrId}')]");
+        $element = $this->wd->findElement(WebDriverBy::xpath("//a[contains(., '{$textOrId}')]"));
 
         try {
             $element->click();
@@ -260,36 +272,29 @@ trait InteractWithPage
      * Will attempt to find an element by different patterns
      * If xpath is provided, will attempt to find by that first.
      *
-     * @param $value
-     * @param null $xpath
+     * @param null $name
+     * @return \Facebook\WebDriver\Remote\RemoteWebElement
      *
      * @throws CannotFindElement
-     *
-     * @return \PHPUnit_Extensions_Selenium2TestCase_Element
      */
-    protected function findElement($value, $xpath = null)
+    protected function findElement($name)
     {
-        try {
-            if (!is_null($xpath)) {
-                return $this->byXPath($xpath);
-            }
-        } catch (\Exception $e) {
-        }
 
         try {
-            return $this->byId($value);
-        } catch (\Exception $e) {
-        }
+            return $this->wd->findElement(WebDriverBy::id($name));
+        } catch (\Exception $e) { }
 
         try {
-            return $this->byName($value);
-        } catch (\Exception $e) {
-        }
+            return $this->wd->findElement(WebDriverBy::name($name));
+        } catch (\Exception $e) { }
 
         try {
-            return $this->byCssSelector($value);
-        } catch (\Exception $e) {
-        }
+            return $this->wd->findElement(WebDriverBy::cssSelector($name));
+        } catch (\Exception $e) { }
+
+        try {
+            return $this->wd->findElement(WebDriverBy::xpath($name));
+        } catch (\Exception $e) { }
 
         throw new CannotFindElement('Cannot find element: '.$value.' isn\'t visible on the page');
     }
