@@ -3,8 +3,9 @@
 namespace Modelizer\Selenium\Console;
 
 use Illuminate\Foundation\Console\ServeCommand;
+use Orchestra\Testbench\Console\Kernel as OrchestraKernel;
 
-class Kernel extends \Orchestra\Testbench\Console\Kernel
+class Kernel extends OrchestraKernel
 {
     /**
      * The Artisan commands provided by your application.
@@ -14,6 +15,6 @@ class Kernel extends \Orchestra\Testbench\Console\Kernel
     protected $commands = [
         BootSelenium::class,
         GetWebDriver::class,
-        ServeCommand::class,
+        ServeCommand::class
     ];
 }

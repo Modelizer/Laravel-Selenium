@@ -26,6 +26,11 @@ return [
     /*
     |--------------------------------------------------------------------------
     | Web Drivers
+    | Note: filename denote when url is been complete after extracting then it
+    | find the filename given below and rename it as per operating system and
+    | and driver name. Example file would become now mac-chrome and in windows
+    | win-chrome.exe
+    | Special execution permission will be given for windows file.
     |--------------------------------------------------------------------------
     */
     'web-drivers' => [
@@ -46,7 +51,24 @@ return [
                 'filename' => 'chromedriver',
             ],
         ],
-        'firefox' => [],
+        'firefox' => [
+            'mac' => [
+                'version'  => 'v0.20.0',
+                'url'      => 'https://github.com/mozilla/geckodriver/releases/download/v0.20.0/geckodriver-v0.20.0-macos.tar.gz',
+                'filename' => 'geckodriver'
+            ],
+
+            'win' => [
+                'version'  => 'v0.20.0',
+                'url'      => 'https://github.com/mozilla/geckodriver/releases/download/v0.20.0/geckodriver-v0.20.0-win32.zip',
+                'filename' => 'geckodriver.exe'
+            ],
+            'linux' => [
+                'version'  => 'v0.20.0',
+                'url'      => 'https://github.com/mozilla/geckodriver/releases/download/v0.20.0/geckodriver-v0.20.0-linux32.tar.gz',
+                'filename' => 'geckodriver'
+            ]
+        ],
     ],
 
     /*

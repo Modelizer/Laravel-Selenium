@@ -295,4 +295,29 @@ trait InteractWithPage
 
         throw new CannotFindElement('Cannot find element: '.$value.' isn\'t visible on the page');
     }
+
+    /**
+     * Force selenium to wait.
+     *
+     * @param int|float $seconds The number of seconds or partial seconds to wait
+     *
+     * @return $this
+     */
+    protected function wait($seconds = 1)
+    {
+        usleep($seconds * 1000000);
+
+        return $this;
+    }
+
+    /**
+     * Alias for wait.
+     *
+     * @param int $seconds
+     * @return TestCase
+     */
+    protected function hold($seconds = 1)
+    {
+        return $this->wait($seconds);
+    }
 }

@@ -4,9 +4,12 @@ namespace Modelizer\Selenium\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Console\GeneratorCommand;
+use Modelizer\Selenium\Traits\WebDriverUtilsTrait;
 
 class MakeSeleniumTestCommand extends GeneratorCommand
 {
+    use WebDriverUtilsTrait;
+
     /**
      * The console command name.
      *
@@ -35,7 +38,7 @@ class MakeSeleniumTestCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__.'/stubs/test.stub';
+        return self::prependPackagePath('stubs/test.stub');
     }
 
     /**
@@ -50,17 +53,5 @@ class MakeSeleniumTestCommand extends GeneratorCommand
         $name = str_replace($this->laravel->getNamespace(), '', $name);
 
         return $this->laravel['path.base'].'/tests/'.str_replace('\\', '/', $name).'.php';
-    }
-
-    /**
-     * Get the default namespace for the class.
-     *
-     * @param string $rootNamespace
-     *
-     * @return string
-     */
-    protected function getDefaultNamespace($rootNamespace)
-    {
-        return $rootNamespace;
     }
 }

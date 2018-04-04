@@ -12,11 +12,22 @@ class BootSelenium extends Command
     use WebDriverUtilsTrait;
 
     /**
+     * DWebDriver name to be use
+     * @var array
+     */
+    protected $dWebDriver = [
+        'chrome'  => 'chrome',
+        'firefox' => 'gecko',
+        'edge'    => 'edge'
+    ];
+
+    /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'selenium:start {driver=chrome}';
+    protected $signature = 'selenium:start {driver=chrome : (chrome|firefox) Driver version} '.
+        '{serverVersion=3.11.0 : Selenium Server Version} ';
 
     /**
      * The console command description.
@@ -30,15 +41,29 @@ class BootSelenium extends Command
      */
     public function handle()
     {
-        $cmd = implode([
-            'java',
-            $this->getWebDriver(env('DEFAULT_BROWSER', $this->argument('driver'))),
-            '-jar',
-            $this->getSeleniumServerQualifiedName(),
-        ], ' ');
+        $cmd = collect(array_merge($this->getSeleniumDefaultCommand(), $this->getArguments()))
+            ->except('driver', 'serverVersion')
+            ->implode(' ');
+
+        $this->info('Starting Selenium server v'.$this->argument('serverVersion'));
 
         echo shell_exec($cmd.' '.$this->getSeleniumOptions());
     }
+
+    /**
+     * Get the default commands which are require to boot selenium server
+     * @return array
+     */
+    public function getSeleniumDefaultCommand()
+    {
+         return [
+             'java',
+             $this->getWebDriver(env('DEFAULT_BROWSER', $this->argument('driver'))),
+             '-jar '.$this->getSeleniumServerQualifiedName(),
+             '-enablePassThrough false',
+         ];
+    }
+
 
     /**
      * Get selenium server qualified location.
@@ -52,7 +77,7 @@ class BootSelenium extends Command
         $files = opendir($binDirectory = static::prependPackagePath('vendor/bin'));
 
         while (false !== ($file = readdir($files))) {
-            if (str_contains($file, 'selenium')) {
+            if (str_contains($file, 'selenium') && str_contains($file, $this->argument('serverVersion'))) {
                 return $binDirectory.DIRECTORY_SEPARATOR.$file;
             }
         }
@@ -69,7 +94,7 @@ class BootSelenium extends Command
     {
         $this->info('Downloading Selenium server file. Please wait...');
 
-        $process = new Process(base_path('vendor/bin/steward install'));
+        $process = new Process(base_path('vendor/bin/steward install '.$this->argument('serverVersion')));
         $process->setTimeout(0);
 
         $process->run();
@@ -102,7 +127,7 @@ class BootSelenium extends Command
             ]);
         }
 
-        return "-Dwebdriver.$driverName.driver={$driver}";
+        return "-Dwebdriver.{$this->dWebDriver[$driverName]}.driver={$driver}";
     }
 
     protected function getSeleniumOptions()

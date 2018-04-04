@@ -1,8 +1,10 @@
 <?php
 
-namespace Modelizer\Selenium\Tests;
+namespace Modelizer\Selenium\Tests\Feature;
 
-class InteractionTest extends TestCase
+use Modelizer\Selenium\SeleniumTestCase;
+
+class InteractionTest extends SeleniumTestCase
 {
     /** @test */
     function it_should_visit_page()

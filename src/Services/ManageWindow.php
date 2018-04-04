@@ -2,25 +2,26 @@
 
 namespace Modelizer\Selenium\Services;
 
+use Facebook\WebDriver\Remote\RemoteWebDriver;
+use Facebook\WebDriver\WebDriverPoint;
+
 trait ManageWindow
 {
+    /**
+     * @var RemoteWebDriver
+     */
+    public $wd;
+
     /**
      * Change the current window's width and height.
      *
      * @param int $width
      * @param int $height
-     *
      * @return $this
      */
-    public function changeWindowSize($width = 1024, $height = 768)
+    public function changeWindowSize(int $width = 1024, int $height = 768)
     {
-        if (!empty($width) && !empty($height) &&
-            is_int(intval($width)) && is_int(intval($height))) {
-            $this->prepareSession()->currentWindow()->size([
-                'width'  => intval($width),
-                'height' => intval($height),
-            ]);
-        }
+        $this->wd->manage()->window()->setPosition(new WebDriverPoint($width, $height));
 
         return $this;
     }
@@ -28,15 +29,14 @@ trait ManageWindow
     /**
      * Set the current window's width.
      *
-     * @param int $width
-     *
-     * @return $this
+     * @param $width
+     * @return \Facebook\WebDriver\WebDriverWindow
      */
     public function setWidth($width)
     {
-        $this->width = $width;
-
-        return $this->changeWindowSize($this->width, $this->height);
+        return $this->wd->manage()
+            ->window()
+            ->setPosition(new WebDriverPoint($width, self::BROWSER_HEIGHT));
     }
 
     /**
@@ -48,8 +48,6 @@ trait ManageWindow
      */
     public function setHeight($height)
     {
-        $this->height = $height;
-
-        return $this->changeWindowSize($this->width, $this->height);
+        return $this->changeWindowSize(self::BROWSER_WIDTH, $height);
     }
 }

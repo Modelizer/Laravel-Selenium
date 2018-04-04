@@ -2,81 +2,96 @@
 
 namespace Modelizer\Selenium;
 
+use Illuminate\Foundation\Bootstrap\LoadEnvironmentVariables;
+use Illuminate\Foundation\Testing\Concerns\InteractsWithAuthentication;
+use Illuminate\Foundation\Testing\Concerns\InteractsWithConsole;
+use Illuminate\Foundation\Testing\Concerns\InteractsWithContainer;
+use Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase;
+use Illuminate\Foundation\Testing\Concerns\InteractsWithExceptionHandling;
+use Illuminate\Foundation\Testing\Concerns\InteractsWithSession;
+use Illuminate\Foundation\Testing\Concerns\MakesHttpRequests;
+use Illuminate\Foundation\Testing\Concerns\MocksApplicationServices;
 use Lmc\Steward\Test\AbstractTestCase;
-use Modelizer\Selenium\Services\Application as Laravel;
-use Modelizer\Selenium\Services\InteractWithPage as Interaction;
-use Modelizer\Selenium\Services\ManageWindow;
-use Modelizer\Selenium\Services\WaitForElement;
-use Modelizer\Selenium\Services\WorkWithDatabase;
+use Modelizer\Selenium\Services\InteractWithPage;
+use Orchestra\Testbench\Concerns\Testing;
+use Orchestra\Testbench\Contracts\TestCase as OrchestraTestCaseContract;
 
-class SeleniumTestCase extends AbstractTestCase
+abstract class SeleniumTestCase extends AbstractTestCase implements OrchestraTestCaseContract
 {
-    use Laravel,
-        Interaction,
-        WorkWithDatabase,
-        WaitForElement,
-        ManageWindow;
+    use Testing,
+        InteractsWithAuthentication,
+        InteractsWithConsole,
+        InteractsWithContainer,
+        InteractsWithDatabase,
+        InteractsWithExceptionHandling,
+        InteractsWithSession,
+        MakesHttpRequests,
+        MocksApplicationServices,
+        InteractWithPage;
 
     /**
+     * The base URL to use while testing the application.
+     *
      * @var string
      */
-    protected $baseUrl;
+    protected $baseUrl = 'http://localhost';
 
     /**
-     * @var int
+     * Setup the test environment.
+     *
+     * @return void
      */
-    protected $width;
-
-    /**
-     * @var int
-     */
-    protected $height;
-
-    public function setUp()
+    public function setUp(): void
     {
-        $this->setUpLaravel();
-        $this->baseUrl = env('APP_URL', 'http://localhost/');
-        $this->wd->get($this->baseUrl);
+        $this->setUpTheTestEnvironment();
 
-        $this->setBrowser(env('DEFAULT_BROWSER', 'chrome'));
-    }
+        $this->baseUrl = env('APP_URL', $this->baseUrl);
 
-    public function setupPage()
-    {
-        if (empty($this->width)) {
-            $this->width = env('SELENIUM_WIDTH', 1024);
-        }
-
-        if (empty($this->height)) {
-            $this->height = env('SELENIUM_HEIGHT', 768);
-        }
-
-        $this->changeWindowSize($this->width, $this->height);
+        parent::setUp();
     }
 
     /**
-     * Force selenium to wait.
+     * Clean up the testing environment before the next test.
      *
-     * @param int|float $seconds The number of seconds or partial seconds to wait
-     *
-     * @return $this
+     * @return void
      */
-    protected function wait($seconds = 1)
+    protected function tearDown()
     {
-        usleep($seconds * 1000000);
-
-        return $this;
+        $this->tearDownTheTestEnvironment();
     }
 
     /**
-     * Alias for wait.
+     * Boot the testing helper traits.
      *
-     * @param int $seconds
-     *
-     * @return SeleniumTestCase
+     * @return array
      */
-    public function hold($seconds = 1)
+    protected function setUpTraits()
     {
-        return $this->wait($seconds);
+        return $this->setUpTheTestEnvironmentTraits();
+    }
+
+    /**
+     * Refresh the application instance.
+     *
+     * @return void
+     */
+    protected function refreshApplication()
+    {
+        $this->app = $this->createApplication();
+    }
+
+    /**
+     * Define environment setup.
+     *
+     * @param \Illuminate\Foundation\Application $app
+     *
+     * @return void
+     */
+    protected function getEnvironmentSetUp($app)
+    {
+        putenv('APP_ENV=testing');
+        $app->useEnvironmentPath(__DIR__.'/..');
+        $app->loadEnvironmentFrom('testing.env');
+        $app->bootstrapWith([LoadEnvironmentVariables::class]);
     }
 }

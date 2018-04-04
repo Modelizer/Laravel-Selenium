@@ -8,12 +8,16 @@
             "email": "hello@mudasir.me"
         }
     ],
+    "collaborators": [
+        {
+            "name": "John Hoopes",
+            "email": "john.hoopes@madisoncreativeweb.com"
+        }
+    ],
     "require": {
         "php": ">=7.1",
         "lmc/steward": "dev-master",
-        "guzzlehttp/guzzle": "^6.2"
-    },
-    "require-dev": {
+        "guzzlehttp/guzzle": "^6.2",
         "orchestra/testbench": "^3.3"
     },
     "autoload": {
@@ -23,7 +27,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Modelizer\\Selenium\\Tests\\" : "tests"
+            "Modelizer\\Selenium\\Tests\\" : "tests/"
         }
     },
     "extra": {

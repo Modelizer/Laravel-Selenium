@@ -2,9 +2,9 @@
 
 namespace Modelizer\Selenium\Tests\Feature;
 
-use Modelizer\Selenium\Tests\TestCase;
+use Modelizer\Selenium\SeleniumTestCase;
 
-class FormTest extends TestCase
+class FormTest extends SeleniumTestCase
 {
     /** @test */
     function it_should_fill_input_fields()
@@ -12,18 +12,18 @@ class FormTest extends TestCase
         $this->visit()
             ->click('Form')
             ->see('Form Test')
-            ->type('John', 'firstName')
-            ->type('Hoopes', 'lastName')
-            ->typeById('john.hoopes@madisoncreativeweb.com', 'inputEmail');
+            ->type('Mohammed', 'firstName')
+            ->type('Mudassir', 'lastName')
+            ->typeById('hello@mudasir.me', 'inputEmail');
     }
 
     /** @test */
     function it_should_type_information()
     {
         $formInfo = [
-            'firstName'  => 'John',
-            'lastName'   => 'Hoopes',
-            'inputEmail' => 'john.hoopes@madisoncreativeweb.com',
+            'firstName'  => 'Mohammed',
+            'lastName'   => 'Mudassir',
+            'inputEmail' => 'hello@mudasir.me',
         ];
 
         $this->visit()
@@ -61,9 +61,9 @@ class FormTest extends TestCase
     function it_should_type_information_and_press_a_button()
     {
         $formInfo = [
-            'firstName'  => 'John',
-            'lastName'   => 'Hoopes',
-            'inputEmail-name' => 'john.hoopes@madisoncreativeweb.com',
+            'firstName'  => 'Mohammed',
+            'lastName'   => 'Mudassir',
+            'inputEmail-name' => 'hello@mudasir.me',
         ];
 
         $this->visit()
@@ -78,9 +78,9 @@ class FormTest extends TestCase
     function it_should_submit_form()
     {
         $formInfo = [
-            'firstName'  => 'John',
-            'lastName'   => 'Hoopes',
-            'inputEmail-name' => 'john.hoopes@madisoncreativeweb.com',
+            'firstName'  => 'Mohammed',
+            'lastName'   => 'Mudassir',
+            'inputEmail-name' => 'hello@mudasir.me',
         ];
 
         $this->visit()
