@@ -62,7 +62,7 @@ class BootSelenium extends Command
         return [
              'java',
              $this->getWebDriver(env('DEFAULT_BROWSER', $this->argument('driver'))),
-             '-jar '.$this->getSeleniumServerQualifiedName()
+             '-jar '.$this->getSeleniumServerQualifiedName(),
          ];
     }
 
