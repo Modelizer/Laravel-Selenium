@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Facade;
-
 require __DIR__.'/../vendor/autoload.php';
 
 /*
@@ -63,7 +61,7 @@ $app->instance('config', new Illuminate\Config\Repository($config));
 |--------------------------------------------------------------------------
 */
 $app->singleton('files', function () {
-    return new Illuminate\Filesystem\Filesystem;
+    return new Illuminate\Filesystem\Filesystem();
 });
 
 /*
@@ -71,14 +69,14 @@ $app->singleton('files', function () {
 | Enabling Facade
 |--------------------------------------------------------------------------
 */
-Facade::setFacadeApplication($app);
+Illuminate\Support\Facades\Facade::setFacadeApplication($app);
 
 /*
 |--------------------------------------------------------------------------
 | Setting basic routes
 |--------------------------------------------------------------------------
 */
-app('router')->get('/{page?}', function($page = 'index') {
+app('router')->get('/{page?}', function ($page = 'index') {
     return view($page);
 });
 

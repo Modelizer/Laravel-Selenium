@@ -47,9 +47,10 @@ trait WebDriverUtilsTrait
 
     /**
      * @param string|null $key
+     *
      * @return string
      */
-    abstract function argument($key = null);
+    abstract public function argument($key = null);
 
     /**
      * Get driver.
@@ -102,7 +103,7 @@ trait WebDriverUtilsTrait
     }
 
     /**
-     * Get web driver file name with extension
+     * Get web driver file name with extension.
      *
      * @return string
      */
@@ -112,7 +113,7 @@ trait WebDriverUtilsTrait
     }
 
     /**
-     * Get web driver file extension
+     * Get web driver file extension.
      *
      * @return string
      */

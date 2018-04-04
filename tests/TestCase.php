@@ -83,7 +83,7 @@ abstract class TestCase extends AbstractTestCase implements OrchestraTestCaseCon
     /**
      * Define environment setup.
      *
-     * @param  \Illuminate\Foundation\Application   $app
+     * @param \Illuminate\Foundation\Application $app
      *
      * @return void
      */

@@ -61,7 +61,7 @@ class BootSelenium extends Command
     }
 
     /**
-     * Download and get the file name of selenium server
+     * Download and get the file name of selenium server.
      *
      * @return string selenium server file directory
      */

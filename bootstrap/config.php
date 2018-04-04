@@ -17,10 +17,10 @@ return [
         'public' => base_path('stubs/public'),
 
         'paths' => [
-            base_path('stubs/views')
+            base_path('stubs/views'),
         ],
 
-        'compiled' => storage_path('views')
+        'compiled' => storage_path('views'),
     ],
 
     /*
@@ -55,13 +55,13 @@ return [
     |--------------------------------------------------------------------------
     */
     'logging' => [
-        'default' => 'single',
+        'default'  => 'single',
         'channels' => [
             'single' => [
                 'driver' => 'single',
-                'path' => storage_path('logs/selenium.log'),
-                'level' => 'debug',
+                'path'   => storage_path('logs/selenium.log'),
+                'level'  => 'debug',
             ],
         ],
-    ]
+    ],
 ];
