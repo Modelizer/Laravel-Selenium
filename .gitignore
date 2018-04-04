@@ -3,4 +3,5 @@ vendor
 build
 logs/*
 storage/logs/*
-storage/view/*
+storage/views/*
+storage/tests/*
