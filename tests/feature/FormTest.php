@@ -7,7 +7,7 @@ use Modelizer\Selenium\Tests\TestCase;
 class FormTest extends TestCase
 {
     /** @test */
-    public function it_should_fill_input_fields()
+    function it_should_fill_input_fields()
     {
         $this->visit()
             ->click('Form')
@@ -18,7 +18,7 @@ class FormTest extends TestCase
     }
 
     /** @test */
-    public function it_should_type_information()
+    function it_should_type_information()
     {
         $formInfo = [
             'firstName'  => 'John',
@@ -33,7 +33,7 @@ class FormTest extends TestCase
     }
 
     /** @test */
-    public function it_should_type_email_by_name()
+    function it_should_type_email_by_name()
     {
         $this->visit()
             ->click('Form')
@@ -41,7 +41,7 @@ class FormTest extends TestCase
     }
 
     /** @test */
-    public function it_should_type_email_by_id()
+    function it_should_type_email_by_id()
     {
         $this->visit()
             ->click('Form')
@@ -49,7 +49,7 @@ class FormTest extends TestCase
     }
 
     /** @test */
-    public function it_should_type_by_css_selector()
+    function it_should_type_by_css_selector()
     {
         $this->visit()
             ->click('Form')
@@ -58,7 +58,7 @@ class FormTest extends TestCase
     }
 
     /** @test */
-    public function it_should_type_information_and_press_a_button()
+    function it_should_type_information_and_press_a_button()
     {
         $formInfo = [
             'firstName'  => 'John',
@@ -75,7 +75,7 @@ class FormTest extends TestCase
     }
 
     /** @test */
-    public function it_should_submit_form()
+    function it_should_submit_form()
     {
         $formInfo = [
             'firstName'  => 'John',

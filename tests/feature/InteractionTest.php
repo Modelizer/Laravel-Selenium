@@ -4,39 +4,45 @@ namespace Modelizer\Selenium\Tests;
 
 class InteractionTest extends TestCase
 {
-    public function testVisitPages()
+    /** @test */
+    function it_should_visit_page()
     {
-        $this->visit('/tests/html/main.html');
+        $this->visit();
     }
 
-    public function testSeePageIs()
+    /** @test */
+    function it_should_see_page_url()
     {
-        $this->visit('/tests/html/main.html')
-            ->seePageIs('/tests/html/main.html');
+        $this->visit('/about')
+            ->seePageIs('/about');
     }
 
-    public function testSee()
+    /** @test */
+    function it_should_see_text_on_page()
     {
-        $this->visit('/tests/html/main.html')
+        $this->visit()
             ->see('Laravel Selenium Test Helper');
     }
 
-    public function testNotSee()
+    /** @test */
+    function check_text_not_exists_on_page()
     {
-        $this->visit('/tests/html/main.html');
-        $this->notSee('Bootstrap');
+        $this->visit()
+            ->notSee('Bootstrap');
     }
 
-    public function testCanClickLinks()
+    /** @test */
+    function it_should_click_link()
     {
-        $this->visit('/tests/html/main.html')
+        $this->visit()
             ->click('Contact Us')
             ->see('Contact Us');
     }
 
-    public function testCanScrollPage()
+    /** @test */
+    function it_should_scroll()
     {
-        $this->visit('/tests/html/main.html')
+        $this->visit()
             ->click('About')
             ->see('About this project')
             ->scroll(500)

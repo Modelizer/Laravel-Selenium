@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Facade;
-use Illuminate\View\Factory;
-use Illuminate\View\View;
 
 require __DIR__.'/../vendor/autoload.php';
 
@@ -70,7 +68,7 @@ $app->singleton('files', function () {
 
 /*
 |--------------------------------------------------------------------------
-| Enabling facades
+| Enabling Facade
 |--------------------------------------------------------------------------
 */
 Facade::setFacadeApplication($app);

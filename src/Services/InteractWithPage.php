@@ -37,10 +37,7 @@ trait InteractWithPage
      */
     protected function scroll($amount)
     {
-        $this->wd->execute([
-            'script' => 'window.scrollBy(0, '.$amount.')',
-            'args'   => [],
-        ]);
+        $this->wd->executeScript("window.scrollBy(0, {$amount})");
 
         return $this;
     }
@@ -106,7 +103,7 @@ trait InteractWithPage
      */
     protected function seePageIs($path)
     {
-        $this->assertEquals($this->baseUrl.$path, $this->url());
+        $this->assertEquals($this->wd->getCurrentURL(), $this->baseUrl.$path);
 
         return $this;
     }

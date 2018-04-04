@@ -44,6 +44,7 @@ abstract class TestCase extends AbstractTestCase implements OrchestraTestCaseCon
     public function setUp(): void
     {
         $this->setUpTheTestEnvironment();
+
         $this->baseUrl = env('APP_URL', $this->baseUrl);
 
         parent::setUp();
@@ -90,7 +91,6 @@ abstract class TestCase extends AbstractTestCase implements OrchestraTestCaseCon
     {
         putenv('APP_ENV=testing');
         $app->useEnvironmentPath(__DIR__.'/..');
-        $app->loadEnvironmentFrom('.env');
         $app->loadEnvironmentFrom('testing.env');
         $app->bootstrapWith([LoadEnvironmentVariables::class]);
     }
