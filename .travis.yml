@@ -4,11 +4,11 @@ php:
   - '7.1'
 
 before_script:
-  composer install
+  - composer install
 
 script:
-  composer dump -o
-  vendor/bin/steward run staging chrome --server-url http://SAUCE_USERNAME:SAUCE_ACCESS_KEY@ondemand.saucelabs.com/wd/hub
+  - composer dump -o
+  - vendor/bin/steward run staging chrome --server-url http://SAUCE_USERNAME:SAUCE_ACCESS_KEY@ondemand.saucelabs.com/wd/hub
 
 addons:
   sauce_connect:
