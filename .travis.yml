@@ -3,13 +3,6 @@ language: php
 php:
   - '7.1'
 
-before_script:
-  - composer install
-
-script:
-  - composer dump -o
-  - vendor/bin/steward run staging chrome --server-url http://${SAUCE_USERNAME}:${SAUCE_ACCESS_KEY}@ondemand.saucelabs.com/wd/hub
-
 addons:
   sauce_connect:
     username: $SAUCE_USERNAME
@@ -18,3 +11,12 @@ addons:
 cache:
   directories:
     - $HOME/.composer/cache
+
+before_script:
+  - composer install
+
+script:
+  - composer dump -o
+  - php artisan serve &
+  - vendor/bin/steward run staging chrome --server-url http://${SAUCE_USERNAME}:${SAUCE_ACCESS_KEY}@ondemand.saucelabs.com/wd/hub -vvv
+
