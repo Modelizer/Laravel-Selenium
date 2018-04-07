@@ -13,34 +13,35 @@
 
 ## Key Points:
 1. You don't need to download anything except this package.
-2. This package includes the selenium standalone server, chrome driver will be downloaded based on operating system and a fluid API.
+2. This package download the selenium standalone server v3.11.0 by default and chrome driver will be downloaded based on operating system.
+3. Fluit API based on [Browser Testing Kit](https://github.com/laravel/browser-kit-testing)
 3. Has a minimum configuration option and many things are pulled from the Laravel default configuration.
 
 ## Requirements:
 1. Java should be installed on local machine.
 2. You should have at least basic understanding of PHPUnit.
 
+
 ## Installation guide:
-If you are familiar with [Laravel Package Manager](https://github.com/Qafeen/Manager) then you can install it easily by running given command <b>⇩</b> and Manager will take care to register your service provider.
+Installing with [Laravel Package Manager](https://github.com/Qafeen/Manager) then you can install it by running given command <b>⇩</b> and Manager will take care to register selenium service provider.
 ```php 
 php artisan add modelizer/selenium
 ``` 
 
 Or you can do it by composer.
 ```php
-composer require modelizer/selenium "~1.0"
+composer require modelizer/selenium "~2.0"
 ```
 
-Register Service provider in `app.php`
+Register service provider in `app.php`
 ```php
 Modelizer\Selenium\SeleniumServiceProvider::class
 ```
 
-Set configuration to your .env file. (As per your preference)
-```php
-APP_URL="http://example.dev/"   # If not set in .env file then http://localhost will be use as default
-SELENIUM_WIDTH=1024 # If not set in the .env file, the default window width will be used
-SELENIUM_HEIGHT=768 # If not set in the .env file, then the default window height will be used
+Working with environment variables:
+You need to create sperate file `testing.env` in root directory to load testing specific variable. example
+```
+APP_URL=http://testing.dev:8000
 ```
 
 Don't forget to clear laravel configuration cache file.
@@ -53,17 +54,7 @@ We are done! Lets start the selenium server.
 php artisan selenium:start
 ```
 
-## Working with testing database:
-
-If you want to use different database for testing then you need to add `TestingMiddleware` to `App/Http/Kernel.php` in `protected $middleware` array;
-```php
-\Modelizer\Selenium\TestingMiddleware::class
-```
-Also, make sure in your `config/database.php` file you create `testing` connection. 
-
-To make it work properly you need to set `APP_ENV` to `testing`. To know why we need to do this you can check out [issue#29](https://github.com/Modelizer/Laravel-Selenium/issues/29)
-
-## Start Testing:
+## Create first test:
 
 Via an Artisan command
 
@@ -115,10 +106,14 @@ class SeleniumExampleTest extends SeleniumTestCase
 }
 ```
 
-## Api Added in 0.2 release:
-1. `scroll`, `notSee`, `seePageIs`, `type`, `typeInformation`, `press`, `click`, `findElement` and much more.
-2. Some database related APIs are `seeInDatabase` and `missingFromDatabase`, `dontSeeInDatabase`
-3. For full documentation you can checkout our [API wiki](https://github.com/Modelizer/Laravel-Selenium/wiki/APIs).
+## Run the test cases
+```php
+vendor/bin/steward run staging chrome
+```
+
+This package is been build on top of [Steward](https://github.com/lmc-eu/steward/) for running test case with specific arguments you can check out [Steward's Wiki](https://github.com/lmc-eu/steward/wiki/Run-only-specified-tests)
+
+For full documentation you can checkout our [API wiki](https://github.com/Modelizer/Laravel-Selenium/wiki/APIs). Which internally inherit [facebook Web Driver](https://github.com/facebook/php-webdriver) so you can liverage full functionality of these dependency packages.
 
 ## Selenium Server Options:
 You can also tell selenium server which port needs to be used or what will be the timeout. For more details check out [wiki](https://github.com/Modelizer/Selenium/wiki/Selenium-Options).
@@ -127,7 +122,7 @@ You can also tell selenium server which port needs to be used or what will be th
 1. Selenium 2.53.1 and ChromeDriver 2.24 is been used.
 2. Feel free to contribute or create an issue.
 3. The user will not be able to swap between PHPUnit and Selenium who are below Laravel 5.3.
-4. We made changelog as [wiki](https://github.com/Modelizer/Selenium/wiki/change-log).
+4. We made changelog as [release board](https://github.com/Modelizer/Laravel-Selenium/releases) and [wiki](https://github.com/Modelizer/Selenium/wiki/change-log).
 5. If a virtual machine is being used such as VirtualBox (Vagrant, Homestead), a framebuffer is needed:
 
  ```bash
@@ -146,6 +141,9 @@ You can also tell selenium server which port needs to be used or what will be th
 2. ~~Windows and Linux support needs to be added.~~
 3. ~~Drivers files should get downloaded as per user-specific operating system.~~
 4. Add more support for more API.
+5. Support for multiple browser.
+6. Behat integration if possible (research)
+7. Support for 3rd party services such as saucelab.
 
 ## Summary:
 Many APIs such as `see`, `wait`, `submitForm` etc are been implemented in Laravel 5.3, and the whole goal of this package is to make it easier for the user to swap testing type anytime.
@@ -153,7 +151,10 @@ Eg: If a user wants to test by selenium then he only need to extend `Modelizer\S
 
 
 <a name="Contribution"></a>
-## Contribution
+## Contribution:
+1. If you like this package you can give it a star.
+2. Help to keep readme up to date with some functionality which exist in this package but not visible to other.
+3. Feel free to create PR or Issues or suggestion which can help this package to grow.
 Just do it. You are welcome :)
 
 
