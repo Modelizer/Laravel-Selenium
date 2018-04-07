@@ -89,7 +89,7 @@ abstract class SeleniumTestCase extends AbstractTestCase implements OrchestraTes
      */
     protected function getEnvironmentSetUp($app)
     {
-        $envPath =  file_exists(base_path('vendor/autoload.php')) ? base_path() : __DIR__.'/..';
+        $envPath = file_exists(base_path('vendor/autoload.php')) ? base_path() : __DIR__.'/..';
 
         putenv('APP_ENV=testing');
         $app->useEnvironmentPath($envPath);
