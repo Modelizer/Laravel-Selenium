@@ -17,6 +17,12 @@
 3. Fluit API based on [Browser Testing Kit](https://github.com/laravel/browser-kit-testing)
 3. Has a minimum configuration option and many things are pulled from the Laravel default configuration.
 
+| Version      | Package Version |
+| ------------ | --------------- |
+| Laravel 5.6  | 2.0             |
+| Laravel 5.*  | 1.0             |
+| PHP 7.1      | 2.0             |
+
 ## Requirements:
 1. Java should be installed on local machine.
 2. You should have at least basic understanding of PHPUnit.
@@ -115,11 +121,8 @@ This package is been build on top of [Steward](https://github.com/lmc-eu/steward
 
 For full documentation you can checkout our [API wiki](https://github.com/Modelizer/Laravel-Selenium/wiki/APIs). Which internally inherit [facebook Web Driver](https://github.com/facebook/php-webdriver) so you can liverage full functionality of these dependency packages.
 
-## Selenium Server Options:
-You can also tell selenium server which port needs to be used or what will be the timeout. For more details check out [wiki](https://github.com/Modelizer/Selenium/wiki/Selenium-Options).
-
 ## Notes:
-1. Selenium 2.53.1 and ChromeDriver 2.24 is been used.
+1. Selenium 3.11.0 and ChromeDriver 2.35 is been used.
 2. Feel free to contribute or create an issue.
 3. The user will not be able to swap between PHPUnit and Selenium who are below Laravel 5.3.
 4. We made changelog as [release board](https://github.com/Modelizer/Laravel-Selenium/releases) and [wiki](https://github.com/Modelizer/Selenium/wiki/change-log).
@@ -161,6 +164,6 @@ Just do it. You are welcome :)
 <a name="Credits"></a>
 ## Credits
 
-| Contributors           | Twitter   | Ask for Help | Contact / Hire  | Site            |
-|------------------------|---------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|-----------------|-----------------|
-| [Mohammed Mudasir](https://github.com/Modelizer) (Creator) | @[md_mudasir](https://twitter.com/md_mudasir) | [![Get help on Codementor](https://cdn.codementor.io/badges/get_help_github.svg)](https://www.codementor.io/modelizer) | hello@mudasir.me | [http://mudasir.me](http://mudasir.me/) |
+| Contributors           | Twitter   | Ask for Help | Site |
+|------------------------|-----------|--------------|------|
+| [Mohammed Mudassir](https://github.com/Modelizer) (Creator) | @[md_mudasir](https://twitter.com/md_mudasir) | hello@mudasir.me | [http://mudasir.me](http://mudasir.me/) |
