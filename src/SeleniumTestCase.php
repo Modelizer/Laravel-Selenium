@@ -80,6 +80,7 @@ abstract class SeleniumTestCase extends AbstractTestCase implements OrchestraTes
         $this->app = $this->createApplication();
     }
 
+
     /**
      * Define environment setup.
      *
@@ -89,11 +90,31 @@ abstract class SeleniumTestCase extends AbstractTestCase implements OrchestraTes
      */
     protected function getEnvironmentSetUp($app)
     {
-        $envPath =  file_exists(base_path('vendor/autoload.php')) ? base_path() : __DIR__.'/..';
-
         putenv('APP_ENV=testing');
-        $app->useEnvironmentPath($envPath);
+        $app->useEnvironmentPath($this->getRootDirectory());
         $app->loadEnvironmentFrom('testing.env');
         $app->bootstrapWith([LoadEnvironmentVariables::class]);
+    }
+
+    /**
+     * Get root directory of a project or package
+     * Note: $app->basePath() will not due to it is loading orchestra test package which is loading from
+     * different directory and this application is been booted from steward.
+     *
+     * @return bool|string
+     */
+    private function getRootDirectory()
+    {
+        return realpath(__DIR__.($this->installedAsPackage() ? '/../../../../' : '/../'));
+    }
+
+    /**
+     * Check if the selenium package is been installed as dependency or a separate project.
+     *
+     * @return bool
+     */
+    private function installedAsPackage()
+    {
+        return file_exists(__DIR__ . '/../../../autoload.php');
     }
 }
