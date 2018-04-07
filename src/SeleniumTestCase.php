@@ -80,7 +80,6 @@ abstract class SeleniumTestCase extends AbstractTestCase implements OrchestraTes
         $this->app = $this->createApplication();
     }
 
-
     /**
      * Define environment setup.
      *
@@ -115,6 +114,6 @@ abstract class SeleniumTestCase extends AbstractTestCase implements OrchestraTes
      */
     private function installedAsPackage()
     {
-        return file_exists(__DIR__ . '/../../../autoload.php');
+        return file_exists(__DIR__.'/../../../autoload.php');
     }
 }
