@@ -75,6 +75,8 @@ Manually
 ```php
 <?php
 
+namespace Tests;
+
 use Modelizer\Selenium\SeleniumTestCase;
 
 class SeleniumExampleTest extends SeleniumTestCase
